@@ -83,6 +83,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel25 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
         jComboBox4 = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,7 +105,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("CADASTRO DE FUNCIONÁRIOS");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(171, 11, 249, 23);
+        jLabel3.setBounds(190, 10, 249, 23);
 
         jPanel3.setBackground(new java.awt.Color(82, 203, 248));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Pessoais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -360,6 +361,10 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel2.add(jPanel5);
         jPanel5.setBounds(10, 360, 580, 120);
 
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/medico.png"))); // NOI18N
+        jPanel2.add(jLabel27);
+        jLabel27.setBounds(140, 0, 40, 40);
+
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 600, 490);
 
@@ -412,6 +417,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
