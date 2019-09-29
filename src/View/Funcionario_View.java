@@ -368,7 +368,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 600, 490);
 
-        pack();
+        setBounds(0, 0, 620, 527);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

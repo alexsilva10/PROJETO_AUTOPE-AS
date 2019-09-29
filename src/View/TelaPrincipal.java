@@ -15,13 +15,16 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author User
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TelaPrincipal
-     */
+   
+   Funcionario_View Fun ;
+   Cliente_View cli ;
+    
     public TelaPrincipal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
+       JpVenda.setVisible(false);
+       JpHistorico.setVisible(false);
+       JpPedidos.setVisible(false);
     }
 
     /**
@@ -47,6 +50,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         JpPedidos = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -124,7 +128,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(JpVendaLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(518, Short.MAX_VALUE))
+                .addContainerGap(520, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -171,9 +175,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addContainerGap(314, Short.MAX_VALUE)))
         );
 
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 444, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 642, Short.MAX_VALUE)
+        );
+
         jLayeredPane1.setLayer(JpVenda, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(JpHistorico, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(JpPedidos, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jDesktopPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -193,6 +209,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addContainerGap()
                     .addComponent(JpPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jDesktopPane1)
+                    .addContainerGap()))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,6 +230,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(JpPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jDesktopPane1)
                     .addContainerGap()))
         );
 
@@ -237,6 +263,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seguidor.png"))); // NOI18N
         jMenuItem1.setText("Cliente");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/o-negocio (1).png"))); // NOI18N
@@ -274,8 +305,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-            Funcionario_View Fun = new Funcionario_View();
-            Fun.setVisible(true);
+    if(Fun==null){
+    Fun= new Funcionario_View();
+    jDesktopPane1.add(Fun);
+    }
+    JpVenda.setVisible(false);
+    JpHistorico.setVisible(false);
+    JpPedidos.setVisible(false);
+    Fun.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButtonVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendaActionPerformed
@@ -291,10 +328,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonHistoricoActionPerformed
 
     private void jButtonPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPedidoActionPerformed
-      JpVenda.setVisible(false);
+       JpVenda.setVisible(false);
        JpHistorico.setVisible(false);
        JpPedidos.setVisible(true);
     }//GEN-LAST:event_jButtonPedidoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        if(cli==null){
+        cli = new Cliente_View();
+        jDesktopPane1.add(cli);
+        }
+        JpVenda.setVisible(false);
+        JpHistorico.setVisible(false);
+        JpPedidos.setVisible(false);
+        cli.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,6 +365,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonHistorico;
     private javax.swing.JButton jButtonPedido;
     private javax.swing.JButton jButtonVenda;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

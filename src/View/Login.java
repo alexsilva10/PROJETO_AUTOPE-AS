@@ -48,7 +48,8 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(200, 490, 110, 31);
 
-        pack();
+        setSize(new java.awt.Dimension(527, 574));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) {
