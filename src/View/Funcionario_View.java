@@ -82,14 +82,16 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel26 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         TxtMatricula = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Btn_Pesquisar = new javax.swing.JButton();
+        Btn_Novo = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        Btn_Alterar = new javax.swing.JButton();
+        Btn_Limpar = new javax.swing.JButton();
+        Btn_Excluir = new javax.swing.JButton();
+        Btn_cancelar = new javax.swing.JButton();
+        Btn_Salvar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabela_Funcionario = new javax.swing.JTable();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -370,63 +372,123 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel2.add(TxtMatricula);
         TxtMatricula.setBounds(290, 10, 120, 20);
 
-        jButton1.setText("Pesquisar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Pesquisar.setText("Pesquisar");
+        Btn_Pesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Btn_PesquisarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(440, 0, 120, 40);
+        jPanel2.add(Btn_Pesquisar);
+        Btn_Pesquisar.setBounds(440, 0, 120, 40);
 
-        jButton2.setText("Novo");
-        jPanel2.add(jButton2);
-        jButton2.setBounds(910, 30, 110, 40);
+        Btn_Novo.setText("Novo");
+        Btn_Novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_NovoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Btn_Novo);
+        Btn_Novo.setBounds(910, 30, 110, 40);
 
         jPanel6.setBackground(new java.awt.Color(82, 203, 246));
 
-        jButton4.setText("Alterar");
+        Btn_Alterar.setText("Alterar");
+        Btn_Alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AlterarActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("Limpar");
+        Btn_Limpar.setText("Limpar");
+        Btn_Limpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_LimparActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Excluir");
+        Btn_Excluir.setText("Excluir");
+        Btn_Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_ExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(Btn_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Btn_Limpar, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Btn_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                    .addComponent(Btn_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Btn_Limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(Btn_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
         jPanel2.add(jPanel6);
-        jPanel6.setBounds(750, 230, 280, 160);
+        jPanel6.setBounds(750, 230, 280, 190);
 
-        jButton6.setText("Cancelar");
-        jPanel2.add(jButton6);
-        jButton6.setBounds(750, 30, 110, 40);
+        Btn_cancelar.setText("Cancelar");
+        Btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_cancelarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Btn_cancelar);
+        Btn_cancelar.setBounds(750, 30, 110, 40);
 
-        jButton5.setText("Salvar");
-        jPanel2.add(jButton5);
-        jButton5.setBounds(830, 460, 140, 40);
+        Btn_Salvar.setText("Salvar");
+        Btn_Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_SalvarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Btn_Salvar);
+        Btn_Salvar.setBounds(840, 520, 140, 50);
+
+        Tabela_Funcionario.setBackground(new java.awt.Color(62, 203, 246));
+        Tabela_Funcionario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Matricula", "Nome", "Celular", "Email"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(Tabela_Funcionario);
+        if (Tabela_Funcionario.getColumnModel().getColumnCount() > 0) {
+            Tabela_Funcionario.getColumnModel().getColumn(0).setResizable(false);
+            Tabela_Funcionario.getColumnModel().getColumn(1).setResizable(false);
+            Tabela_Funcionario.getColumnModel().getColumn(2).setResizable(false);
+            Tabela_Funcionario.getColumnModel().getColumn(3).setResizable(false);
+            Tabela_Funcionario.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 500, 710, 100);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 1050, 610);
@@ -438,20 +500,52 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Btn_PesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PesquisarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Btn_PesquisarActionPerformed
 
     private void TxtComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtComplementoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtComplementoActionPerformed
 
+    private void Btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_cancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_cancelarActionPerformed
+
+    private void Btn_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_NovoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_NovoActionPerformed
+
+    private void Btn_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_AlterarActionPerformed
+
+    private void Btn_LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LimparActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_LimparActionPerformed
+
+    private void Btn_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_ExcluirActionPerformed
+
+    private void Btn_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_SalvarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Btn_Alterar;
+    private javax.swing.JButton Btn_Excluir;
+    private javax.swing.JButton Btn_Limpar;
+    private javax.swing.JButton Btn_Novo;
+    private javax.swing.JButton Btn_Pesquisar;
+    private javax.swing.JButton Btn_Salvar;
+    private javax.swing.JButton Btn_cancelar;
     private javax.swing.JFormattedTextField FormattedTxtCEP;
     private javax.swing.JFormattedTextField FormattedTxtCPF;
     private javax.swing.JFormattedTextField FormattedTxtCelular;
     private javax.swing.JFormattedTextField FormattedTxtTelefone;
+    private javax.swing.JTable Tabela_Funcionario;
     private javax.swing.JTextField TxtBairro;
     private javax.swing.JTextField TxtCidade;
     private javax.swing.JTextField TxtComplemento;
@@ -462,13 +556,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxtNome;
     private javax.swing.JTextField TxtNumero;
     private javax.swing.JTextField TxtRua;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -507,6 +594,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
