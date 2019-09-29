@@ -53,10 +53,8 @@ public class Funcionario_Dao implements Serializable{
     
     public void alterar(Funcionario_Model funcionario) throws SQLException {
 
-        sql = "Update funcionario  set Matricula=?, Nome=?, Estadocivil=?, Datanascimento=?, Sexo=?, CPF=? " + 
-                "Telefone=?,Telefoneadicional=?, Celular=?, Email=?, Emailadicional=?, Bairro=?, Rua=?, Numero=?" +
-                "Cidade=?,Cep=?, Estado=?, Complemento=?, Escolaridade=?, RG=?" +
-                "Datademissao=?,Salarioadmissao=?,Datademissao=?, Salarioatual=?, Cargo=?, Status=?,  where ID=?";
+        sql = "Update funcionario  set Matricula=?, Nome=?, Estadocivil=?, Datanascimento=?, Sexo=?, CPF=?, Telefone=?,Telefoneadicional=?, Celular=?, Email=?, Emailadicional=?, Bairro=?, Rua=?, Numero=?" +
+                "Cidade=?,Cep=?, Estado=?, Complemento=?, Escolaridade=?, RG=?, Datademissao=?,Salarioadmissao=?,Datademissao=?, Salarioatual=?, Cargo=?, Status=?,  where ID=?";
         pst = Conexao.getConnection().prepareStatement(sql);
         pst.setString(1, funcionario.getMatricula());
         pst.setString(2, funcionario.getNome());
@@ -98,7 +96,12 @@ public class Funcionario_Dao implements Serializable{
 
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {        
-//funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), rs.getString("Enderecocliente"), rs.getString("Bairrocliente"));
+funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), rs.getString("Nome"), rs.getString("Estadocivil"),
+        rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),rs.getString("Telefoneadicional"), 
+        rs.getString("Celular"), rs.getString("Email"), rs.getString("Emailadicional"),rs.getString("Bairro"), rs.getString("Rua"),
+        rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
+        rs.getString("RG"), rs.getString("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getString("Datademissao"), rs.getString("Salarioatual"),
+        rs.getString("Cargo"), rs.getString("SalarioStatus"));
         }
         pst.close();
         return funcionario;
@@ -143,9 +146,14 @@ public class Funcionario_Dao implements Serializable{
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {
 
-        // funcionario = new Funcionario_Model(rs.getInt("Codigo"), rs.getString("Nomecliente"), rs.getString("Enderecocliente"), rs.getString("Bairrocliente"));
+        funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), rs.getString("Nome"), rs.getString("Estadocivil"),
+        rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),rs.getString("Telefoneadicional"), 
+        rs.getString("Celular"), rs.getString("Email"), rs.getString("Emailadicional"),rs.getString("Bairro"), rs.getString("Rua"),
+        rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
+        rs.getString("RG"), rs.getString("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getString("Datademissao"), rs.getString("Salarioatual"),
+        rs.getString("Cargo"), rs.getString("SalarioStatus"));
         
-          //funcionarios.add(funcionario);
+          funcionarios.add(funcionario);
         }
         
         pst.close();
@@ -163,8 +171,13 @@ public class Funcionario_Dao implements Serializable{
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {
             
-  //funcionario = new Funcionario_Model(rs.getInt("Codigo"), rs.getString("Nomecliente"), rs.getString("Enderecocliente"), rs.getString("Bairrocliente"));
- 
+        funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), rs.getString("Nome"), rs.getString("Estadocivil"),
+        rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),rs.getString("Telefoneadicional"), 
+        rs.getString("Celular"), rs.getString("Email"), rs.getString("Emailadicional"),rs.getString("Bairro"), rs.getString("Rua"),
+        rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
+        rs.getString("RG"), rs.getString("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getString("Datademissao"), rs.getString("Salarioatual"),
+        rs.getString("Cargo"), rs.getString("SalarioStatus"));
+        
         }
       pst.close();
 
