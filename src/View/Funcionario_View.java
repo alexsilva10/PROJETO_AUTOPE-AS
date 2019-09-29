@@ -5,17 +5,45 @@
  */
 package View;
 
+import Dao.Funcionario_Dao;
+import Model.Funcionario_Model;
+import Util.ValidaCPF;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ALEX DIAS
  */
 public class Funcionario_View extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form Funcionario_View
-     */
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+    Funcionario_Model funcionario;
+    Funcionario_Dao funci_Dao;
+    
+    List<Funcionario_Model> funcionarios;
+    DefaultTableModel modelo = new DefaultTableModel();
+    String cpf = "";
+    String cpf2;
+    String user = "";
+    String user2;
+    
     public Funcionario_View() {
+        funci_Dao = new Funcionario_Dao();
+         
         initComponents();
+        this.setVisible(true);
+        Campos(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
+                false,false, false, false, false, false, false, false, false,false);
+        
+        Campos_Botão(true, false, false, false, false,true,false);
+        atualizarTabela();
     }
 
     /**
@@ -33,19 +61,19 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         TxtNome = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        TxtDatanascimento = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        TxtSexo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        FormattedTxtCPF = new javax.swing.JFormattedTextField();
+        TxtCPF = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
-        FormattedTxtTelefone = new javax.swing.JFormattedTextField();
+        TxtTelefone = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        FormattedTxtCelular = new javax.swing.JFormattedTextField();
+        TxtCelular = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         TxtEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        TxtEstadocivil = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         TxtBairro = new javax.swing.JTextField();
@@ -60,24 +88,24 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtComplemento = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        FormattedTxtCEP = new javax.swing.JFormattedTextField();
+        TxtCep = new javax.swing.JFormattedTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TxtEscolaridade = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        TxtRG = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        TxtDatademissao = new javax.swing.JFormattedTextField();
         jLabel21 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        TxtSalarioatual = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        TxtDataadmissao = new javax.swing.JFormattedTextField();
         jLabel23 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        TxtSalarioadmissao = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        TxtStatus = new javax.swing.JComboBox<>();
+        TxtCargo = new javax.swing.JComboBox<>();
         TxtID = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -88,7 +116,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         Btn_Alterar = new javax.swing.JButton();
         Btn_Limpar = new javax.swing.JButton();
         Btn_Excluir = new javax.swing.JButton();
-        Btn_cancelar = new javax.swing.JButton();
+        Btn_Cancelar = new javax.swing.JButton();
         Btn_Salvar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela_Funcionario = new javax.swing.JTable();
@@ -129,22 +157,22 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel5.setBounds(260, 50, 70, 20);
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            TxtDatanascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel3.add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(330, 50, 110, 20);
+        jPanel3.add(TxtDatanascimento);
+        TxtDatanascimento.setBounds(330, 50, 110, 20);
 
         jLabel6.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel6.setText("Sexo:");
         jPanel3.add(jLabel6);
         jLabel6.setBounds(20, 50, 40, 20);
 
-        jComboBox2.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Masculino", "Feminino" }));
-        jPanel3.add(jComboBox2);
-        jComboBox2.setBounds(60, 50, 160, 20);
+        TxtSexo.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        TxtSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Masculino", "Feminino" }));
+        jPanel3.add(TxtSexo);
+        TxtSexo.setBounds(60, 50, 160, 20);
 
         jLabel7.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel7.setText("CPF:");
@@ -152,12 +180,12 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel7.setBounds(25, 80, 30, 20);
 
         try {
-            FormattedTxtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            TxtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel3.add(FormattedTxtCPF);
-        FormattedTxtCPF.setBounds(60, 80, 160, 20);
+        jPanel3.add(TxtCPF);
+        TxtCPF.setBounds(60, 80, 160, 20);
 
         jLabel8.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel8.setText("Telefone:");
@@ -165,12 +193,12 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel8.setBounds(270, 80, 60, 20);
 
         try {
-            FormattedTxtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            TxtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel3.add(FormattedTxtTelefone);
-        FormattedTxtTelefone.setBounds(330, 80, 110, 20);
+        jPanel3.add(TxtTelefone);
+        TxtTelefone.setBounds(330, 80, 110, 20);
 
         jLabel9.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel9.setText("Celular:");
@@ -178,12 +206,12 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel9.setBounds(490, 80, 50, 20);
 
         try {
-            FormattedTxtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            TxtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel3.add(FormattedTxtCelular);
-        FormattedTxtCelular.setBounds(540, 80, 160, 20);
+        jPanel3.add(TxtCelular);
+        TxtCelular.setBounds(540, 80, 160, 20);
 
         jLabel10.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel10.setText("E-mail:");
@@ -197,18 +225,18 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel4);
         jLabel4.setBounds(460, 50, 80, 20);
 
-        jComboBox1.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Casado", "Solteiro" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        TxtEstadocivil.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        TxtEstadocivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Casado", "Solteiro" }));
+        TxtEstadocivil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                TxtEstadocivilActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox1);
-        jComboBox1.setBounds(540, 50, 160, 20);
+        jPanel3.add(TxtEstadocivil);
+        TxtEstadocivil.setBounds(540, 50, 160, 20);
 
         jPanel2.add(jPanel3);
-        jPanel3.setBounds(10, 40, 710, 150);
+        jPanel3.setBounds(10, 40, 710, 140);
 
         jPanel4.setBackground(new java.awt.Color(28, 203, 248));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -268,15 +296,15 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel15.setBounds(520, 80, 50, 20);
 
         try {
-            FormattedTxtCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            TxtCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel4.add(FormattedTxtCEP);
-        FormattedTxtCEP.setBounds(570, 80, 130, 20);
+        jPanel4.add(TxtCep);
+        TxtCep.setBounds(570, 80, 130, 20);
 
         jPanel2.add(jPanel4);
-        jPanel4.setBounds(10, 200, 710, 160);
+        jPanel4.setBounds(10, 190, 710, 150);
 
         jPanel5.setBackground(new java.awt.Color(28, 203, 248));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Profissionais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -286,15 +314,15 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel18.setText("Escolaridade:");
         jPanel5.add(jLabel18);
         jLabel18.setBounds(10, 20, 80, 20);
-        jPanel5.add(jTextField1);
-        jTextField1.setBounds(100, 20, 130, 20);
+        jPanel5.add(TxtEscolaridade);
+        TxtEscolaridade.setBounds(100, 20, 130, 20);
 
         jLabel19.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel19.setText(" RG:");
         jPanel5.add(jLabel19);
         jLabel19.setBounds(250, 20, 30, 20);
-        jPanel5.add(jTextField2);
-        jTextField2.setBounds(280, 20, 140, 20);
+        jPanel5.add(TxtRG);
+        TxtRG.setBounds(280, 20, 140, 20);
 
         jLabel20.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel20.setText("Data de Admissão:");
@@ -302,19 +330,19 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel20.setBounds(430, 20, 110, 20);
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            TxtDatademissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel5.add(jFormattedTextField2);
-        jFormattedTextField2.setBounds(540, 50, 160, 20);
+        jPanel5.add(TxtDatademissao);
+        TxtDatademissao.setBounds(540, 50, 160, 20);
 
         jLabel21.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel21.setText("Sal. Admissão:");
         jPanel5.add(jLabel21);
         jLabel21.setBounds(10, 50, 90, 20);
-        jPanel5.add(jTextField3);
-        jTextField3.setBounds(100, 80, 130, 20);
+        jPanel5.add(TxtSalarioatual);
+        TxtSalarioatual.setBounds(100, 80, 130, 20);
 
         jLabel22.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel22.setText("Data de Demissão:");
@@ -322,19 +350,19 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel22.setBounds(430, 50, 110, 20);
 
         try {
-            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            TxtDataadmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel5.add(jFormattedTextField3);
-        jFormattedTextField3.setBounds(540, 20, 160, 20);
+        jPanel5.add(TxtDataadmissao);
+        TxtDataadmissao.setBounds(540, 20, 160, 20);
 
         jLabel23.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel23.setText("Salário Atual:");
         jPanel5.add(jLabel23);
         jLabel23.setBounds(10, 80, 80, 20);
-        jPanel5.add(jTextField4);
-        jTextField4.setBounds(100, 50, 130, 20);
+        jPanel5.add(TxtSalarioadmissao);
+        TxtSalarioadmissao.setBounds(100, 50, 130, 20);
 
         jLabel24.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel24.setText("Cargo:");
@@ -346,17 +374,17 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel25);
         jLabel25.setBounds(480, 80, 60, 20);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Ativo", "Inativo" }));
-        jPanel5.add(jComboBox3);
-        jComboBox3.setBounds(540, 80, 160, 20);
+        TxtStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Ativo", "Inativo" }));
+        jPanel5.add(TxtStatus);
+        TxtStatus.setBounds(540, 80, 160, 20);
 
-        jComboBox4.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Gerente", "Administrador", "Operador", " " }));
-        jPanel5.add(jComboBox4);
-        jComboBox4.setBounds(280, 80, 140, 20);
+        TxtCargo.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        TxtCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Gerente", "Administrador", "Operador", " " }));
+        jPanel5.add(TxtCargo);
+        TxtCargo.setBounds(280, 80, 140, 20);
 
         jPanel2.add(jPanel5);
-        jPanel5.setBounds(10, 370, 710, 120);
+        jPanel5.setBounds(10, 350, 710, 120);
         jPanel2.add(TxtID);
         TxtID.setBounds(70, 10, 130, 20);
 
@@ -443,14 +471,14 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel2.add(jPanel6);
         jPanel6.setBounds(750, 230, 280, 190);
 
-        Btn_cancelar.setText("Cancelar");
-        Btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Cancelar.setText("Cancelar");
+        Btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_cancelarActionPerformed(evt);
+                Btn_CancelarActionPerformed(evt);
             }
         });
-        jPanel2.add(Btn_cancelar);
-        Btn_cancelar.setBounds(750, 30, 110, 40);
+        jPanel2.add(Btn_Cancelar);
+        Btn_Cancelar.setBounds(750, 30, 110, 40);
 
         Btn_Salvar.setText("Salvar");
         Btn_Salvar.addActionListener(new java.awt.event.ActionListener() {
@@ -478,6 +506,11 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        Tabela_Funcionario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabela_FuncionarioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabela_Funcionario);
         if (Tabela_Funcionario.getColumnModel().getColumnCount() > 0) {
             Tabela_Funcionario.getColumnModel().getColumn(0).setResizable(false);
@@ -488,7 +521,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 500, 710, 100);
+        jScrollPane1.setBounds(10, 480, 710, 120);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 1050, 610);
@@ -496,32 +529,244 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         setBounds(0, 0, 1058, 647);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    public void Limpar()
+    {
+        TxtID.setText(""); 
+        TxtMatricula.setText("");
+        TxtNome.setText("");
+        TxtEstadocivil.setSelectedItem("Selecionar");
+        TxtDatanascimento.setText("");
+        TxtSexo.setSelectedItem("Selecionar");
+        TxtCPF.setText("");
+        TxtTelefone.setText("");
+        TxtCelular.setText("");
+        TxtEmail.setText("");
+        TxtBairro.setText("");
+        TxtRua.setText("");
+        TxtNumero.setText("");
+        TxtCidade.setText("");
+        TxtCep.setText("");
+        TxtEstado.setText("");
+        TxtComplemento.setText("");
+        TxtEscolaridade.setText("");
+        TxtRG.setText("");
+        TxtDataadmissao.setText("");
+        TxtSalarioadmissao.setText("");
+        TxtDatademissao.setText("");
+        TxtSalarioatual.setText("");
+        TxtCargo.setSelectedItem("Selecionar");
+        TxtStatus.setSelectedItem("Selecionar");
+        
+    }
+ public void Campos(boolean Id, boolean Mat, boolean Nom, boolean Estc, boolean Dtnasc, boolean Sex, boolean Cpf, boolean Tel, boolean Cel, boolean Emai,boolean Bair, boolean Rua, boolean Num,
+         boolean Cid, boolean Cep, boolean Est, boolean Comp, boolean Esco, boolean Rg, boolean Dtad, boolean Salad, boolean Dtdem, boolean Salat, boolean Carg, boolean Stat )
+    {
+      
+        TxtID.setEnabled(Id);
+        TxtMatricula.setEnabled(Mat);
+        TxtNome.setEnabled(Nom);
+        TxtEstadocivil.setEnabled(Estc);
+        TxtDatanascimento.setEnabled(Dtnasc);
+        TxtSexo.setEnabled(Sex);
+        TxtCPF.setEnabled(Cpf);
+        TxtTelefone.setEnabled(Tel);
+        TxtCelular.setEnabled(Cel);
+        TxtEmail.setEnabled(Emai);
+        TxtBairro.setEnabled(Bair);
+        TxtRua.setEnabled(Rua);
+        TxtNumero.setEnabled(Num);
+        TxtCidade.setEnabled(Cid);
+        TxtCep.setEnabled(Cep);
+        TxtEstado.setEnabled(Est);
+        TxtComplemento.setEnabled(Comp);
+        TxtEscolaridade.setEnabled(Esco);
+        TxtRG.setEnabled(Rg);
+        TxtDataadmissao.setEnabled(Dtad);
+        TxtSalarioadmissao.setEnabled(Salad);
+        TxtDatademissao.setEnabled(Dtdem);
+        TxtSalarioatual.setEnabled(Salat);
+        TxtCargo.setEnabled(Carg);
+        TxtStatus.setEnabled(Stat);
+    }
+ 
+ public void Campos_Botão( boolean BtNov,boolean BtLim,boolean BtAlt, boolean BtExc, boolean BtSal, boolean BtPesq, boolean BtCanc)
+    {
+       
+       Btn_Novo.setEnabled(BtNov);
+       Btn_Limpar.setEnabled(BtLim);
+       Btn_Alterar.setEnabled(BtAlt);
+       Btn_Excluir.setEnabled(BtExc);
+       Btn_Salvar.setEnabled(BtSal);
+       Btn_Pesquisar.setEnabled(BtPesq);
+       Btn_Cancelar.setEnabled(BtCanc);
+    }
+ 
+    
+    private void TxtEstadocivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEstadocivilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_TxtEstadocivilActionPerformed
 
     private void Btn_PesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PesquisarActionPerformed
-        // TODO add your handling code here:
+        String ID = JOptionPane.showInputDialog("Digite o ID do Funcionario: ");
+        funcionario = new Funcionario_Model();
+  
+        try {
+            funcionario = funci_Dao.getFuncionarioById(Integer.parseInt(ID));
+        } catch (SQLException ex) {
+            Logger.getLogger(Funcionario_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    if(funcionario == null)
+    {
+         JOptionPane.showMessageDialog(null, "Funcionario não encontrado");
+    }
+               Campos(false, true, true, true, true, true, true, true, true, true, true, true, true, true, true,
+                      true,true, true, true, true, true, true, true, true, true);          
+               Campos_Botão(false, true, true, true, false, false,true);
+            
+                TxtID.setText(ID);
+                TxtMatricula.setText(funcionario.getMatricula());
+                TxtNome.setText(funcionario.getMatricula());
+                TxtEstadocivil.setSelectedItem(funcionario.getEstadocivil());
+                TxtDatanascimento.setText(sdf.format(funcionario.getDatanascimento()));
+                TxtSexo.setSelectedItem(funcionario.getSexo());
+                TxtCPF.setText(funcionario.getCPF());
+                TxtTelefone.setText(funcionario.getTelefone());
+                TxtCelular.setText(funcionario.getCelular());
+                TxtEmail.setText(funcionario.getEmail());
+                TxtBairro.setText(funcionario.getBairro());
+                TxtRua.setText(funcionario.getRua());
+                TxtNumero.setText(Integer.toString(funcionario.getNumero()));
+                TxtCidade.setText(funcionario.getCidade());
+                TxtCep.setText(funcionario.getCep());
+                TxtEstado.setText(funcionario.getEstado());
+                TxtComplemento.setText(funcionario.getComplemento());
+                TxtEscolaridade.setText(funcionario.getEscolaridade());
+                TxtRG.setText(funcionario.getRG());
+                TxtDataadmissao.setText(funcionario.getDataadmissao());
+                TxtSalarioadmissao.setText(funcionario.getSalarioadmissao());
+                TxtDatademissao.setText(funcionario.getDatademissao());
+                TxtSalarioatual.setText(funcionario.getSalarioatual());
+                TxtCargo.setSelectedItem(funcionario.getCargo());
+                TxtStatus.setSelectedItem(funcionario.getStatus());
+               
+                user = funcionario.getNome();
     }//GEN-LAST:event_Btn_PesquisarActionPerformed
 
     private void TxtComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtComplementoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtComplementoActionPerformed
 
-    private void Btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_cancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Btn_cancelarActionPerformed
+    private void Btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CancelarActionPerformed
+        Campos(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
+                false,false, false, false, false, false, false, false, false,false);
+
+        Campos_Botão(true, false, false, false, false,true,false);
+        Limpar();
+    }//GEN-LAST:event_Btn_CancelarActionPerformed
 
     private void Btn_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_NovoActionPerformed
-        // TODO add your handling code here:
+        Campos(false, true, true, true, true, true, true, true, true, true, true, true, true, true, true,
+                true,true, true, true, true, true, true, true, true, true);
+        Campos_Botão(false, false, false, false, true, false, true);
+        Limpar();
     }//GEN-LAST:event_Btn_NovoActionPerformed
 
     private void Btn_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AlterarActionPerformed
-        // TODO add your handling code here:
+        try {
+             if (TxtMatricula.getText().isEmpty() || TxtNome.getText().isEmpty() || TxtEstadocivil.getSelectedItem().equals("Selecionar") || TxtDatanascimento.getText().isEmpty() || TxtSexo.getSelectedItem().equals("Selecionar") || TxtCPF.getText().isEmpty() ||
+                     TxtTelefone.getText().isEmpty() || TxtCelular.getText().isEmpty() || TxtEmail.getText().isEmpty() || TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() || TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty() ||
+                     TxtCep.getText().isEmpty() || TxtEstado.getText().isEmpty() || TxtComplemento.getText().isEmpty() || TxtEscolaridade.getText().isEmpty() ||  TxtRG.getText().isEmpty() || TxtDataadmissao.getText().isEmpty() ||
+                     TxtSalarioadmissao.getText().isEmpty() || TxtDatademissao.getText().isEmpty() || TxtSalarioatual.getText().isEmpty() || TxtCargo.getSelectedItem().equals("Selecionar") || TxtStatus.getSelectedItem().equals("Selecionar")){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+            TxtNome.requestFocusInWindow();
+                } 
+             else {
+                if (new ValidaCPF().validaCPF(TxtCPF.getText()) == false) {
+                    JOptionPane.showMessageDialog(null, "O CPF digitado é Inválido");
+                } else {
+                    if (sdf.parse(TxtDatanascimento.getText()).equals(new java.util.Date()) || sdf.parse(TxtDatanascimento.getText()).after(new java.util.Date())) {
+                        JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser igual ou depois da data de hoje");
+                    } else {
+                        cpf2 = funci_Dao.validarCpfFuncionario(TxtCPF.getText());
+                        if (!cpf.equals(TxtCPF.getText()) && cpf2.equals(TxtCPF.getText())) {
+                            JOptionPane.showMessageDialog(null, "O CPF já possui um funcionario cadastrado");
+                        } else {
+                            user2 = funci_Dao.validarNomeUsuario(TxtNome.getText());
+                            if (!user.equals(TxtNome.getText()) && user2.equals(TxtNome.getText())) {
+                                JOptionPane.showMessageDialog(null, "Já existe um funcionario com este nome");
+                            }
+             
+             else {
+                            user2 = funci_Dao.validarNomeUsuario(TxtNome.getText());
+                            if (!user.equals(TxtNome.getText()) && user2.equals(TxtNome.getText())) {
+                                JOptionPane.showMessageDialog(null, "Já existe um funcionario com este nome");
+                            }  else {
+                                
+                                funcionario = new Funcionario_Model();
+                                
+                                funcionario.setID(Integer.parseInt(TxtID.getText()));
+                                funcionario.setMatricula(TxtMatricula.getText());
+                                funcionario.setNome(TxtNome.getText());
+                                funcionario.setEstadocivil(String.valueOf(TxtEstadocivil.getSelectedItem()));
+                                funcionario.setDatanascimento((Date) sdf.parse(TxtDatanascimento.getText()));
+                                funcionario.setSexo(String.valueOf(TxtSexo.getSelectedItem()));
+                                funcionario.setCPF(TxtCPF.getText());
+                                funcionario.setTelefone(TxtTelefone.getText());
+                                funcionario.setCelular(TxtCelular.getText());
+                                funcionario.setEmail(TxtEmail.getText());
+                                funcionario.setBairro(TxtBairro.getText());
+                                funcionario.setRua(TxtRua.getText());
+                                funcionario.setNumero(Integer.parseInt(TxtNumero.getText()));
+                                funcionario.setCidade(TxtCidade.getText());
+                                funcionario.setCep(TxtCep.getText());
+                                funcionario.setEstado(TxtEstado.getText());
+                                funcionario.setComplemento(TxtComplemento.getText());
+                                funcionario.setEscolaridade(TxtEscolaridade.getText());
+                                funcionario.setRG(TxtRG.getText());
+                                funcionario.setDataadmissao(TxtDataadmissao.getText());
+                                funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
+                                funcionario.setDatademissao(TxtDatademissao.getText());
+                                funcionario.setSalarioatual(TxtSalarioatual.getText());
+                                funcionario.setCargo(String.valueOf(TxtCargo.getSelectedItem()));
+                                funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
+
+                                int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Alterar os Dados!");   
+                                if( i == 0 )
+                                { 
+                                funci_Dao.alterar(funcionario);
+                                
+                                JOptionPane.showMessageDialog(null, "Alterado com sucesso");
+                                atualizarTabela();
+                                Limpar(); 
+                                }
+                            }
+                        }
+                      }
+                    }
+                }
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "A data informada é inválida");
+                 
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "ERRO!");
+            ex.printStackTrace();
+
+        }
     }//GEN-LAST:event_Btn_AlterarActionPerformed
 
     private void Btn_LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LimparActionPerformed
-        // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Limpar os Dados!");       
+               if( i == 0 )
+                {
+                    Limpar();
+                    Campos(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
+                false,false, false, false, false, false, false, false, false,false);
+
+                    Campos_Botão(true, false, false, false, false, true,true);
+                }
     }//GEN-LAST:event_Btn_LimparActionPerformed
 
     private void Btn_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ExcluirActionPerformed
@@ -532,37 +777,127 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Btn_SalvarActionPerformed
 
+    private void Tabela_FuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabela_FuncionarioMouseClicked
+        int i = 0;
+        Tabela_Funcionario.getModel();
+        TxtID.setText(modelo.getValueAt(Tabela_Funcionario.getSelectedRow(), 0).toString());
+        try {
+             Campos(false, true, true, true, true, true, true, true, true, true, true, true, true, true, true,
+                true,true, true, true, true, true, true, true, true, true);        
+             Campos_Botão(true, true, true, true, false, true,true);
+            
+             funcionario = funci_Dao.getFuncionarioById(Integer.parseInt(TxtID.getText()));
+            
+            TxtMatricula.setText(funcionario.getMatricula());
+                TxtNome.setText(funcionario.getMatricula());
+                TxtEstadocivil.setSelectedItem(funcionario.getEstadocivil());
+                TxtDatanascimento.setText(sdf.format(funcionario.getDatanascimento()));
+                TxtSexo.setSelectedItem(funcionario.getSexo());
+                TxtCPF.setText(funcionario.getCPF());
+                TxtTelefone.setText(funcionario.getTelefone());
+                TxtCelular.setText(funcionario.getCelular());
+                TxtEmail.setText(funcionario.getEmail());
+                TxtBairro.setText(funcionario.getBairro());
+                TxtRua.setText(funcionario.getRua());
+                TxtNumero.setText(Integer.toString(funcionario.getNumero()));
+                TxtCidade.setText(funcionario.getCidade());
+                TxtCep.setText(funcionario.getCep());
+                TxtEstado.setText(funcionario.getEstado());
+                TxtComplemento.setText(funcionario.getComplemento());
+                TxtEscolaridade.setText(funcionario.getEscolaridade());
+                TxtRG.setText(funcionario.getRG());
+                TxtDataadmissao.setText(funcionario.getDataadmissao());
+                TxtSalarioadmissao.setText(funcionario.getSalarioadmissao());
+                TxtDatademissao.setText(funcionario.getDatademissao());
+                TxtSalarioatual.setText(funcionario.getSalarioatual());
+                TxtCargo.setSelectedItem(funcionario.getCargo());
+                TxtStatus.setSelectedItem(funcionario.getStatus());
+                cpf = funcionario.getCPF();
+                user = funcionario.getNome();
 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_Tabela_FuncionarioMouseClicked
+
+
+    public void atualizarTabela() {
+        funcionario = new Funcionario_Model();
+        try {
+            funcionarios = funci_Dao.todosFuncionarios();
+            String dados[][] = new String[funcionarios.size()][5];
+            int i = 0;
+            for (Funcionario_Model u : funcionarios) {
+                dados[i][0] = String.valueOf(u.getID());
+                dados[i][1] = u.getMatricula();
+                dados[i][2] = u.getNome();
+                dados[i][3] = u.getCelular();
+                dados[i][4] = u.getEmail(); 
+                i++;
+            }
+            String tituloColuna[] = {"ID", "Matricula", "Nome", "Celular", "Email"};
+            modelo.setDataVector(dados, tituloColuna);
+            Tabela_Funcionario.setModel(modelo);
+            Tabela_Funcionario.updateUI();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }    
+    }
+    
+   public int validarAltCpf() {
+        int vc = 0;
+        if (cpf2.equals(TxtCPF.getText())) {
+
+            vc = 0;
+        } else {
+            vc = 1;
+        }
+        return vc;
+    }
+
+    public int validarAltUsu() {
+        int vc = 0;
+        if (user2.equals(TxtNome.getText())) {
+            JOptionPane.showMessageDialog(null, "Já existe um funcionario com este nome");
+        } else {
+            vc = 1;
+        }
+        return vc;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Alterar;
+    private javax.swing.JButton Btn_Cancelar;
     private javax.swing.JButton Btn_Excluir;
     private javax.swing.JButton Btn_Limpar;
     private javax.swing.JButton Btn_Novo;
     private javax.swing.JButton Btn_Pesquisar;
     private javax.swing.JButton Btn_Salvar;
-    private javax.swing.JButton Btn_cancelar;
-    private javax.swing.JFormattedTextField FormattedTxtCEP;
-    private javax.swing.JFormattedTextField FormattedTxtCPF;
-    private javax.swing.JFormattedTextField FormattedTxtCelular;
-    private javax.swing.JFormattedTextField FormattedTxtTelefone;
     private javax.swing.JTable Tabela_Funcionario;
     private javax.swing.JTextField TxtBairro;
+    private javax.swing.JFormattedTextField TxtCPF;
+    private javax.swing.JComboBox<String> TxtCargo;
+    private javax.swing.JFormattedTextField TxtCelular;
+    private javax.swing.JFormattedTextField TxtCep;
     private javax.swing.JTextField TxtCidade;
     private javax.swing.JTextField TxtComplemento;
+    private javax.swing.JFormattedTextField TxtDataadmissao;
+    private javax.swing.JFormattedTextField TxtDatademissao;
+    private javax.swing.JFormattedTextField TxtDatanascimento;
     private javax.swing.JTextField TxtEmail;
+    private javax.swing.JTextField TxtEscolaridade;
     private javax.swing.JTextField TxtEstado;
+    private javax.swing.JComboBox<String> TxtEstadocivil;
     private javax.swing.JTextField TxtID;
     private javax.swing.JTextField TxtMatricula;
     private javax.swing.JTextField TxtNome;
     private javax.swing.JTextField TxtNumero;
+    private javax.swing.JTextField TxtRG;
     private javax.swing.JTextField TxtRua;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
+    private javax.swing.JTextField TxtSalarioadmissao;
+    private javax.swing.JTextField TxtSalarioatual;
+    private javax.swing.JComboBox<String> TxtSexo;
+    private javax.swing.JComboBox<String> TxtStatus;
+    private javax.swing.JFormattedTextField TxtTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -595,9 +930,5 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

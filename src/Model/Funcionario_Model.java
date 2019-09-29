@@ -11,11 +11,9 @@ public class Funcionario_Model {
     private Date Datanascimento; 
     private String Sexo; 
     private String CPF;
-    private String Telefone; 
-    private String Telefoneadicional;
+    private String Telefone;
     private String Celular;;
     private String Email;
-    private String Emailadicional;
     
     private String Bairro;
     private String Rua; 
@@ -37,7 +35,7 @@ public class Funcionario_Model {
     public Funcionario_Model() {
     }
   
-    public Funcionario_Model(int ID, String Matricula, String Nome, String Estadocivil, Date Datanascimento, String Sexo, String CPF, String Telefone, String Telefoneadicional, String Celular, String Email, String Emailadicional, String Bairro, String Rua, int Numero, String Cidade, String Cep, String Estado, String Complemento, String Escolaridade, String RG, String Dataadmissao, String Salarioadmissao, String Datademissao, String Salarioatual, String Cargo, String Status) {
+    public Funcionario_Model(int ID, String Matricula, String Nome, String Estadocivil, Date Datanascimento, String Sexo, String CPF, String Telefone, String Celular, String Email, String Bairro, String Rua, int Numero, String Cidade, String Cep, String Estado, String Complemento, String Escolaridade, String RG, String Dataadmissao, String Salarioadmissao, String Datademissao, String Salarioatual, String Cargo, String Status) {
         this.ID = ID;
         this.Matricula = Matricula;
         this.Nome = Nome;
@@ -46,10 +44,8 @@ public class Funcionario_Model {
         this.Sexo = Sexo;
         this.CPF = CPF;
         this.Telefone = Telefone;
-        this.Telefoneadicional = Telefoneadicional;
         this.Celular = Celular;
         this.Email = Email;
-        this.Emailadicional = Emailadicional;
         this.Bairro = Bairro;
         this.Rua = Rua;
         this.Numero = Numero;
@@ -131,14 +127,6 @@ public class Funcionario_Model {
         this.Telefone = Telefone;
     }
 
-    public String getTelefoneadicional() {
-        return Telefoneadicional;
-    }
-
-    public void setTelefoneadicional(String Telefoneadicional) {
-        this.Telefoneadicional = Telefoneadicional;
-    }
-
     public String getCelular() {
         return Celular;
     }
@@ -153,14 +141,6 @@ public class Funcionario_Model {
 
     public void setEmail(String Email) {
         this.Email = Email;
-    }
-
-    public String getEmailadicional() {
-        return Emailadicional;
-    }
-
-    public void setEmailadicional(String Emailadicional) {
-        this.Emailadicional = Emailadicional;
     }
 
     public String getBairro() {

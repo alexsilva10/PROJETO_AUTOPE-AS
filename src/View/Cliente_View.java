@@ -77,6 +77,9 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jTextFieldEmail = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(28, 203, 248));
+        setClosable(true);
+        setIconifiable(true);
+        setResizable(true);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
@@ -435,7 +438,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel3);
         jPanel3.setBounds(10, 440, 600, 80);
 
-        setBounds(0, 0, 640, 593);
+        setBounds(0, 0, 834, 593);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxEstadoCivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEstadoCivilActionPerformed

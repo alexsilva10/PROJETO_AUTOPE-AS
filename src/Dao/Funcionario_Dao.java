@@ -14,8 +14,8 @@ public class Funcionario_Dao implements Serializable{
     String sql;
 
     public void salvar(Funcionario_Model funcionario) throws SQLException {
-        int codigo = 0;
-        sql = "INSERT INTO cliente values(?,?,?,?)";
+        int ID = 0;
+        sql = "INSERT INTO funcionario values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         pst = Conexao.getConnection().prepareStatement(sql);
         pst.setInt(1, 0);
         pst.setString(2, funcionario.getMatricula());
@@ -25,25 +25,23 @@ public class Funcionario_Dao implements Serializable{
         pst.setString(6, funcionario.getSexo());
         pst.setString(7, funcionario.getCPF());
         pst.setString(8, funcionario.getTelefone());
-        pst.setString(9, funcionario.getTelefoneadicional());
-        pst.setString(10, funcionario.getCelular());
-        pst.setString(11, funcionario.getEmail());
-        pst.setString(12, funcionario.getEmailadicional());
-        pst.setString(13, funcionario.getBairro());
-        pst.setString(14, funcionario.getRua());
-        pst.setInt(15, funcionario.getNumero());
-        pst.setString(16, funcionario.getCidade());
-        pst.setString(17, funcionario.getCep());
-        pst.setString(18, funcionario.getEstado());
-        pst.setString(19, funcionario.getComplemento());
-        pst.setString(20, funcionario.getEscolaridade());
-        pst.setString(21, funcionario.getRG());
-        pst.setString(22, funcionario.getDataadmissao());
-        pst.setString(23, funcionario.getSalarioadmissao());
-        pst.setString(24, funcionario.getDatademissao());
-        pst.setString(25, funcionario.getSalarioatual());
-        pst.setString(26, funcionario.getCargo());
-        pst.setString(27, funcionario.getStatus());
+        pst.setString(9, funcionario.getCelular());
+        pst.setString(10, funcionario.getEmail());
+        pst.setString(11, funcionario.getBairro());
+        pst.setString(12, funcionario.getRua());
+        pst.setInt(13, funcionario.getNumero());
+        pst.setString(14, funcionario.getCidade());
+        pst.setString(15, funcionario.getCep());
+        pst.setString(16, funcionario.getEstado());
+        pst.setString(17, funcionario.getComplemento());
+        pst.setString(18, funcionario.getEscolaridade());
+        pst.setString(19, funcionario.getRG());
+        pst.setString(20, funcionario.getDataadmissao());
+        pst.setString(21, funcionario.getSalarioadmissao());
+        pst.setString(22, funcionario.getDatademissao());
+        pst.setString(23, funcionario.getSalarioatual());
+        pst.setString(24, funcionario.getCargo());
+        pst.setString(25, funcionario.getStatus());
        
        
         pst.execute();
@@ -53,7 +51,7 @@ public class Funcionario_Dao implements Serializable{
     
     public void alterar(Funcionario_Model funcionario) throws SQLException {
 
-        sql = "Update funcionario  set Matricula=?, Nome=?, Estadocivil=?, Datanascimento=?, Sexo=?, CPF=?, Telefone=?,Telefoneadicional=?, Celular=?, Email=?, Emailadicional=?, Bairro=?, Rua=?, Numero=?" +
+        sql = "Update funcionario  set Matricula=?, Nome=?, Estadocivil=?, Datanascimento=?, Sexo=?, CPF=?, Telefone=?, Celular=?, Email=?, Bairro=?, Rua=?, Numero=?" +
                 "Cidade=?,Cep=?, Estado=?, Complemento=?, Escolaridade=?, RG=?, Datademissao=?,Salarioadmissao=?,Datademissao=?, Salarioatual=?, Cargo=?, Status=?,  where ID=?";
         pst = Conexao.getConnection().prepareStatement(sql);
         pst.setString(1, funcionario.getMatricula());
@@ -63,32 +61,30 @@ public class Funcionario_Dao implements Serializable{
         pst.setString(5, funcionario.getSexo());
         pst.setString(6, funcionario.getCPF());
         pst.setString(7, funcionario.getTelefone());
-        pst.setString(8, funcionario.getTelefoneadicional());
-        pst.setString(9, funcionario.getCelular());
-        pst.setString(10, funcionario.getEmail());
-        pst.setString(11, funcionario.getEmailadicional());
-        pst.setString(12, funcionario.getBairro());
-        pst.setString(13, funcionario.getRua());
-        pst.setInt(14, funcionario.getNumero());
-        pst.setString(15, funcionario.getCidade());
-        pst.setString(16, funcionario.getCep());
-        pst.setString(17, funcionario.getEstado());
-        pst.setString(18, funcionario.getComplemento());
-        pst.setString(19, funcionario.getEscolaridade());
-        pst.setString(20, funcionario.getRG());
-        pst.setString(21, funcionario.getDataadmissao());
-        pst.setString(22, funcionario.getSalarioadmissao());
-        pst.setString(23, funcionario.getDatademissao());
-        pst.setString(24, funcionario.getSalarioatual());
-        pst.setString(25, funcionario.getCargo());
-        pst.setString(26, funcionario.getStatus());
+        pst.setString(8, funcionario.getCelular());
+        pst.setString(9, funcionario.getEmail());
+        pst.setString(10, funcionario.getBairro());
+        pst.setString(11, funcionario.getRua());
+        pst.setInt(12, funcionario.getNumero());
+        pst.setString(13, funcionario.getCidade());
+        pst.setString(14, funcionario.getCep());
+        pst.setString(15, funcionario.getEstado());
+        pst.setString(16, funcionario.getComplemento());
+        pst.setString(17, funcionario.getEscolaridade());
+        pst.setString(18, funcionario.getRG());
+        pst.setString(19, funcionario.getDataadmissao());
+        pst.setString(20, funcionario.getSalarioadmissao());
+        pst.setString(21, funcionario.getDatademissao());
+        pst.setString(22, funcionario.getSalarioatual());
+        pst.setString(23, funcionario.getCargo());
+        pst.setString(24, funcionario.getStatus());
         
-        pst.setInt(27, funcionario.getID());
+        pst.setInt(25, funcionario.getID());
         pst.execute();
         pst.close();
     }
     
-    public Funcionario_Model buscaClienteID(int ID) throws SQLException {
+    public Funcionario_Model buscaFuncionarioID(int ID) throws SQLException {
         Funcionario_Model funcionario = null;
         sql = ("Select * from funcionario where ID= " + ID);
         Statement st;
@@ -97,8 +93,8 @@ public class Funcionario_Dao implements Serializable{
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {        
 funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), rs.getString("Nome"), rs.getString("Estadocivil"),
-        rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),rs.getString("Telefoneadicional"), 
-        rs.getString("Celular"), rs.getString("Email"), rs.getString("Emailadicional"),rs.getString("Bairro"), rs.getString("Rua"),
+        rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),
+        rs.getString("Celular"), rs.getString("Email"),rs.getString("Bairro"), rs.getString("Rua"),
         rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
         rs.getString("RG"), rs.getString("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getString("Datademissao"), rs.getString("Salarioatual"),
         rs.getString("Cargo"), rs.getString("SalarioStatus"));
@@ -108,7 +104,7 @@ funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), 
     }
     
     public void excluir(int codigo) throws SQLException {
-        sql = " delete from cliente where codigo= ?";
+        sql = " delete from funcionario where ID= ?";
         pst = Conexao.getConnection().prepareStatement(sql);
         pst.setInt(1, codigo);
         pst.execute();
@@ -119,7 +115,7 @@ funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), 
      public String validarNomeUsuario(String Nomecliente) throws SQLException {
 
         String resposta = new String();
-        String sql = "select Nome from cliente where Nome =?";
+        String sql = "select Nome from funcionario where Nome =?";
 
         pst = Conexao.getConnection().prepareStatement(sql);
         pst.setString(1, Nomecliente);
@@ -147,8 +143,8 @@ funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), 
         while (rs.next()) {
 
         funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), rs.getString("Nome"), rs.getString("Estadocivil"),
-        rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),rs.getString("Telefoneadicional"), 
-        rs.getString("Celular"), rs.getString("Email"), rs.getString("Emailadicional"),rs.getString("Bairro"), rs.getString("Rua"),
+        rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),
+        rs.getString("Celular"), rs.getString("Email"),rs.getString("Bairro"), rs.getString("Rua"),
         rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
         rs.getString("RG"), rs.getString("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getString("Datademissao"), rs.getString("Salarioatual"),
         rs.getString("Cargo"), rs.getString("SalarioStatus"));
@@ -161,19 +157,19 @@ funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), 
         return funcionarios;
     }
 
-    public Funcionario_Model getUsuarioById(int Codigo) throws SQLException {
+    public Funcionario_Model getFuncionarioById(int ID) throws SQLException {
         Funcionario_Model funcionario = null;
         sql = "Select * from funcionario where ID=?";
         Statement st;
         pst = Conexao.getConnection().prepareStatement(sql);
-        pst.setInt(1, Codigo);
+        pst.setInt(1, ID);
         pst.executeQuery();
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {
             
         funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), rs.getString("Nome"), rs.getString("Estadocivil"),
-        rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),rs.getString("Telefoneadicional"), 
-        rs.getString("Celular"), rs.getString("Email"), rs.getString("Emailadicional"),rs.getString("Bairro"), rs.getString("Rua"),
+        rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),
+        rs.getString("Celular"), rs.getString("Email"),rs.getString("Bairro"), rs.getString("Rua"),
         rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
         rs.getString("RG"), rs.getString("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getString("Datademissao"), rs.getString("Salarioatual"),
         rs.getString("Cargo"), rs.getString("SalarioStatus"));
@@ -182,5 +178,25 @@ funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), 
       pst.close();
 
         return funcionario;
+    }
+    
+    public String validarCpfFuncionario(String CPF) throws SQLException {
+
+        String resposta = new String();
+        String sql = "select CPF from funcionario where CPF =?";
+
+        pst = Conexao.getConnection().prepareStatement(sql);
+        pst.setString(1, CPF);
+        pst.executeQuery();
+        ResultSet rs = pst.getResultSet();
+        while (rs.next()) {
+
+            resposta = rs.getString("CPF");
+
+        }
+        rs.close();
+        pst.close();
+
+        return resposta;
     }
 }
