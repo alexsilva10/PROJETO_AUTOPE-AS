@@ -13,5 +13,6 @@ public class Comando_Inicial {
 
     public void executar() {
         Principal = new TelaPrincipal();
+        Principal.setVisible(true);
     }
 }

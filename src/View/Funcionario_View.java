@@ -29,10 +29,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        TxtMatricula = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         TxtNome = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -47,8 +44,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         FormattedTxtCelular = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         TxtEmail = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        TxtID = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
@@ -60,12 +55,12 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtNumero = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         TxtCidade = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        FormattedTxtCEP = new javax.swing.JFormattedTextField();
         jLabel16 = new javax.swing.JLabel();
         TxtEstado = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
         TxtComplemento = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        FormattedTxtCEP = new javax.swing.JFormattedTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -83,7 +78,18 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel25 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
         jComboBox4 = new javax.swing.JComboBox<>();
-        jLabel27 = new javax.swing.JLabel();
+        TxtID = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        TxtMatricula = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -96,39 +102,29 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        setClosable(true);
+        setResizable(true);
+        setTitle("Cadastro de Funcionário");
         getContentPane().setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(82, 203, 248));
         jPanel2.setLayout(null);
 
-        jLabel3.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("CADASTRO DE FUNCIONÁRIOS");
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(190, 10, 249, 23);
-
         jPanel3.setBackground(new java.awt.Color(82, 203, 248));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Pessoais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
         jPanel3.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel1.setText("Matrícula:");
-        jPanel3.add(jLabel1);
-        jLabel1.setBounds(170, 20, 60, 20);
-        jPanel3.add(TxtMatricula);
-        TxtMatricula.setBounds(240, 20, 70, 20);
-
         jLabel2.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel2.setText("Nome:");
+        jLabel2.setText(" Nome: ");
         jPanel3.add(jLabel2);
-        jLabel2.setBounds(320, 20, 40, 20);
+        jLabel2.setBounds(10, 20, 50, 20);
         jPanel3.add(TxtNome);
-        TxtNome.setBounds(370, 20, 200, 20);
+        TxtNome.setBounds(60, 20, 640, 20);
 
         jLabel5.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel5.setText("Dt de Nasc:");
         jPanel3.add(jLabel5);
-        jLabel5.setBounds(190, 50, 70, 20);
+        jLabel5.setBounds(260, 50, 70, 20);
 
         try {
             jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -136,22 +132,22 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel3.add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(260, 50, 110, 20);
+        jFormattedTextField1.setBounds(330, 50, 110, 20);
 
         jLabel6.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel6.setText("Sexo:");
         jPanel3.add(jLabel6);
-        jLabel6.setBounds(10, 50, 40, 20);
+        jLabel6.setBounds(20, 50, 40, 20);
 
         jComboBox2.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Masculino", "Feminino" }));
         jPanel3.add(jComboBox2);
-        jComboBox2.setBounds(60, 50, 120, 20);
+        jComboBox2.setBounds(60, 50, 160, 20);
 
         jLabel7.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel7.setText("CPF:");
         jPanel3.add(jLabel7);
-        jLabel7.setBounds(10, 80, 25, 20);
+        jLabel7.setBounds(25, 80, 30, 20);
 
         try {
             FormattedTxtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -159,12 +155,12 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel3.add(FormattedTxtCPF);
-        FormattedTxtCPF.setBounds(60, 80, 120, 20);
+        FormattedTxtCPF.setBounds(60, 80, 160, 20);
 
         jLabel8.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel8.setText("Telefone:");
         jPanel3.add(jLabel8);
-        jLabel8.setBounds(190, 80, 60, 20);
+        jLabel8.setBounds(270, 80, 60, 20);
 
         try {
             FormattedTxtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -172,12 +168,12 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel3.add(FormattedTxtTelefone);
-        FormattedTxtTelefone.setBounds(260, 80, 110, 20);
+        FormattedTxtTelefone.setBounds(330, 80, 110, 20);
 
         jLabel9.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel9.setText("Celular:");
         jPanel3.add(jLabel9);
-        jLabel9.setBounds(380, 80, 50, 20);
+        jLabel9.setBounds(490, 80, 50, 20);
 
         try {
             FormattedTxtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -185,26 +181,19 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel3.add(FormattedTxtCelular);
-        FormattedTxtCelular.setBounds(460, 80, 110, 20);
+        FormattedTxtCelular.setBounds(540, 80, 160, 20);
 
         jLabel10.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel10.setText("E-mail:");
         jPanel3.add(jLabel10);
         jLabel10.setBounds(10, 110, 50, 20);
         jPanel3.add(TxtEmail);
-        TxtEmail.setBounds(60, 110, 510, 20);
-
-        jLabel26.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel26.setText("ID:");
-        jPanel3.add(jLabel26);
-        jLabel26.setBounds(10, 20, 16, 20);
-        jPanel3.add(TxtID);
-        TxtID.setBounds(60, 20, 100, 20);
+        TxtEmail.setBounds(60, 110, 640, 20);
 
         jLabel4.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel4.setText("Estado Civil:");
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(380, 50, 80, 20);
+        jLabel4.setBounds(460, 50, 80, 20);
 
         jComboBox1.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Casado", "Solteiro" }));
@@ -214,10 +203,10 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel3.add(jComboBox1);
-        jComboBox1.setBounds(460, 50, 110, 20);
+        jComboBox1.setBounds(540, 50, 160, 20);
 
         jPanel2.add(jPanel3);
-        jPanel3.setBounds(10, 50, 580, 150);
+        jPanel3.setBounds(10, 40, 710, 150);
 
         jPanel4.setBackground(new java.awt.Color(28, 203, 248));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -228,33 +217,53 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel4.add(jLabel11);
         jLabel11.setBounds(10, 20, 38, 20);
         jPanel4.add(TxtBairro);
-        TxtBairro.setBounds(70, 20, 210, 20);
+        TxtBairro.setBounds(60, 20, 640, 20);
 
         jLabel12.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel12.setText("Rua:");
+        jLabel12.setText(" Rua:");
         jPanel4.add(jLabel12);
-        jLabel12.setBounds(290, 20, 30, 20);
+        jLabel12.setBounds(20, 50, 40, 20);
         jPanel4.add(TxtRua);
-        TxtRua.setBounds(330, 20, 240, 20);
+        TxtRua.setBounds(60, 50, 420, 20);
 
         jLabel13.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel13.setText("Número:");
         jPanel4.add(jLabel13);
-        jLabel13.setBounds(10, 50, 50, 20);
+        jLabel13.setBounds(510, 50, 50, 20);
         jPanel4.add(TxtNumero);
-        TxtNumero.setBounds(69, 50, 60, 20);
+        TxtNumero.setBounds(570, 50, 130, 20);
 
         jLabel14.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel14.setText("Cidade:");
         jPanel4.add(jLabel14);
-        jLabel14.setBounds(140, 50, 50, 20);
+        jLabel14.setBounds(10, 110, 50, 20);
         jPanel4.add(TxtCidade);
-        TxtCidade.setBounds(190, 50, 90, 20);
+        TxtCidade.setBounds(60, 110, 190, 20);
+
+        jLabel16.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        jLabel16.setText("Estado:");
+        jPanel4.add(jLabel16);
+        jLabel16.setBounds(280, 110, 50, 20);
+        jPanel4.add(TxtEstado);
+        TxtEstado.setBounds(330, 110, 150, 20);
+
+        TxtComplemento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtComplementoActionPerformed(evt);
+            }
+        });
+        jPanel4.add(TxtComplemento);
+        TxtComplemento.setBounds(60, 80, 420, 20);
+
+        jLabel17.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        jLabel17.setText("  Comple:");
+        jPanel4.add(jLabel17);
+        jLabel17.setBounds(0, 80, 80, 20);
 
         jLabel15.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel15.setText("CEP:");
+        jLabel15.setText("     CEP:");
         jPanel4.add(jLabel15);
-        jLabel15.setBounds(290, 50, 30, 20);
+        jLabel15.setBounds(520, 80, 50, 20);
 
         try {
             FormattedTxtCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
@@ -262,24 +271,10 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel4.add(FormattedTxtCEP);
-        FormattedTxtCEP.setBounds(330, 50, 240, 20);
-
-        jLabel16.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel16.setText("Estado:");
-        jPanel4.add(jLabel16);
-        jLabel16.setBounds(10, 80, 50, 20);
-        jPanel4.add(TxtEstado);
-        TxtEstado.setBounds(70, 80, 150, 20);
-
-        jLabel17.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel17.setText("Complemento:");
-        jPanel4.add(jLabel17);
-        jLabel17.setBounds(230, 80, 90, 20);
-        jPanel4.add(TxtComplemento);
-        TxtComplemento.setBounds(330, 80, 240, 20);
+        FormattedTxtCEP.setBounds(570, 80, 130, 20);
 
         jPanel2.add(jPanel4);
-        jPanel4.setBounds(10, 220, 580, 120);
+        jPanel4.setBounds(10, 200, 710, 160);
 
         jPanel5.setBackground(new java.awt.Color(28, 203, 248));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Profissionais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -290,19 +285,19 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel18);
         jLabel18.setBounds(10, 20, 80, 20);
         jPanel5.add(jTextField1);
-        jTextField1.setBounds(90, 20, 100, 20);
+        jTextField1.setBounds(100, 20, 130, 20);
 
         jLabel19.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel19.setText("RG:");
+        jLabel19.setText(" RG:");
         jPanel5.add(jLabel19);
-        jLabel19.setBounds(200, 20, 30, 20);
+        jLabel19.setBounds(250, 20, 30, 20);
         jPanel5.add(jTextField2);
-        jTextField2.setBounds(230, 20, 60, 20);
+        jTextField2.setBounds(280, 20, 140, 20);
 
         jLabel20.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel20.setText("Data de Admissão:");
         jPanel5.add(jLabel20);
-        jLabel20.setBounds(300, 20, 110, 20);
+        jLabel20.setBounds(430, 20, 110, 20);
 
         try {
             jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -310,19 +305,19 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel5.add(jFormattedTextField2);
-        jFormattedTextField2.setBounds(410, 50, 160, 20);
+        jFormattedTextField2.setBounds(540, 50, 160, 20);
 
         jLabel21.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel21.setText("Salário Admissão:");
+        jLabel21.setText("Sal. Admissão:");
         jPanel5.add(jLabel21);
-        jLabel21.setBounds(10, 50, 130, 20);
+        jLabel21.setBounds(10, 50, 90, 20);
         jPanel5.add(jTextField3);
-        jTextField3.setBounds(120, 80, 110, 20);
+        jTextField3.setBounds(100, 80, 130, 20);
 
         jLabel22.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel22.setText("Data de Demissão:");
         jPanel5.add(jLabel22);
-        jLabel22.setBounds(300, 50, 110, 20);
+        jLabel22.setBounds(430, 50, 110, 20);
 
         try {
             jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -330,14 +325,14 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel5.add(jFormattedTextField3);
-        jFormattedTextField3.setBounds(410, 20, 160, 20);
+        jFormattedTextField3.setBounds(540, 20, 160, 20);
 
         jLabel23.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel23.setText("Salário Atual:");
         jPanel5.add(jLabel23);
         jLabel23.setBounds(10, 80, 80, 20);
         jPanel5.add(jTextField4);
-        jTextField4.setBounds(120, 50, 110, 20);
+        jTextField4.setBounds(100, 50, 130, 20);
 
         jLabel24.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel24.setText("Cargo:");
@@ -345,35 +340,111 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel24.setBounds(240, 80, 36, 20);
 
         jLabel25.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel25.setText("Status:");
+        jLabel25.setText("    Status:");
         jPanel5.add(jLabel25);
-        jLabel25.setBounds(420, 80, 40, 20);
+        jLabel25.setBounds(480, 80, 60, 20);
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Ativo", "Inativo" }));
         jPanel5.add(jComboBox3);
-        jComboBox3.setBounds(470, 80, 100, 20);
+        jComboBox3.setBounds(540, 80, 160, 20);
 
         jComboBox4.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Gerente", "Administrador", "Operador", " " }));
         jPanel5.add(jComboBox4);
-        jComboBox4.setBounds(280, 80, 130, 20);
+        jComboBox4.setBounds(280, 80, 140, 20);
 
         jPanel2.add(jPanel5);
-        jPanel5.setBounds(10, 360, 580, 120);
+        jPanel5.setBounds(10, 370, 710, 120);
+        jPanel2.add(TxtID);
+        TxtID.setBounds(70, 10, 130, 20);
 
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/medico.png"))); // NOI18N
-        jPanel2.add(jLabel27);
-        jLabel27.setBounds(140, 0, 40, 40);
+        jLabel26.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        jLabel26.setText("ID:");
+        jPanel2.add(jLabel26);
+        jLabel26.setBounds(50, 10, 16, 20);
+
+        jLabel1.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        jLabel1.setText("Matrícula:");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(230, 10, 60, 20);
+        jPanel2.add(TxtMatricula);
+        TxtMatricula.setBounds(290, 10, 120, 20);
+
+        jButton1.setText("Pesquisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1);
+        jButton1.setBounds(440, 0, 120, 40);
+
+        jButton2.setText("Novo");
+        jPanel2.add(jButton2);
+        jButton2.setBounds(910, 30, 110, 40);
+
+        jPanel6.setBackground(new java.awt.Color(82, 203, 246));
+
+        jButton4.setText("Alterar");
+
+        jButton7.setText("Limpar");
+
+        jButton3.setText("Excluir");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+        );
+
+        jPanel2.add(jPanel6);
+        jPanel6.setBounds(750, 230, 280, 160);
+
+        jButton6.setText("Cancelar");
+        jPanel2.add(jButton6);
+        jButton6.setBounds(750, 30, 110, 40);
+
+        jButton5.setText("Salvar");
+        jPanel2.add(jButton5);
+        jButton5.setBounds(830, 460, 140, 40);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 600, 490);
+        jPanel2.setBounds(0, 0, 1050, 610);
 
-        setBounds(0, 0, 620, 527);
+        setBounds(0, 0, 1058, 647);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TxtComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtComplementoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtComplementoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -391,6 +462,13 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxtNome;
     private javax.swing.JTextField TxtNumero;
     private javax.swing.JTextField TxtRua;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -417,8 +495,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -430,6 +506,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
