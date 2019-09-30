@@ -770,11 +770,107 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_Btn_LimparActionPerformed
 
     private void Btn_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ExcluirActionPerformed
-        // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Excluir os Dados!");
+            if( i == 0 )
+            {
+                 try 
+                {  
+                  funci_Dao.excluir(Integer.parseInt(TxtID.getText()));
+                  atualizarTabela();
+                  Limpar();
+                  JOptionPane.showMessageDialog(null, "Removido com Sucesso"); 
+                } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "ERRO!");
+                        e.printStackTrace();
+                    }
+            }
     }//GEN-LAST:event_Btn_ExcluirActionPerformed
 
     private void Btn_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SalvarActionPerformed
-        // TODO add your handling code here:
+     try {
+             if (TxtMatricula.getText().isEmpty() || TxtNome.getText().isEmpty() || TxtEstadocivil.getSelectedItem().equals("Selecionar") || TxtDatanascimento.getText().isEmpty() || TxtSexo.getSelectedItem().equals("Selecionar") || TxtCPF.getText().isEmpty() ||
+                     TxtTelefone.getText().isEmpty() || TxtCelular.getText().isEmpty() || TxtEmail.getText().isEmpty() || TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() || TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty() ||
+                     TxtCep.getText().isEmpty() || TxtEstado.getText().isEmpty() || TxtComplemento.getText().isEmpty() || TxtEscolaridade.getText().isEmpty() ||  TxtRG.getText().isEmpty() || TxtDataadmissao.getText().isEmpty() ||
+                     TxtSalarioadmissao.getText().isEmpty() || TxtDatademissao.getText().isEmpty() || TxtSalarioatual.getText().isEmpty() || TxtCargo.getSelectedItem().equals("Selecionar") || TxtStatus.getSelectedItem().equals("Selecionar")){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+            TxtNome.requestFocusInWindow();
+                } 
+             else {
+                if (new ValidaCPF().validaCPF(TxtCPF.getText()) == false) {
+                    JOptionPane.showMessageDialog(null, "O CPF digitado é Inválido");
+        } else {
+                    if (sdf.parse(TxtDatanascimento.getText()).equals(new java.util.Date()) || sdf.parse(TxtDatanascimento.getText()).after(new java.util.Date())) {
+                        JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser igual ou depois da data de hoje");
+                    } else {
+                        cpf2 = funci_Dao.validarCpfFuncionario(TxtCPF.getText());
+                        if (!cpf.equals(TxtCPF.getText()) && cpf2.equals(TxtCPF.getText())) {
+                            JOptionPane.showMessageDialog(null, "O CPF já possui um funcionario cadastrado");
+                        } else {
+                            user2 = funci_Dao.validarNomeUsuario(TxtNome.getText());
+                            if (!user.equals(TxtNome.getText()) && user2.equals(TxtNome.getText())) {
+                                JOptionPane.showMessageDialog(null, "Já existe um funcionario com este nome");
+                            }
+             
+                            else {
+                            user2 = funci_Dao.validarNomeUsuario(TxtNome.getText());
+                            if (!user.equals(TxtNome.getText()) && user2.equals(TxtNome.getText())) {
+                                JOptionPane.showMessageDialog(null, "Já existe um funcionario com este nome");
+                            } 
+                            
+                        else{
+                                funcionario.setMatricula(TxtMatricula.getText());
+                                
+                                funcionario.setNome(TxtNome.getText());
+                                funcionario.setEstadocivil(String.valueOf(TxtEstadocivil.getSelectedItem()));
+                                funcionario.setDatanascimento((Date) sdf.parse(TxtDatanascimento.getText()));
+                                funcionario.setSexo(String.valueOf(TxtSexo.getSelectedItem()));
+                                funcionario.setCPF(TxtCPF.getText());
+                                funcionario.setTelefone(TxtTelefone.getText());
+                                funcionario.setCelular(TxtCelular.getText());
+                                funcionario.setEmail(TxtEmail.getText());
+                                funcionario.setBairro(TxtBairro.getText());
+                                funcionario.setRua(TxtRua.getText());
+                                funcionario.setNumero(Integer.parseInt(TxtNumero.getText()));
+                                funcionario.setCidade(TxtCidade.getText());
+                                funcionario.setCep(TxtCep.getText());
+                                funcionario.setEstado(TxtEstado.getText());
+                                funcionario.setComplemento(TxtComplemento.getText());
+                                funcionario.setEscolaridade(TxtEscolaridade.getText());
+                                funcionario.setRG(TxtRG.getText());
+                                funcionario.setDataadmissao(TxtDataadmissao.getText());
+                                funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
+                                funcionario.setDatademissao(TxtDatademissao.getText());
+                                funcionario.setSalarioatual(TxtSalarioatual.getText());
+                                funcionario.setCargo(String.valueOf(TxtCargo.getSelectedItem()));
+                                funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
+    
+                                try {
+                                        funci_Dao.salvar(funcionario);
+                                    } catch (SQLException ex) {
+                                    Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                
+                                    JOptionPane.showMessageDialog(null, "Gravado com Sucesso");
+                                    atualizarTabela();
+                                    Campos(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
+                                            false,false, false, false, false, false, false, false, false,false);
+        
+                                    Campos_Botão(true, false, false, false, false,true,false);
+                            }                                   
+                        }
+                      }
+                    }
+                }
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "A data informada é inválida");
+                 
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "ERRO!");
+            ex.printStackTrace();
+
+        }
     }//GEN-LAST:event_Btn_SalvarActionPerformed
 
     private void Tabela_FuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabela_FuncionarioMouseClicked
