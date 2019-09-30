@@ -307,8 +307,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
     if(Fun==null){
     Fun= new Funcionario_View();
-    jDesktopPane1.add(Fun);
     }
+    jDesktopPane1.add(Fun);
     JpVenda.setVisible(false);
     JpHistorico.setVisible(false);
     JpPedidos.setVisible(false);
@@ -336,8 +336,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         if(cli==null){
         cli = new Cliente_View();
-        jDesktopPane1.add(cli);
         }
+        jDesktopPane1.add(cli);
         JpVenda.setVisible(false);
         JpHistorico.setVisible(false);
         JpPedidos.setVisible(false);
