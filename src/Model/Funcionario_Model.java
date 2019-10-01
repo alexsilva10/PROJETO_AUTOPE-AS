@@ -25,17 +25,17 @@ public class Funcionario_Model {
     
     private String Escolaridade;
     private String RG;
-    private String Dataadmissao;
+    private Date Dataadmissao;
     private String Salarioadmissao;
-    private String Datademissao;
+    private Date Datademissao;
     private String Salarioatual;
     private String Cargo;
     private String Status;
 
     public Funcionario_Model() {
     }
-  
-    public Funcionario_Model(int ID, String Matricula, String Nome, String Estadocivil, Date Datanascimento, String Sexo, String CPF, String Telefone, String Celular, String Email, String Bairro, String Rua, int Numero, String Cidade, String Cep, String Estado, String Complemento, String Escolaridade, String RG, String Dataadmissao, String Salarioadmissao, String Datademissao, String Salarioatual, String Cargo, String Status) {
+
+    public Funcionario_Model(int ID, String Matricula, String Nome, String Estadocivil, Date Datanascimento, String Sexo, String CPF, String Telefone, String Celular, String Email, String Bairro, String Rua, int Numero, String Cidade, String Cep, String Estado, String Complemento, String Escolaridade, String RG, Date Dataadmissao, String Salarioadmissao, Date Datademissao, String Salarioatual, String Cargo, String Status) {
         this.ID = ID;
         this.Matricula = Matricula;
         this.Nome = Nome;
@@ -215,11 +215,11 @@ public class Funcionario_Model {
         this.RG = RG;
     }
 
-    public String getDataadmissao() {
+    public Date getDataadmissao() {
         return Dataadmissao;
     }
 
-    public void setDataadmissao(String Dataadmissao) {
+    public void setDataadmissao(Date Dataadmissao) {
         this.Dataadmissao = Dataadmissao;
     }
 
@@ -231,11 +231,11 @@ public class Funcionario_Model {
         this.Salarioadmissao = Salarioadmissao;
     }
 
-    public String getDatademissao() {
+    public Date getDatademissao() {
         return Datademissao;
     }
 
-    public void setDatademissao(String Datademissao) {
+    public void setDatademissao(Date Datademissao) {
         this.Datademissao = Datademissao;
     }
 
@@ -261,5 +261,7 @@ public class Funcionario_Model {
 
     public void setStatus(String Status) {
         this.Status = Status;
-    }  
+    }
+  
+    
 }

@@ -36,9 +36,9 @@ public class Funcionario_Dao implements Serializable{
         pst.setString(17, funcionario.getComplemento());
         pst.setString(18, funcionario.getEscolaridade());
         pst.setString(19, funcionario.getRG());
-        pst.setString(20, funcionario.getDataadmissao());
+        pst.setDate(20,new java.sql.Date(funcionario.getDataadmissao().getTime()));
         pst.setString(21, funcionario.getSalarioadmissao());
-        pst.setString(22, funcionario.getDatademissao());
+        pst.setDate(22,new java.sql.Date(funcionario.getDatademissao().getTime()));
         pst.setString(23, funcionario.getSalarioatual());
         pst.setString(24, funcionario.getCargo());
         pst.setString(25, funcionario.getStatus());
@@ -72,9 +72,9 @@ public class Funcionario_Dao implements Serializable{
         pst.setString(16, funcionario.getComplemento());
         pst.setString(17, funcionario.getEscolaridade());
         pst.setString(18, funcionario.getRG());
-        pst.setString(19, funcionario.getDataadmissao());
+        pst.setDate(19,new java.sql.Date(funcionario.getDataadmissao().getTime()));
         pst.setString(20, funcionario.getSalarioadmissao());
-        pst.setString(21, funcionario.getDatademissao());
+        pst.setDate(21,new java.sql.Date(funcionario.getDatademissao().getTime()));
         pst.setString(22, funcionario.getSalarioatual());
         pst.setString(23, funcionario.getCargo());
         pst.setString(24, funcionario.getStatus());
@@ -96,7 +96,7 @@ funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), 
         rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),
         rs.getString("Celular"), rs.getString("Email"),rs.getString("Bairro"), rs.getString("Rua"),
         rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
-        rs.getString("RG"), rs.getString("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getString("Datademissao"), rs.getString("Salarioatual"),
+        rs.getString("RG"), rs.getDate("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getDate("Datademissao"), rs.getString("Salarioatual"),
         rs.getString("Cargo"), rs.getString("SalarioStatus"));
         }
         pst.close();
@@ -146,7 +146,7 @@ funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), 
         rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),
         rs.getString("Celular"), rs.getString("Email"),rs.getString("Bairro"), rs.getString("Rua"),
         rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
-        rs.getString("RG"), rs.getString("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getString("Datademissao"), rs.getString("Salarioatual"),
+        rs.getString("RG"), rs.getDate("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getDate("Datademissao"), rs.getString("Salarioatual"),
         rs.getString("Cargo"), rs.getString("SalarioStatus"));
         
           funcionarios.add(funcionario);
@@ -171,7 +171,7 @@ funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), 
         rs.getDate("Datanascimento"), rs.getString("Sexo"), rs.getString("CPF"), rs.getString("Telefone"),
         rs.getString("Celular"), rs.getString("Email"),rs.getString("Bairro"), rs.getString("Rua"),
         rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
-        rs.getString("RG"), rs.getString("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getString("Datademissao"), rs.getString("Salarioatual"),
+        rs.getString("RG"), rs.getDate("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getDate("Datademissao"), rs.getString("Salarioatual"),
         rs.getString("Cargo"), rs.getString("SalarioStatus"));
         
         }

@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
  * @author ALEX DIAS
  */
 public class Funcionario_View extends javax.swing.JInternalFrame {
+    
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
     Funcionario_Model funcionario;
@@ -74,6 +75,8 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         TxtEstadocivil = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        TxtMatricula = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         TxtBairro = new javax.swing.JTextField();
@@ -108,8 +111,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtCargo = new javax.swing.JComboBox<>();
         TxtID = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        TxtMatricula = new javax.swing.JTextField();
         Btn_Pesquisar = new javax.swing.JButton();
         Btn_Novo = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -132,8 +133,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setClosable(true);
-        setResizable(true);
         setTitle("Cadastro de Funcionário");
         getContentPane().setLayout(null);
 
@@ -180,7 +179,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel7.setBounds(25, 80, 30, 20);
 
         try {
-            TxtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            TxtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -218,7 +217,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel10);
         jLabel10.setBounds(10, 110, 50, 20);
         jPanel3.add(TxtEmail);
-        TxtEmail.setBounds(60, 110, 640, 20);
+        TxtEmail.setBounds(60, 110, 380, 20);
 
         jLabel4.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel4.setText("Estado Civil:");
@@ -226,7 +225,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel4.setBounds(460, 50, 80, 20);
 
         TxtEstadocivil.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        TxtEstadocivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Casado", "Solteiro" }));
+        TxtEstadocivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Casado(a)", "Solteiro(a)", "Namorando", "Viuvo(a)" }));
         TxtEstadocivil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtEstadocivilActionPerformed(evt);
@@ -234,6 +233,13 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         });
         jPanel3.add(TxtEstadocivil);
         TxtEstadocivil.setBounds(540, 50, 160, 20);
+
+        jLabel1.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        jLabel1.setText("     Matrícula:");
+        jPanel3.add(jLabel1);
+        jLabel1.setBounds(460, 110, 80, 20);
+        jPanel3.add(TxtMatricula);
+        TxtMatricula.setBounds(540, 110, 160, 20);
 
         jPanel2.add(jPanel3);
         jPanel3.setBounds(10, 40, 710, 140);
@@ -393,13 +399,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel26);
         jLabel26.setBounds(50, 10, 16, 20);
 
-        jLabel1.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel1.setText("Matrícula:");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(230, 10, 60, 20);
-        jPanel2.add(TxtMatricula);
-        TxtMatricula.setBounds(290, 10, 120, 20);
-
         Btn_Pesquisar.setText("Pesquisar");
         Btn_Pesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -407,7 +406,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Pesquisar);
-        Btn_Pesquisar.setBounds(440, 0, 120, 40);
+        Btn_Pesquisar.setBounds(210, 0, 120, 40);
 
         Btn_Novo.setText("Novo");
         Btn_Novo.addActionListener(new java.awt.event.ActionListener() {
@@ -643,9 +642,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                 TxtComplemento.setText(funcionario.getComplemento());
                 TxtEscolaridade.setText(funcionario.getEscolaridade());
                 TxtRG.setText(funcionario.getRG());
-                TxtDataadmissao.setText(funcionario.getDataadmissao());
+                TxtDataadmissao.setText(sdf.format(funcionario.getDataadmissao()));
                 TxtSalarioadmissao.setText(funcionario.getSalarioadmissao());
-                TxtDatademissao.setText(funcionario.getDatademissao());
+                TxtDatademissao.setText(sdf.format(funcionario.getDatademissao()));
                 TxtSalarioatual.setText(funcionario.getSalarioatual());
                 TxtCargo.setSelectedItem(funcionario.getCargo());
                 TxtStatus.setSelectedItem(funcionario.getStatus());
@@ -724,9 +723,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setComplemento(TxtComplemento.getText());
                                 funcionario.setEscolaridade(TxtEscolaridade.getText());
                                 funcionario.setRG(TxtRG.getText());
-                                funcionario.setDataadmissao(TxtDataadmissao.getText());
+                                funcionario.setDataadmissao((Date) sdf.parse(TxtDataadmissao.getText()));
                                 funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
-                                funcionario.setDatademissao(TxtDatademissao.getText());
+                                funcionario.setDatademissao((Date) sdf.parse(TxtDatademissao.getText()));
                                 funcionario.setSalarioatual(TxtSalarioatual.getText());
                                 funcionario.setCargo(String.valueOf(TxtCargo.getSelectedItem()));
                                 funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
@@ -792,8 +791,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                      TxtTelefone.getText().isEmpty() || TxtCelular.getText().isEmpty() || TxtEmail.getText().isEmpty() || TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() || TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty() ||
                      TxtCep.getText().isEmpty() || TxtEstado.getText().isEmpty() || TxtComplemento.getText().isEmpty() || TxtEscolaridade.getText().isEmpty() ||  TxtRG.getText().isEmpty() || TxtDataadmissao.getText().isEmpty() ||
                      TxtSalarioadmissao.getText().isEmpty() || TxtDatademissao.getText().isEmpty() || TxtSalarioatual.getText().isEmpty() || TxtCargo.getSelectedItem().equals("Selecionar") || TxtStatus.getSelectedItem().equals("Selecionar")){
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos");
-            TxtNome.requestFocusInWindow();
+                    
+                 JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+                 TxtNome.requestFocusInWindow();
                 } 
              else {
                 if (new ValidaCPF().validaCPF(TxtCPF.getText()) == false) {
@@ -823,6 +823,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setNome(TxtNome.getText());
                                 funcionario.setEstadocivil(String.valueOf(TxtEstadocivil.getSelectedItem()));
                                 funcionario.setDatanascimento((Date) sdf.parse(TxtDatanascimento.getText()));
+                                funcionario.setDatanascimento((Date) sdf.parse(TxtDatanascimento.getText()));
                                 funcionario.setSexo(String.valueOf(TxtSexo.getSelectedItem()));
                                 funcionario.setCPF(TxtCPF.getText());
                                 funcionario.setTelefone(TxtTelefone.getText());
@@ -837,9 +838,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setComplemento(TxtComplemento.getText());
                                 funcionario.setEscolaridade(TxtEscolaridade.getText());
                                 funcionario.setRG(TxtRG.getText());
-                                funcionario.setDataadmissao(TxtDataadmissao.getText());
+                                funcionario.setDataadmissao((Date) sdf.parse(TxtDataadmissao.getText()));
                                 funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
-                                funcionario.setDatademissao(TxtDatademissao.getText());
+                                funcionario.setDatademissao((Date) sdf.parse(TxtDatademissao.getText()));
                                 funcionario.setSalarioatual(TxtSalarioatual.getText());
                                 funcionario.setCargo(String.valueOf(TxtCargo.getSelectedItem()));
                                 funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
@@ -902,9 +903,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                 TxtComplemento.setText(funcionario.getComplemento());
                 TxtEscolaridade.setText(funcionario.getEscolaridade());
                 TxtRG.setText(funcionario.getRG());
-                TxtDataadmissao.setText(funcionario.getDataadmissao());
+                TxtDataadmissao.setText(sdf.format(funcionario.getDataadmissao()));
                 TxtSalarioadmissao.setText(funcionario.getSalarioadmissao());
-                TxtDatademissao.setText(funcionario.getDatademissao());
+                TxtDatademissao.setText(sdf.format(funcionario.getDatademissao()));
                 TxtSalarioatual.setText(funcionario.getSalarioatual());
                 TxtCargo.setSelectedItem(funcionario.getCargo());
                 TxtStatus.setSelectedItem(funcionario.getStatus());
