@@ -1,7 +1,9 @@
 
 package Model;
 
-import java.sql.Date;
+import java.util.Date;
+
+
 
 public class Funcionario_Model {
     private int ID;

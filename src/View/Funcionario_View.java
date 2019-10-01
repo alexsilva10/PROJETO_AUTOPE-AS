@@ -8,9 +8,10 @@ package View;
 import Dao.Funcionario_Dao;
 import Model.Funcionario_Model;
 import Util.ValidaCPF;
-import java.sql.Date;
+
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -823,7 +824,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setNome(TxtNome.getText());
                                 funcionario.setEstadocivil(String.valueOf(TxtEstadocivil.getSelectedItem()));
                                 funcionario.setDatanascimento((Date) sdf.parse(TxtDatanascimento.getText()));
-                                funcionario.setDatanascimento((Date) sdf.parse(TxtDatanascimento.getText()));
+                                //funcionario.setDatanascimento((Date) sdf.parse(TxtDatanascimento.getText()));
                                 funcionario.setSexo(String.valueOf(TxtSexo.getSelectedItem()));
                                 funcionario.setCPF(TxtCPF.getText());
                                 funcionario.setTelefone(TxtTelefone.getText());
@@ -844,7 +845,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setSalarioatual(TxtSalarioatual.getText());
                                 funcionario.setCargo(String.valueOf(TxtCargo.getSelectedItem()));
                                 funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
-    
                                 try {
                                         funci_Dao.salvar(funcionario);
                                     } catch (SQLException ex) {
