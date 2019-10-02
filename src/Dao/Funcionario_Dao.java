@@ -2,6 +2,7 @@ package Dao;
 
 import Model.Funcionario_Model;
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ public class Funcionario_Dao implements Serializable{
         pst.setString(2, funcionario.getMatricula());
         pst.setString(3, funcionario.getNome());
          pst.setString(4, funcionario.getEstadocivil());
-        pst.setDate(5,new java.sql.Date(funcionario.getDatanascimento().getTime()));
+        pst.setDate(5, new java.sql.Date(funcionario.getDatanascimento().getTime()));
         pst.setString(6, funcionario.getSexo());
         pst.setString(7, funcionario.getCPF());
         pst.setString(8, funcionario.getTelefone());
@@ -36,9 +37,9 @@ public class Funcionario_Dao implements Serializable{
         pst.setString(17, funcionario.getComplemento());
         pst.setString(18, funcionario.getEscolaridade());
         pst.setString(19, funcionario.getRG());
-        pst.setDate(20,new java.sql.Date(funcionario.getDataadmissao().getTime()));
+        pst.setDate(20, new java.sql.Date(funcionario.getDataadmissao().getTime()));
         pst.setString(21, funcionario.getSalarioadmissao());
-        pst.setDate(22,new java.sql.Date(funcionario.getDatademissao().getTime()));
+        pst.setDate(22, new java.sql.Date(funcionario.getDatademissao().getTime()));
         pst.setString(23, funcionario.getSalarioatual());
         pst.setString(24, funcionario.getCargo());
         pst.setString(25, funcionario.getStatus());
@@ -97,7 +98,7 @@ funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), 
         rs.getString("Celular"), rs.getString("Email"),rs.getString("Bairro"), rs.getString("Rua"),
         rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
         rs.getString("RG"), rs.getDate("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getDate("Datademissao"), rs.getString("Salarioatual"),
-        rs.getString("Cargo"), rs.getString("SalarioStatus"));
+        rs.getString("Cargo"), rs.getString("Status"));
         }
         pst.close();
         return funcionario;
@@ -147,7 +148,7 @@ funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), 
         rs.getString("Celular"), rs.getString("Email"),rs.getString("Bairro"), rs.getString("Rua"),
         rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
         rs.getString("RG"), rs.getDate("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getDate("Datademissao"), rs.getString("Salarioatual"),
-        rs.getString("Cargo"), rs.getString("SalarioStatus"));
+        rs.getString("Cargo"), rs.getString("Status"));
         
           funcionarios.add(funcionario);
         }
@@ -172,7 +173,7 @@ funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), 
         rs.getString("Celular"), rs.getString("Email"),rs.getString("Bairro"), rs.getString("Rua"),
         rs.getInt("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento"), rs.getString("Escolaridade"), 
         rs.getString("RG"), rs.getDate("Dataadmissao"), rs.getString("Salarioadmissao"), rs.getDate("Datademissao"), rs.getString("Salarioatual"),
-        rs.getString("Cargo"), rs.getString("SalarioStatus"));
+        rs.getString("Cargo"), rs.getString("Status"));
         
         }
       pst.close();

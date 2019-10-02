@@ -11,7 +11,6 @@ import Util.ValidaCPF;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -709,7 +708,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setMatricula(TxtMatricula.getText());
                                 funcionario.setNome(TxtNome.getText());
                                 funcionario.setEstadocivil(String.valueOf(TxtEstadocivil.getSelectedItem()));
-                                funcionario.setDatanascimento((Date) sdf.parse(TxtDatanascimento.getText()));
+                                funcionario.setDatanascimento(sdf.parse(TxtDatanascimento.getText()));
                                 funcionario.setSexo(String.valueOf(TxtSexo.getSelectedItem()));
                                 funcionario.setCPF(TxtCPF.getText());
                                 funcionario.setTelefone(TxtTelefone.getText());
@@ -724,9 +723,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setComplemento(TxtComplemento.getText());
                                 funcionario.setEscolaridade(TxtEscolaridade.getText());
                                 funcionario.setRG(TxtRG.getText());
-                                funcionario.setDataadmissao((Date) sdf.parse(TxtDataadmissao.getText()));
+                                funcionario.setDataadmissao(sdf.parse(TxtDataadmissao.getText()));
                                 funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
-                                funcionario.setDatademissao((Date) sdf.parse(TxtDatademissao.getText()));
+                                funcionario.setDatademissao(sdf.parse(TxtDatademissao.getText()));
                                 funcionario.setSalarioatual(TxtSalarioatual.getText());
                                 funcionario.setCargo(String.valueOf(TxtCargo.getSelectedItem()));
                                 funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
@@ -823,8 +822,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 
                                 funcionario.setNome(TxtNome.getText());
                                 funcionario.setEstadocivil(String.valueOf(TxtEstadocivil.getSelectedItem()));
-                                funcionario.setDatanascimento((Date) sdf.parse(TxtDatanascimento.getText()));
-                                //funcionario.setDatanascimento((Date) sdf.parse(TxtDatanascimento.getText()));
+                                funcionario.setDatanascimento(sdf.parse(TxtDatanascimento.getText()));
                                 funcionario.setSexo(String.valueOf(TxtSexo.getSelectedItem()));
                                 funcionario.setCPF(TxtCPF.getText());
                                 funcionario.setTelefone(TxtTelefone.getText());
@@ -839,9 +837,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setComplemento(TxtComplemento.getText());
                                 funcionario.setEscolaridade(TxtEscolaridade.getText());
                                 funcionario.setRG(TxtRG.getText());
-                                funcionario.setDataadmissao((Date) sdf.parse(TxtDataadmissao.getText()));
+                                funcionario.setDataadmissao(sdf.parse(TxtDataadmissao.getText()));
                                 funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
-                                funcionario.setDatademissao((Date) sdf.parse(TxtDatademissao.getText()));
+                                funcionario.setDatademissao(sdf.parse(TxtDatademissao.getText()));
                                 funcionario.setSalarioatual(TxtSalarioatual.getText());
                                 funcionario.setCargo(String.valueOf(TxtCargo.getSelectedItem()));
                                 funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
@@ -885,8 +883,8 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             
              funcionario = funci_Dao.getFuncionarioById(Integer.parseInt(TxtID.getText()));
             
-            TxtMatricula.setText(funcionario.getMatricula());
-                TxtNome.setText(funcionario.getMatricula());
+                TxtMatricula.setText(funcionario.getMatricula());
+                TxtNome.setText(funcionario.getNome());
                 TxtEstadocivil.setSelectedItem(funcionario.getEstadocivil());
                 TxtDatanascimento.setText(sdf.format(funcionario.getDatanascimento()));
                 TxtSexo.setSelectedItem(funcionario.getSexo());
