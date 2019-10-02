@@ -87,14 +87,13 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel14 = new javax.swing.JLabel();
         TxtCidade = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        TxtEstado = new javax.swing.JTextField();
         TxtComplemento = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         TxtCep = new javax.swing.JFormattedTextField();
+        TxtEstado = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        TxtEscolaridade = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         TxtRG = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
@@ -109,6 +108,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel25 = new javax.swing.JLabel();
         TxtStatus = new javax.swing.JComboBox<>();
         TxtCargo = new javax.swing.JComboBox<>();
+        TxtEscolaridade = new javax.swing.JComboBox<>();
         TxtID = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         Btn_Pesquisar = new javax.swing.JButton();
@@ -280,8 +280,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel16.setText("Estado:");
         jPanel4.add(jLabel16);
         jLabel16.setBounds(280, 110, 50, 20);
-        jPanel4.add(TxtEstado);
-        TxtEstado.setBounds(330, 110, 150, 20);
 
         TxtComplemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,6 +307,11 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel4.add(TxtCep);
         TxtCep.setBounds(570, 80, 130, 20);
 
+        TxtEstado.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        TxtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espiríto Santo", "Góias", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+        jPanel4.add(TxtEstado);
+        TxtEstado.setBounds(330, 110, 150, 20);
+
         jPanel2.add(jPanel4);
         jPanel4.setBounds(10, 190, 710, 150);
 
@@ -317,23 +320,21 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel5.setLayout(null);
 
         jLabel18.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel18.setText("Escolaridade:");
+        jLabel18.setText("   Escolaridade:");
         jPanel5.add(jLabel18);
-        jLabel18.setBounds(10, 20, 80, 20);
-        jPanel5.add(TxtEscolaridade);
-        TxtEscolaridade.setBounds(100, 20, 130, 20);
+        jLabel18.setBounds(10, 20, 90, 20);
 
         jLabel19.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel19.setText(" RG:");
+        jLabel19.setText("  RG:");
         jPanel5.add(jLabel19);
-        jLabel19.setBounds(250, 20, 30, 20);
+        jLabel19.setBounds(270, 20, 30, 20);
         jPanel5.add(TxtRG);
-        TxtRG.setBounds(280, 20, 140, 20);
+        TxtRG.setBounds(300, 20, 130, 20);
 
         jLabel20.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel20.setText("Data de Admissão:");
         jPanel5.add(jLabel20);
-        jLabel20.setBounds(430, 20, 110, 20);
+        jLabel20.setBounds(450, 20, 110, 20);
 
         try {
             TxtDatademissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -341,19 +342,19 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel5.add(TxtDatademissao);
-        TxtDatademissao.setBounds(540, 50, 160, 20);
+        TxtDatademissao.setBounds(560, 50, 140, 20);
 
         jLabel21.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel21.setText("Sal. Admissão:");
         jPanel5.add(jLabel21);
         jLabel21.setBounds(10, 50, 90, 20);
         jPanel5.add(TxtSalarioatual);
-        TxtSalarioatual.setBounds(100, 80, 130, 20);
+        TxtSalarioatual.setBounds(100, 80, 150, 20);
 
         jLabel22.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel22.setText("Data de Demissão:");
         jPanel5.add(jLabel22);
-        jLabel22.setBounds(430, 50, 110, 20);
+        jLabel22.setBounds(450, 50, 110, 20);
 
         try {
             TxtDataadmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -361,33 +362,38 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel5.add(TxtDataadmissao);
-        TxtDataadmissao.setBounds(540, 20, 160, 20);
+        TxtDataadmissao.setBounds(560, 20, 140, 20);
 
         jLabel23.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel23.setText("Salário Atual:");
+        jLabel23.setText("  Salário Atual:");
         jPanel5.add(jLabel23);
-        jLabel23.setBounds(10, 80, 80, 20);
+        jLabel23.setBounds(10, 80, 90, 20);
         jPanel5.add(TxtSalarioadmissao);
-        TxtSalarioadmissao.setBounds(100, 50, 130, 20);
+        TxtSalarioadmissao.setBounds(100, 50, 150, 20);
 
         jLabel24.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel24.setText("Cargo:");
         jPanel5.add(jLabel24);
-        jLabel24.setBounds(240, 80, 36, 20);
+        jLabel24.setBounds(260, 80, 36, 20);
 
         jLabel25.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel25.setText("    Status:");
         jPanel5.add(jLabel25);
-        jLabel25.setBounds(480, 80, 60, 20);
+        jLabel25.setBounds(500, 80, 60, 20);
 
+        TxtStatus.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         TxtStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Ativo", "Inativo" }));
         jPanel5.add(TxtStatus);
-        TxtStatus.setBounds(540, 80, 160, 20);
+        TxtStatus.setBounds(560, 80, 140, 20);
 
         TxtCargo.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         TxtCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Gerente", "Administrador", "Operador", " " }));
         jPanel5.add(TxtCargo);
-        TxtCargo.setBounds(280, 80, 140, 20);
+        TxtCargo.setBounds(300, 80, 130, 20);
+
+        TxtEscolaridade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Fundamental - Incompleto", "Fundamental - Completo", "Médio - Incompleto", "Médio - Completo", "Superior - Incompleto", "Superior - Completo", "Pós-graduação - Incompleto", "Pós-graduação - Completo", "Mestrado - Incompleto", "Mestrado - Completo", "Doutorado - Incompleto", "Doutorado - Completo" }));
+        jPanel5.add(TxtEscolaridade);
+        TxtEscolaridade.setBounds(100, 20, 150, 20);
 
         jPanel2.add(jPanel5);
         jPanel5.setBounds(10, 350, 710, 120);
@@ -545,9 +551,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtNumero.setText("");
         TxtCidade.setText("");
         TxtCep.setText("");
-        TxtEstado.setText("");
+        TxtEstado.setSelectedItem("Selecionar");
         TxtComplemento.setText("");
-        TxtEscolaridade.setText("");
+        TxtEscolaridade.setSelectedItem("Selecionar");
         TxtRG.setText("");
         TxtDataadmissao.setText("");
         TxtSalarioadmissao.setText("");
@@ -638,9 +644,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                 TxtNumero.setText(Integer.toString(funcionario.getNumero()));
                 TxtCidade.setText(funcionario.getCidade());
                 TxtCep.setText(funcionario.getCep());
-                TxtEstado.setText(funcionario.getEstado());
+                TxtEstado.setSelectedItem(funcionario.getEstado());
                 TxtComplemento.setText(funcionario.getComplemento());
-                TxtEscolaridade.setText(funcionario.getEscolaridade());
+                TxtEscolaridade.setSelectedItem(funcionario.getEscolaridade());
                 TxtRG.setText(funcionario.getRG());
                 TxtDataadmissao.setText(sdf.format(funcionario.getDataadmissao()));
                 TxtSalarioadmissao.setText(funcionario.getSalarioadmissao());
@@ -675,7 +681,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         try {
              if (TxtMatricula.getText().isEmpty() || TxtNome.getText().isEmpty() || TxtEstadocivil.getSelectedItem().equals("Selecionar") || TxtDatanascimento.getText().isEmpty() || TxtSexo.getSelectedItem().equals("Selecionar") || TxtCPF.getText().isEmpty() ||
                      TxtTelefone.getText().isEmpty() || TxtCelular.getText().isEmpty() || TxtEmail.getText().isEmpty() || TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() || TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty() ||
-                     TxtCep.getText().isEmpty() || TxtEstado.getText().isEmpty() || TxtComplemento.getText().isEmpty() || TxtEscolaridade.getText().isEmpty() ||  TxtRG.getText().isEmpty() || TxtDataadmissao.getText().isEmpty() ||
+                     TxtCep.getText().isEmpty() || TxtEstado.getSelectedItem().equals("Selecionar")|| TxtComplemento.getText().isEmpty() || TxtEscolaridade.getSelectedItem().equals("Selecionar") ||  TxtRG.getText().isEmpty() || TxtDataadmissao.getText().isEmpty() ||
                      TxtSalarioadmissao.getText().isEmpty() || TxtDatademissao.getText().isEmpty() || TxtSalarioatual.getText().isEmpty() || TxtCargo.getSelectedItem().equals("Selecionar") || TxtStatus.getSelectedItem().equals("Selecionar")){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos");
             TxtNome.requestFocusInWindow();
@@ -719,9 +725,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setNumero(Integer.parseInt(TxtNumero.getText()));
                                 funcionario.setCidade(TxtCidade.getText());
                                 funcionario.setCep(TxtCep.getText());
-                                funcionario.setEstado(TxtEstado.getText());
+                                funcionario.setEstado(String.valueOf(TxtEstado.getSelectedItem()));
                                 funcionario.setComplemento(TxtComplemento.getText());
-                                funcionario.setEscolaridade(TxtEscolaridade.getText());
+                                funcionario.setEscolaridade(String.valueOf(TxtEscolaridade.getSelectedItem()));
                                 funcionario.setRG(TxtRG.getText());
                                 funcionario.setDataadmissao(sdf.parse(TxtDataadmissao.getText()));
                                 funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
@@ -789,7 +795,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
      try {
              if (TxtMatricula.getText().isEmpty() || TxtNome.getText().isEmpty() || TxtEstadocivil.getSelectedItem().equals("Selecionar") || TxtDatanascimento.getText().isEmpty() || TxtSexo.getSelectedItem().equals("Selecionar") || TxtCPF.getText().isEmpty() ||
                      TxtTelefone.getText().isEmpty() || TxtCelular.getText().isEmpty() || TxtEmail.getText().isEmpty() || TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() || TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty() ||
-                     TxtCep.getText().isEmpty() || TxtEstado.getText().isEmpty() || TxtComplemento.getText().isEmpty() || TxtEscolaridade.getText().isEmpty() ||  TxtRG.getText().isEmpty() || TxtDataadmissao.getText().isEmpty() ||
+                     TxtCep.getText().isEmpty() || TxtEstado.getSelectedItem().equals("Selecionar") || TxtComplemento.getText().isEmpty() || TxtEscolaridade.getSelectedItem().equals("Selecionar") ||  TxtRG.getText().isEmpty() || TxtDataadmissao.getText().isEmpty() ||
                      TxtSalarioadmissao.getText().isEmpty() || TxtDatademissao.getText().isEmpty() || TxtSalarioatual.getText().isEmpty() || TxtCargo.getSelectedItem().equals("Selecionar") || TxtStatus.getSelectedItem().equals("Selecionar")){
                     
                  JOptionPane.showMessageDialog(null, "Preencha todos os campos");
@@ -833,9 +839,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setNumero(Integer.parseInt(TxtNumero.getText()));
                                 funcionario.setCidade(TxtCidade.getText());
                                 funcionario.setCep(TxtCep.getText());
-                                funcionario.setEstado(TxtEstado.getText());
+                                funcionario.setEstado(String.valueOf(TxtEstado.getSelectedItem()));
                                 funcionario.setComplemento(TxtComplemento.getText());
-                                funcionario.setEscolaridade(TxtEscolaridade.getText());
+                                funcionario.setEscolaridade(String.valueOf(TxtEscolaridade.getSelectedItem()));
                                 funcionario.setRG(TxtRG.getText());
                                 funcionario.setDataadmissao(sdf.parse(TxtDataadmissao.getText()));
                                 funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
@@ -897,9 +903,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                 TxtNumero.setText(Integer.toString(funcionario.getNumero()));
                 TxtCidade.setText(funcionario.getCidade());
                 TxtCep.setText(funcionario.getCep());
-                TxtEstado.setText(funcionario.getEstado());
+                TxtEstado.setSelectedItem(funcionario.getEstado());
                 TxtComplemento.setText(funcionario.getComplemento());
-                TxtEscolaridade.setText(funcionario.getEscolaridade());
+                TxtEscolaridade.setSelectedItem(funcionario.getEscolaridade());
                 TxtRG.setText(funcionario.getRG());
                 TxtDataadmissao.setText(sdf.format(funcionario.getDataadmissao()));
                 TxtSalarioadmissao.setText(funcionario.getSalarioadmissao());
@@ -979,8 +985,8 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField TxtDatademissao;
     private javax.swing.JFormattedTextField TxtDatanascimento;
     private javax.swing.JTextField TxtEmail;
-    private javax.swing.JTextField TxtEscolaridade;
-    private javax.swing.JTextField TxtEstado;
+    private javax.swing.JComboBox<String> TxtEscolaridade;
+    private javax.swing.JComboBox<String> TxtEstado;
     private javax.swing.JComboBox<String> TxtEstadocivil;
     private javax.swing.JTextField TxtID;
     private javax.swing.JTextField TxtMatricula;
