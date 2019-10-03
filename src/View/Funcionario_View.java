@@ -133,6 +133,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        setClosable(true);
         setTitle("Cadastro de Funcionário");
         getContentPane().setLayout(null);
 
@@ -329,7 +330,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel19);
         jLabel19.setBounds(270, 20, 30, 20);
         jPanel5.add(TxtRG);
-        TxtRG.setBounds(300, 20, 130, 20);
+        TxtRG.setBounds(300, 20, 140, 20);
 
         jLabel20.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel20.setText("Data de Admissão:");
@@ -389,7 +390,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtCargo.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         TxtCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Gerente", "Administrador", "Operador", " " }));
         jPanel5.add(TxtCargo);
-        TxtCargo.setBounds(300, 80, 130, 20);
+        TxtCargo.setBounds(300, 80, 140, 20);
 
         TxtEscolaridade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Fundamental - Incompleto", "Fundamental - Completo", "Médio - Incompleto", "Médio - Completo", "Superior - Incompleto", "Superior - Completo", "Pós-graduação - Incompleto", "Pós-graduação - Completo", "Mestrado - Incompleto", "Mestrado - Completo", "Doutorado - Incompleto", "Doutorado - Completo" }));
         jPanel5.add(TxtEscolaridade);
@@ -631,7 +632,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             
                 TxtID.setText(ID);
                 TxtMatricula.setText(funcionario.getMatricula());
-                TxtNome.setText(funcionario.getMatricula());
+                TxtNome.setText(funcionario.getNome());
                 TxtEstadocivil.setSelectedItem(funcionario.getEstadocivil());
                 TxtDatanascimento.setText(sdf.format(funcionario.getDatanascimento()));
                 TxtSexo.setSelectedItem(funcionario.getSexo());
@@ -693,10 +694,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                     if (sdf.parse(TxtDatanascimento.getText()).equals(new java.util.Date()) || sdf.parse(TxtDatanascimento.getText()).after(new java.util.Date())) {
                         JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser igual ou depois da data de hoje");
                     } else {
-                        cpf2 = funci_Dao.validarCpfFuncionario(TxtCPF.getText());
-                        if (!cpf.equals(TxtCPF.getText()) && cpf2.equals(TxtCPF.getText())) {
-                            JOptionPane.showMessageDialog(null, "O CPF já possui um funcionario cadastrado");
-                        } else {
                             user2 = funci_Dao.validarNomeUsuario(TxtNome.getText());
                             if (!user.equals(TxtNome.getText()) && user2.equals(TxtNome.getText())) {
                                 JOptionPane.showMessageDialog(null, "Já existe um funcionario com este nome");
@@ -748,7 +745,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                             }
                         }
                       }
-                    }
+                    
                 }
             }
 
@@ -883,9 +880,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         Tabela_Funcionario.getModel();
         TxtID.setText(modelo.getValueAt(Tabela_Funcionario.getSelectedRow(), 0).toString());
         try {
-             Campos(false, true, true, true, true, true, true, true, true, true, true, true, true, true, true,
+             Campos(false, true, true, true, true, true, false, true, true, true, true, true, true, true, true,
                 true,true, true, true, true, true, true, true, true, true);        
-             Campos_Botão(true, true, true, true, false, true,true);
+             Campos_Botão(false, true, true, true, false, true,true);
             
              funcionario = funci_Dao.getFuncionarioById(Integer.parseInt(TxtID.getText()));
             

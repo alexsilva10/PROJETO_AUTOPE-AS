@@ -52,8 +52,7 @@ public class Funcionario_Dao implements Serializable{
     
     public void alterar(Funcionario_Model funcionario) throws SQLException {
 
-        sql = "Update funcionario  set Matricula=?, Nome=?, Estadocivil=?, Datanascimento=?, Sexo=?, CPF=?, Telefone=?, Celular=?, Email=?, Bairro=?, Rua=?, Numero=?" +
-                "Cidade=?,Cep=?, Estado=?, Complemento=?, Escolaridade=?, RG=?, Datademissao=?,Salarioadmissao=?,Datademissao=?, Salarioatual=?, Cargo=?, Status=?,  where ID=?";
+        sql = "Update funcionario  set Matricula=?, Nome=?, Estadocivil=?, Datanascimento=?, Sexo=?, CPF=?, Telefone=?, Celular=?, Email=?, Bairro=?, Rua=?, Numero=?, Cidade=?,Cep=?, Estado=?, Complemento=?, Escolaridade=?, RG=?, Datademissao=?,Salarioadmissao=?,Datademissao=?, Salarioatual=?, Cargo=?, Status=?  where ID=?";
         pst = Conexao.getConnection().prepareStatement(sql);
         pst.setString(1, funcionario.getMatricula());
         pst.setString(2, funcionario.getNome());
