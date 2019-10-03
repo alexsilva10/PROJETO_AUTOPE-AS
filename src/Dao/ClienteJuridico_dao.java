@@ -39,8 +39,8 @@ public class ClienteJuridico_dao {
     }
     public void alterar(ClienteJuridico jur) throws SQLException {
 
-        sql = "Update pessoaJuridica  set matricula=?, estatus=?, nomeFantazia=?, cnpj=?, razaoSocial=?, inscricao=?, Bairro=?, Rua=?, Numero=?" +
-                "Cidade=?,Cep=?, Estado=?, Complemento=?,Telefone=?, Celular=?, Email=?,  where Ip=?";
+        sql = "Update pessoaJuridica  set matricula=?, estatus=?, nomeFantazia=?, cnpj=?, rasaoSocil=?, inscricao=?, bairro=?, rua=?, numero=?," +
+                "cidade=?,cep=?, estado=?, complemento=?,telefone=?, celular=?, email=?  where ip=?";
         pst = Conexao.getConnection().prepareStatement(sql);
         pst.setString(1, jur.getMatricula());
         pst.setString(2, jur.getStatus());
@@ -58,21 +58,21 @@ public class ClienteJuridico_dao {
         pst.setString(14, jur.getTelefone());
         pst.setString(15, jur.getCelular());
         pst.setString(16, jur.getEmail());
-        
         pst.setInt(17, jur.getId());
         pst.execute();
         pst.close();
     }
     public ClienteJuridico buscaJuridicaID(int ID) throws SQLException {
         ClienteJuridico jur = null;
-        sql = ("Select * from pessoaJuridica where Ip= " + ID);
+        sql ="Select * from pessoaJuridica where ip = ? ";
         Statement st;
-        pst = Conexao.getConnection().prepareStatement(sql);
-
+        pst = Conexao2.getInstance().prepareStatement(sql);
+        pst.setInt(1, ID);
+        pst.executeQuery();
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {        
         jur = new ClienteJuridico(rs.getInt("Ip"), rs.getString("Matricula"),rs.getString("estatus"), rs.getString("nomeFantazia"), rs.getString("cnpj"),
-        rs.getString("rasaoSocial"), rs.getString("inscricao"),rs.getString("Bairro"), rs.getString("Rua"),
+        rs.getString("rasaoSocil"), rs.getString("inscricao"),rs.getString("Bairro"), rs.getString("Rua"),
         rs.getString("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento")
         , rs.getString("Telefone"),rs.getString("Celular"), rs.getString("Email"));
         }
@@ -91,7 +91,7 @@ public void excluir(int codigo) throws SQLException {
         ClienteJuridico jur;
         List<ClienteJuridico> jurs = new ArrayList<>();
         
-        sql = "Select * from pessoaJuridica order by Nome";
+        sql = "Select * from pessoaJuridica order by nomeFantazia";
         Statement st;
         pst = Conexao.getConnection().prepareStatement(sql);
        
@@ -100,7 +100,7 @@ public void excluir(int codigo) throws SQLException {
         while (rs.next()) {
 
         jur = new ClienteJuridico(rs.getInt("Ip"), rs.getString("Matricula"),rs.getString("estatus"), rs.getString("nomeFantazia"), rs.getString("cnpj"),
-        rs.getString("rasaoSocial"), rs.getString("inscricao"),rs.getString("Bairro"), rs.getString("Rua"),
+        rs.getString("rasaoSocil"), rs.getString("inscricao"),rs.getString("Bairro"), rs.getString("Rua"),
         rs.getString("Numero"), rs.getString("Cidade"), rs.getString("Cep"), rs.getString("Estado"), rs.getString("Complemento")
         , rs.getString("Telefone"),rs.getString("Celular"), rs.getString("Email"));
         

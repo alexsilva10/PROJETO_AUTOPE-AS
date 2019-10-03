@@ -17,7 +17,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class TelaPrincipal extends javax.swing.JFrame {
    
    Funcionario_View Fun ;
-   Cliente_View cli ;
+   PessoaFisica fisica ;
+   PessoaJuridica juridica;
     
     public TelaPrincipal() {
         initComponents();
@@ -55,6 +56,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -279,6 +281,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem3.setText("Pessoa Juritica");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/001-estoque.png"))); // NOI18N
@@ -334,16 +344,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPedidoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        if(cli==null){
-        cli = new Cliente_View();
+        if(fisica==null){
+        fisica = new PessoaFisica();
         }
-        jDesktopPane1.add(cli);
+        jDesktopPane1.add(fisica);
         JpVenda.setVisible(false);
         JpHistorico.setVisible(false);
         JpPedidos.setVisible(false);
-        cli.setVisible(true);
+        fisica.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        if(juridica==null){
+        juridica = new PessoaJuridica();
+        }
+        jDesktopPane1.add(juridica);
+        JpVenda.setVisible(false);
+        JpHistorico.setVisible(false);
+        JpPedidos.setVisible(false);
+        juridica.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,6 +396,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;

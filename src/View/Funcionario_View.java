@@ -704,7 +704,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 JOptionPane.showMessageDialog(null, "Já existe um funcionario com este nome");
                             }  else {
                                 
-                                funcionario = new Funcionario_Model();
+//                                funcionario = new Funcionario_Model();
                                 
                                 funcionario.setID(Integer.parseInt(TxtID.getText()));
                                 funcionario.setMatricula(TxtMatricula.getText());

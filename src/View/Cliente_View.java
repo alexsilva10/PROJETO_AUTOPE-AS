@@ -21,14 +21,16 @@ public class Cliente_View extends javax.swing.JInternalFrame {
     ClienteFisico_dao fis_dao;
     ClienteJuridico_dao jur_dao;
     
-    List <Object> lista;
+    List <ClienteFisico> fisicos;
+    List <ClienteJuridico> juridicos;
     DefaultTableModel modelo = new DefaultTableModel();
     
     public Cliente_View() {
         fis_dao = new ClienteFisico_dao();
         jur_dao = new ClienteJuridico_dao();
-        
+        atualizarTabela();
         initComponents();
+        Limpar();
 //        jPFisica.setVisible(false);
 //        jPJuridica.setVisible(false);
         }
@@ -101,13 +103,21 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel18 = new javax.swing.JLabel();
         txEmail = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabela_Funcionario = new javax.swing.JTable();
         btSalvar = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         btNovo = new javax.swing.JButton();
         btAlterar = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jButtonPesquisarid = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        jButtonPesquisarid1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(28, 203, 248));
         setClosable(true);
@@ -118,7 +128,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
         jLabel1.setText("CADASTRO DE CLIENTES");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(190, 10, 220, 20);
+        jLabel1.setBounds(550, 10, 210, 20);
 
         jPanel2.setBackground(new java.awt.Color(28, 203, 248));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -186,7 +196,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         TxtComplemento.setBounds(330, 80, 240, 20);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(10, 260, 590, 120);
+        jPanel2.setBounds(10, 240, 590, 120);
 
         jPFisica.setBackground(new java.awt.Color(28, 203, 248));
         jPFisica.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pessoa Física", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -202,7 +212,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel3.setText("Matrícula:");
         jPFisica.add(jLabel3);
-        jLabel3.setBounds(210, 20, 60, 20);
+        jLabel3.setBounds(180, 20, 60, 20);
         jPFisica.add(TxtMatricula);
         TxtMatricula.setBounds(280, 20, 110, 20);
 
@@ -333,8 +343,8 @@ public class Cliente_View extends javax.swing.JInternalFrame {
                 .addContainerGap())
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addComponent(jPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 10, Short.MAX_VALUE)))
+                    .addComponent(jPFisica, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,7 +360,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         );
 
         getContentPane().add(jLayeredPane1);
-        jLayeredPane1.setBounds(10, 100, 600, 160);
+        jLayeredPane1.setBounds(10, 70, 600, 160);
 
         jPanel1.setBackground(new java.awt.Color(28, 203, 248));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escolha o tipo do Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 14))); // NOI18N
@@ -397,7 +407,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(40, 40, 530, 60);
+        jPanel1.setBounds(10, 10, 530, 60);
 
         jPanel3.setBackground(new java.awt.Color(28, 203, 248));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contato", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -464,9 +474,9 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(10, 380, 590, 80);
+        jPanel3.setBounds(10, 370, 590, 80);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabela_Funcionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -477,10 +487,15 @@ public class Cliente_View extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        Tabela_Funcionario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabela_FuncionarioMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Tabela_Funcionario);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 470, 590, 100);
+        jScrollPane1.setBounds(10, 510, 670, 110);
 
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -489,7 +504,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btSalvar);
-        btSalvar.setBounds(610, 120, 73, 30);
+        btSalvar.setBounds(520, 460, 73, 30);
 
         btCancelar.setText("Cancelar");
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -498,25 +513,110 @@ public class Cliente_View extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btCancelar);
-        btCancelar.setBounds(690, 120, 80, 30);
+        btCancelar.setBounds(100, 460, 80, 30);
 
         btLimpar.setText("Limpar");
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(610, 170, 70, 30);
+        btLimpar.setBounds(190, 460, 70, 30);
 
         btExcluir.setText("Excluir");
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(690, 170, 80, 30);
+        btExcluir.setBounds(280, 460, 70, 30);
 
         btNovo.setText("Novo");
         getContentPane().add(btNovo);
-        btNovo.setBounds(660, 30, 57, 40);
+        btNovo.setBounds(10, 460, 70, 30);
 
         btAlterar.setText("Alterar");
+        btAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAlterarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btAlterar);
-        btAlterar.setBounds(610, 210, 70, 30);
+        btAlterar.setBounds(360, 460, 70, 30);
 
-        setBounds(0, 0, 798, 629);
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Busca", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+
+        jLabel7.setText("Pessoa Fisica ID");
+
+        jButtonPesquisarid.setText("Pesquisar");
+        jButtonPesquisarid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisaridActionPerformed(evt);
+            }
+        });
+
+        jLabel30.setText("Nome");
+
+        jButton2.setText("Pesquisar");
+
+        jLabel31.setText("Pessoa Juritica ID");
+
+        jButtonPesquisarid1.setText("Pesquisar");
+        jButtonPesquisarid1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarid1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonPesquisarid))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonPesquisarid1))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)))
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jButtonPesquisarid))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(jButtonPesquisarid1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30)
+                    .addComponent(jButton2))
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel4);
+        jPanel4.setBounds(610, 90, 380, 190);
+
+        setBounds(0, 0, 1045, 665);
     }// </editor-fold>//GEN-END:initComponents
     public void Limpar()
     {
@@ -560,7 +660,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
             if(cbStatusFis.getSelectedItem().equals("Selecione")||
                 TxtMatricula.getText().isEmpty()||TxCPF.getText().isEmpty()||
                 TxRG.getText().isEmpty()||TxNome.getText().isEmpty()||
-                cbSexo.getSelectedItem().equals("Selecionar")|| TxtTelefone1.getText().isEmpty() ||
+                cbSexo.getSelectedItem().equals("Selecione")|| TxtTelefone1.getText().isEmpty() ||
                 TxtCelular.getText().isEmpty() || txEmail.getText().isEmpty() ||
                 TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() ||
                 TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty())
@@ -569,8 +669,8 @@ public class Cliente_View extends javax.swing.JInternalFrame {
             }else{
                 return true;
             }
-        }else
-        {
+          }
+        if(rbPessoaJuridica.isSelected()){
             if(cbStatusJur.getSelectedItem().equals("Selecione")||TxMatriculaJuri.getText().isEmpty()||
                 TxNomeFan.getText().isEmpty()||TxRasao.getText().isEmpty()||TxCnpj.getText().isEmpty()||
                 TxIncricao.getText().isEmpty()|| TxtTelefone1.getText().isEmpty()||TxtCelular.getText().isEmpty()|| 
@@ -580,6 +680,9 @@ public class Cliente_View extends javax.swing.JInternalFrame {
             }else{
                 return false;
             }
+        }
+        else{
+          return false;
         }
     }
     private void rbPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPessoaFisicaActionPerformed
@@ -609,80 +712,346 @@ public class Cliente_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-      boolean a = verificaCampo();
-      if(a){
+
+      if(rbPessoaFisica.isSelected()|| rbPessoaJuridica.isSelected()){
           if(rbPessoaFisica.isSelected()){
-             fis= new ClienteFisico();
-             fis.setStatus((String) cbStatusFis.getSelectedItem());
-             fis.setMatricula(TxtMatricula.getText());
-             fis.setNome(TxNome.getText());
-             fis.setApelido(TxtApelido.getText());
-             fis.setEstadoCivil((String) cbEstadoCivil.getSelectedItem());
-             fis.setCPF(TxCPF.getText());
-             fis.setRG(TxRG.getText());
-             fis.setSexo((String) cbSexo.getSelectedItem());
-              try {
-                  fis.setDtNasc(sdf.parse(txData.getText()));
-              } catch (ParseException ex) {
-                  Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
-              }
-     
-                fis.setTelefone(TxtTelefone1.getText());
-                fis.setCelular(TxtCelular.getText());
-                fis.setEmail(txEmail.getText());
-                fis.setBairro(TxtBairro.getText());
-                fis.setRua(TxtRua.getText());
-                fis.setNumero(TxtNumero.getText());
-                fis.setCidade(TxtCidade.getText());
-                fis.setCep(TxCEP.getText());
-                fis.setEstado(TxtEstado.getText());
-                fis.setComplemento(TxtComplemento.getText());
-                
-              try {
-                  fis_dao.salvar(fis);
-                  JOptionPane.showMessageDialog(null, "Salvo!");
-              } catch (SQLException ex) {
-                  Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
-              }
+                if(cbStatusFis.getSelectedItem().equals("Selecione")|| TxtMatricula.getText().isEmpty()||TxCPF.getText().isEmpty()||
+                TxRG.getText().isEmpty()||TxNome.getText().isEmpty()||cbSexo.getSelectedItem().equals("Selecione")|| TxtTelefone1.getText().isEmpty() ||
+                TxtCelular.getText().isEmpty() || txEmail.getText().isEmpty() || TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() ||TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "A campos a serem preenchidos");
+            }else{
+                fis= new ClienteFisico();
+                fis.setStatus((String) cbStatusFis.getSelectedItem());
+                fis.setMatricula(TxtMatricula.getText());
+                fis.setNome(TxNome.getText());
+                fis.setApelido(TxtApelido.getText());
+                fis.setEstadoCivil((String) cbEstadoCivil.getSelectedItem());
+                fis.setCPF(TxCPF.getText());
+                fis.setRG(TxRG.getText());
+                fis.setSexo((String) cbSexo.getSelectedItem());
+                try {
+                    fis.setDtNasc(sdf.parse(txData.getText()));
+                } catch (ParseException ex) {
+                    Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                   fis.setTelefone(TxtTelefone1.getText());
+                   fis.setCelular(TxtCelular.getText());
+                   fis.setEmail(txEmail.getText());
+                   fis.setBairro(TxtBairro.getText());
+                   fis.setRua(TxtRua.getText());
+                   fis.setNumero(TxtNumero.getText());
+                   fis.setCidade(TxtCidade.getText());
+                   fis.setCep(TxCEP.getText());
+                   fis.setEstado(TxtEstado.getText());
+                   fis.setComplemento(TxtComplemento.getText());
+
+                 try {
+                     fis_dao.salvar(fis);
+                     JOptionPane.showMessageDialog(null, "Salvo!");
+                 } catch (SQLException ex) {
+                     Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+               }
+          }     
+          if(rbPessoaJuridica.isSelected()){
+                if(cbStatusJur.getSelectedItem().equals("Selecione")||TxMatriculaJuri.getText().isEmpty()||
+                TxNomeFan.getText().isEmpty()||TxRasao.getText().isEmpty()||TxCnpj.getText().isEmpty()||
+                TxIncricao.getText().isEmpty()|| TxtTelefone1.getText().isEmpty()||TxtCelular.getText().isEmpty()|| 
+                txEmail.getText().isEmpty() ||TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() ||
+                TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty())
+                { 
+                    JOptionPane.showMessageDialog(null, "a campos a serem preenchidos");
+                }else{
+                    jur = new ClienteJuridico();
+                    jur.setStatus((String) cbStatusJur.getSelectedItem());
+                    jur.setMatricula(TxMatriculaJuri.getText());
+                    jur.setNomeFantazia(TxNomeFan.getText());
+                    jur.setCNPJ(TxCnpj.getText());
+                    jur.setRasaoSocil(TxRasao.getText());
+                    jur.setInscricao(TxIncricao.getText());
+
+                    jur.setTelefone(TxtTelefone1.getText());
+                    jur.setCelular(TxtCelular.getText());
+                    jur.setEmail(txEmail.getText());
+                    jur.setBairro(TxtBairro.getText());
+                    jur.setRua(TxtRua.getText());
+                    jur.setNumero(TxtNumero.getText());
+                    jur.setCidade(TxtCidade.getText());
+                    jur.setCep(TxCEP.getText());
+                    jur.setEstado(TxtEstado.getText());
+                    jur.setComplemento(TxtComplemento.getText());
+
+                  try {
+                      jur_dao.salvar(jur);
+                      JOptionPane.showMessageDialog(null, "Salvo!");
+                  } catch (SQLException ex) {
+                      Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+                  }
             }
-            if(rbPessoaJuridica.isSelected()){
-             jur = new ClienteJuridico();
-             jur.setStatus((String) cbStatusJur.getSelectedItem());
-             jur.setMatricula(TxMatriculaJuri.getText());
-             jur.setNomeFantazia(TxNomeFan.getText());
-             jur.setCNPJ(TxCnpj.getText());
-             jur.setRasaoSocil(TxRasao.getText());
-             jur.setInscricao(TxIncricao.getText());
              
-              jur.setTelefone(TxtTelefone1.getText());
-              jur.setCelular(TxtCelular.getText());
-              jur.setEmail(txEmail.getText());
-              jur.setBairro(TxtBairro.getText());
-              jur.setRua(TxtRua.getText());
-              jur.setNumero(TxtNumero.getText());
-              jur.setCidade(TxtCidade.getText());
-              jur.setCep(TxCEP.getText());
-              jur.setEstado(TxtEstado.getText());
-              jur.setComplemento(TxtComplemento.getText());
-              
-              try {
-                  jur_dao.salvar(jur);
-                  JOptionPane.showMessageDialog(null, "Salvo!");
-              } catch (SQLException ex) {
-                  Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
-              }
-          }
-          else{
-              JOptionPane.showMessageDialog(null,"Escolha uma pessoa");
-                System.out.println(rbPessoaFisica.getFocusTraversalKeysEnabled());
           }
           
       }else
-           JOptionPane.showMessageDialog(null,"A campos a serem preenchidos");
+           JOptionPane.showMessageDialog(null,"Escolha uma tipo de pessoa");
     }//GEN-LAST:event_btSalvarActionPerformed
 
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        Limpar();
+    }//GEN-LAST:event_btLimparActionPerformed
+
+    private void jButtonPesquisaridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaridActionPerformed
+        String ID = JOptionPane.showInputDialog("Digite o ID do Cliente Fisico: ");
+        fis = new ClienteFisico();
+         jPFisica.setVisible(true);
+         jPJuridica.setVisible(false);
+  
+        try {
+            fis = fis_dao.buscaFicicaID(Integer.parseInt(ID));
+        } catch (SQLException ex) {
+            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    if(fis == null)
+    {
+         JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+    }       
+                TxtID.setText(ID);
+                cbStatusFis.setSelectedItem(fis.getStatus());
+                TxtMatricula.setText(fis.getMatricula());
+                TxNome.setText(fis.getNome());
+                TxtApelido.setText(fis.getApelido());
+                cbEstadoCivil.setSelectedItem(fis.getEstadoCivil());
+                txData.setText(sdf.format(fis.getDtNasc()));
+                cbSexo.setSelectedItem(fis.getSexo());
+                TxCPF.setText(fis.getCPF());
+                TxRG.setText(fis.getRG());
+                TxtTelefone1.setText(fis.getTelefone());
+                TxtCelular.setText(fis.getCelular());
+                txEmail.setText(fis.getEmail());
+                TxtBairro.setText(fis.getBairro());
+                TxtRua.setText(fis.getRua());
+                TxtNumero.setText(fis.getNumero());
+                TxtCidade.setText(fis.getCidade());
+                TxCEP.setText(fis.getCep());
+                TxtEstado.setText(fis.getEstado());
+                TxtComplemento.setText(fis.getComplemento());
+                
+               
+                //user = funcionario.getNome();
+    }//GEN-LAST:event_jButtonPesquisaridActionPerformed
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+       int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Excluir os Dados!");
+            if( i == 0 ){
+                if(rbPessoaFisica.isSelected()){
+                    try 
+                   {  
+                     fis_dao.excluir(Integer.parseInt(TxtID.getText()));
+                     Limpar();
+                     JOptionPane.showMessageDialog(null, "Removido com Sucesso"); 
+                   } catch (Exception e) {
+                           JOptionPane.showMessageDialog(null, "ERRO!");
+                           e.printStackTrace();
+                    }
+            }
+            if(rbPessoaJuridica.isSelected()){
+                 try 
+                   {  
+                     jur_dao.excluir(Integer.parseInt(TxtID.getText()));
+                     Limpar();
+                     JOptionPane.showMessageDialog(null, "Removido com Sucesso"); 
+                   } catch (Exception e) {
+                           JOptionPane.showMessageDialog(null, "ERRO!");
+                           e.printStackTrace();
+                    }
+            }
+            }else
+           JOptionPane.showMessageDialog(null,"Escolha o tipo de pessoa");
+    }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void jButtonPesquisarid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarid1ActionPerformed
+
+        String ID = JOptionPane.showInputDialog("Digite o ID do Cliente Juridico: ");
+        jur = new ClienteJuridico();
+        jPFisica.setVisible(false);
+        jPJuridica.setVisible(true);
+        try {
+            jur = jur_dao.buscaJuridicaID(Integer.parseInt(ID));
+        } catch (SQLException ex) {
+            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    if(jur == null)
+    {
+         JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+    }       
+                TxIdjur.setText(ID);
+                cbStatusJur.setSelectedItem(jur.getStatus());
+                TxMatriculaJuri.setText(jur.getMatricula());
+                TxNomeFan.setText(jur.getNomeFantazia());
+                TxRasao.setText(jur.getRasaoSocil());
+                TxCnpj.setText(jur.getCNPJ());
+                TxIncricao.setText(jur.getInscricao());
+                TxtTelefone1.setText(jur.getTelefone());
+                TxtCelular.setText(jur.getCelular());
+                txEmail.setText(jur.getEmail());
+                TxtBairro.setText(jur.getBairro());
+                TxtRua.setText(jur.getRua());
+                TxtNumero.setText(jur.getNumero());
+                TxtCidade.setText(jur.getCidade());
+                TxCEP.setText(jur.getCep());
+                TxtEstado.setText(jur.getEstado());
+                TxtComplemento.setText(jur.getComplemento());
+    }//GEN-LAST:event_jButtonPesquisarid1ActionPerformed
+
+    private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
+        if(rbPessoaFisica.isSelected()|| rbPessoaJuridica.isSelected()){
+          if(rbPessoaFisica.isSelected()){
+                if(cbStatusFis.getSelectedItem().equals("Selecione")|| TxtMatricula.getText().isEmpty()||TxCPF.getText().isEmpty()||
+                TxRG.getText().isEmpty()||TxNome.getText().isEmpty()||cbSexo.getSelectedItem().equals("Selecione")|| TxtTelefone1.getText().isEmpty() ||
+                TxtCelular.getText().isEmpty() || txEmail.getText().isEmpty() || TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() ||TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "A campos a serem preenchidos");
+            }else{
+                fis= new ClienteFisico();
+                fis.setId(Integer.parseInt(TxtID.getText()));
+                fis.setStatus((String) cbStatusFis.getSelectedItem());
+                fis.setMatricula(TxtMatricula.getText());
+                fis.setNome(TxNome.getText());
+                fis.setApelido(TxtApelido.getText());
+                fis.setEstadoCivil((String) cbEstadoCivil.getSelectedItem());
+                fis.setCPF(TxCPF.getText());
+                fis.setRG(TxRG.getText());
+                fis.setSexo((String) cbSexo.getSelectedItem());
+                try {
+                    fis.setDtNasc(sdf.parse(txData.getText()));
+                } catch (ParseException ex) {
+                    Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                   fis.setTelefone(TxtTelefone1.getText());
+                   fis.setCelular(TxtCelular.getText());
+                   fis.setEmail(txEmail.getText());
+                   fis.setBairro(TxtBairro.getText());
+                   fis.setRua(TxtRua.getText());
+                   fis.setNumero(TxtNumero.getText());
+                   fis.setCidade(TxtCidade.getText());
+                   fis.setCep(TxCEP.getText());
+                   fis.setEstado(TxtEstado.getText());
+                   fis.setComplemento(TxtComplemento.getText());
+                int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Alterar os Dados!");   
+                if( i == 0 )
+                { 
+                    try {
+                        fis_dao.alterar(fis);
+                        JOptionPane.showMessageDialog(null, "Salvo!");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+                
+          }     
+          if(rbPessoaJuridica.isSelected()){
+                if(cbStatusJur.getSelectedItem().equals("Selecione")||TxMatriculaJuri.getText().isEmpty()||
+                TxNomeFan.getText().isEmpty()||TxRasao.getText().isEmpty()||TxCnpj.getText().isEmpty()||
+                TxIncricao.getText().isEmpty()|| TxtTelefone1.getText().isEmpty()||TxtCelular.getText().isEmpty()|| 
+                txEmail.getText().isEmpty() ||TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() ||
+                TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty())
+                { 
+                    JOptionPane.showMessageDialog(null, "a campos a serem preenchidos");
+                }else{
+                    jur = new ClienteJuridico();
+                    jur.setId(Integer.parseInt(TxtID.getText()));
+                    jur.setStatus((String) cbStatusJur.getSelectedItem());
+                    jur.setMatricula(TxMatriculaJuri.getText());
+                    jur.setNomeFantazia(TxNomeFan.getText());
+                    jur.setCNPJ(TxCnpj.getText());
+                    jur.setRasaoSocil(TxRasao.getText());
+                    jur.setInscricao(TxIncricao.getText());
+
+                    jur.setTelefone(TxtTelefone1.getText());
+                    jur.setCelular(TxtCelular.getText());
+                    jur.setEmail(txEmail.getText());
+                    jur.setBairro(TxtBairro.getText());
+                    jur.setRua(TxtRua.getText());
+                    jur.setNumero(TxtNumero.getText());
+                    jur.setCidade(TxtCidade.getText());
+                    jur.setCep(TxCEP.getText());
+                    jur.setEstado(TxtEstado.getText());
+                    jur.setComplemento(TxtComplemento.getText());
+                    int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Alterar os Dados!");   
+                    if( i == 0 )
+                    {
+                        try {
+                        jur_dao.alterar(jur);
+                        JOptionPane.showMessageDialog(null, "Salvo!");
+                        } catch (SQLException ex) {
+                        Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+            }
+          }
+        }       
+    }//GEN-LAST:event_btAlterarActionPerformed
+
+    private void Tabela_FuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabela_FuncionarioMouseClicked
+        int i = 0;
+        Tabela_Funcionario.getModel();
+        TxtID.setText(modelo.getValueAt(Tabela_Funcionario.getSelectedRow(), 0).toString());
+        try {
+            
+             fis = fis_dao.buscaFicicaID(Integer.parseInt(TxtID.getText()));
+               
+                cbStatusFis.setSelectedItem(fis.getStatus());
+                TxtMatricula.setText(fis.getMatricula());
+                TxNome.setText(fis.getNome());
+                TxtApelido.setText(fis.getApelido());
+                cbEstadoCivil.setSelectedItem(fis.getEstadoCivil());
+                txData.setText(sdf.format(fis.getDtNasc()));
+                cbSexo.setSelectedItem(fis.getSexo());
+                TxCPF.setText(fis.getCPF());
+                TxRG.setText(fis.getRG());
+                TxtTelefone1.setText(fis.getTelefone());
+                TxtCelular.setText(fis.getCelular());
+                txEmail.setText(fis.getEmail());
+                TxtBairro.setText(fis.getBairro());
+                TxtRua.setText(fis.getRua());
+                TxtNumero.setText(fis.getNumero());
+                TxtCidade.setText(fis.getCidade());
+                TxCEP.setText(fis.getCep());
+                TxtEstado.setText(fis.getEstado());
+                TxtComplemento.setText(fis.getComplemento());
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_Tabela_FuncionarioMouseClicked
+    public void atualizarTabela() {
+          fis = new ClienteFisico();
+        try {
+            fisicos = fis_dao.todosFisicos();
+            String dados[][] = new String[fisicos.size()][5];
+            int i = 0;
+            for (ClienteFisico u : fisicos) {
+                dados[i][0] = String.valueOf(u.getId());
+                dados[i][1] = u.getMatricula();
+                dados[i][2] = u.getNome();
+                dados[i][3] = u.getCelular();
+                dados[i][4] = u.getEmail(); 
+                i++;
+            }
+            String tituloColuna[] = {"ID", "Matricula", "Nome", "Celular", "Email"};
+            modelo.setDataVector(dados, tituloColuna);
+            Tabela_Funcionario.setModel(modelo);
+            Tabela_Funcionario.updateUI();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }    
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tabela_Funcionario;
     private javax.swing.JFormattedTextField TxCEP;
     private javax.swing.JTextField TxCPF;
     private javax.swing.JTextField TxCnpj;
@@ -715,6 +1084,9 @@ public class Cliente_View extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbSexo;
     private javax.swing.JComboBox<String> cbStatusFis;
     private javax.swing.JComboBox<String> cbStatusJur;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonPesquisarid;
+    private javax.swing.JButton jButtonPesquisarid1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -738,9 +1110,12 @@ public class Cliente_View extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
@@ -749,8 +1124,9 @@ public class Cliente_View extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JRadioButton rbPessoaFisica;
     private javax.swing.JRadioButton rbPessoaJuridica;
     private javax.swing.JFormattedTextField txData;
