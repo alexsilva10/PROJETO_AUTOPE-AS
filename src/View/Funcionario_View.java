@@ -555,8 +555,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtDatademissao.setText("");
         TxtSalarioatual.setText("");
         TxtCargo.setSelectedItem("Selecionar");
-        TxtStatus.setSelectedItem("Selecionar");
-        
+        TxtStatus.setSelectedItem("Selecionar");  
     }
  public void Campos(boolean Id, boolean Mat, boolean Nom, boolean Estc, boolean Dtnasc, boolean Sex, boolean Cpf, boolean Tel, boolean Cel, boolean Emai,boolean Bair, boolean Rua, boolean Num,
          boolean Cid, boolean Cep, boolean Est, boolean Comp, boolean Esco, boolean Rg, boolean Dtad, boolean Salad, boolean Dtdem, boolean Salat, boolean Carg, boolean Stat )

@@ -1,14 +1,37 @@
 package View;
 
+import Dao.ClienteFisico_dao;
+import Dao.ClienteJuridico_dao;
+import Model.ClienteFisico;
+import Model.ClienteJuridico;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class Cliente_View extends javax.swing.JInternalFrame {
-
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+    ClienteFisico fis;
+    ClienteJuridico jur;
+    ClienteFisico_dao fis_dao;
+    ClienteJuridico_dao jur_dao;
+    
+    List <Object> lista;
+    DefaultTableModel modelo = new DefaultTableModel();
+    
     public Cliente_View() {
-        initComponents();
-        jPFisica.setVisible(false);
-        jPJuridica.setVisible(false);
+        fis_dao = new ClienteFisico_dao();
+        jur_dao = new ClienteJuridico_dao();
         
-    }
-
+        initComponents();
+//        jPFisica.setVisible(false);
+//        jPJuridica.setVisible(false);
+        }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -25,7 +48,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel14 = new javax.swing.JLabel();
         TxtCidade = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        FormattedTxtCEP = new javax.swing.JFormattedTextField();
+        TxCEP = new javax.swing.JFormattedTextField();
         jLabel16 = new javax.swing.JLabel();
         TxtEstado = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -39,13 +62,10 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         TxtApelido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jComboBoxEstado = new javax.swing.JComboBox<>();
+        cbEstadoCivil = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBoxSexo = new javax.swing.JComboBox<>();
-        TxDATA = new javax.swing.JFormattedTextField();
-        jComboBoxEstadoCivil = new javax.swing.JComboBox<>();
+        cbSexo = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         TxCPF = new javax.swing.JTextField();
@@ -53,7 +73,8 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel21 = new javax.swing.JLabel();
         TxNome = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbStatusFis = new javax.swing.JComboBox<>();
+        txData = new javax.swing.JFormattedTextField();
         jPJuridica = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         TxIdjur = new javax.swing.JTextField();
@@ -68,19 +89,25 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel27 = new javax.swing.JLabel();
         TxNomeFan = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbStatusJur = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rbPessoaFisica = new javax.swing.JRadioButton();
+        rbPessoaJuridica = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        FormattedTxtTelefone1 = new javax.swing.JFormattedTextField();
+        TxtTelefone1 = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        FormattedTxtTelefone = new javax.swing.JFormattedTextField();
+        TxtCelular = new javax.swing.JFormattedTextField();
         jLabel18 = new javax.swing.JLabel();
-        jTextFieldEmail = new javax.swing.JTextField();
+        txEmail = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btSalvar = new javax.swing.JButton();
+        btCancelar = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
+        btNovo = new javax.swing.JButton();
+        btAlterar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(28, 203, 248));
         setClosable(true);
@@ -137,12 +164,12 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel15.setBounds(290, 50, 30, 20);
 
         try {
-            FormattedTxtCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            TxCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(FormattedTxtCEP);
-        FormattedTxtCEP.setBounds(330, 50, 240, 20);
+        jPanel2.add(TxCEP);
+        TxCEP.setBounds(330, 50, 240, 20);
 
         jLabel16.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel16.setText("Estado:");
@@ -191,48 +218,25 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jPFisica.add(jLabel5);
         jLabel5.setBounds(10, 80, 80, 20);
 
-        jComboBoxEstado.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Casado", "Solteiro" }));
-        jPFisica.add(jComboBoxEstado);
-        jComboBoxEstado.setBounds(90, 80, 90, 20);
+        cbEstadoCivil.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        cbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Casado", "Solteiro" }));
+        jPFisica.add(cbEstadoCivil);
+        cbEstadoCivil.setBounds(90, 80, 90, 20);
 
         jLabel6.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel6.setText("Dt de Nasc:");
         jPFisica.add(jLabel6);
         jLabel6.setBounds(200, 110, 70, 20);
 
-        jLabel7.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel7.setText("Estado Civil:");
-        jPFisica.add(jLabel7);
-        jLabel7.setBounds(400, 110, 80, 20);
-
         jLabel10.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel10.setText("Sexo:");
         jPFisica.add(jLabel10);
         jLabel10.setBounds(10, 110, 40, 20);
 
-        jComboBoxSexo.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Masculino", "Feminino" }));
-        jPFisica.add(jComboBoxSexo);
-        jComboBoxSexo.setBounds(50, 110, 130, 20);
-
-        try {
-            TxDATA.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jPFisica.add(TxDATA);
-        TxDATA.setBounds(280, 110, 110, 20);
-
-        jComboBoxEstadoCivil.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jComboBoxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Casado", "Solteiro" }));
-        jComboBoxEstadoCivil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxEstadoCivilActionPerformed(evt);
-            }
-        });
-        jPFisica.add(jComboBoxEstadoCivil);
-        jComboBoxEstadoCivil.setBounds(480, 110, 100, 20);
+        cbSexo.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Masculino", "Feminino" }));
+        jPFisica.add(cbSexo);
+        cbSexo.setBounds(50, 110, 130, 20);
 
         jLabel19.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel19.setText("CPF:");
@@ -242,7 +246,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel20.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel20.setText("RG:");
         jPFisica.add(jLabel20);
-        jLabel20.setBounds(420, 80, 40, 14);
+        jLabel20.setBounds(430, 80, 40, 14);
         jPFisica.add(TxCPF);
         TxCPF.setBounds(280, 80, 110, 20);
         jPFisica.add(TxRG);
@@ -257,11 +261,19 @@ public class Cliente_View extends javax.swing.JInternalFrame {
 
         jLabel29.setText("Status:");
         jPFisica.add(jLabel29);
-        jLabel29.setBounds(430, 20, 40, 14);
+        jLabel29.setBounds(420, 110, 40, 14);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Nao Ativo" }));
-        jPFisica.add(jComboBox2);
-        jComboBox2.setBounds(480, 20, 100, 20);
+        cbStatusFis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Nao Ativo" }));
+        jPFisica.add(cbStatusFis);
+        cbStatusFis.setBounds(480, 110, 100, 20);
+
+        try {
+            txData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPFisica.add(txData);
+        txData.setBounds(280, 110, 110, 20);
 
         jPJuridica.setBackground(new java.awt.Color(28, 203, 248));
         jPJuridica.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pessoa Jurídica", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -306,8 +318,8 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel28.setText("Status:");
         jPJuridica.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, 20));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Nao Ativo" }));
-        jPJuridica.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 140, -1));
+        cbStatusJur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Nao Ativo" }));
+        jPJuridica.add(cbStatusJur, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 140, -1));
 
         jLayeredPane1.setLayer(jPFisica, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jPJuridica, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -344,23 +356,23 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escolha o tipo do Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 14))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
 
-        jRadioButton1.setBackground(new java.awt.Color(28, 203, 248));
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
-        jRadioButton1.setText("Pessoa Fisica");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        rbPessoaFisica.setBackground(new java.awt.Color(28, 203, 248));
+        buttonGroup1.add(rbPessoaFisica);
+        rbPessoaFisica.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
+        rbPessoaFisica.setText("Pessoa Fisica");
+        rbPessoaFisica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rbPessoaFisicaActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setBackground(new java.awt.Color(28, 203, 248));
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
-        jRadioButton2.setText("Pessoa Juridica");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        rbPessoaJuridica.setBackground(new java.awt.Color(28, 203, 248));
+        buttonGroup1.add(rbPessoaJuridica);
+        rbPessoaJuridica.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
+        rbPessoaJuridica.setText("Pessoa Juridica");
+        rbPessoaJuridica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                rbPessoaJuridicaActionPerformed(evt);
             }
         });
 
@@ -370,17 +382,17 @@ public class Cliente_View extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(98, 98, 98)
-                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rbPessoaFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rbPessoaJuridica, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(rbPessoaFisica)
+                    .addComponent(rbPessoaJuridica))
                 .addGap(0, 5, Short.MAX_VALUE))
         );
 
@@ -394,7 +406,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel8.setText("Telefone:");
 
         try {
-            FormattedTxtTelefone1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            TxtTelefone1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -403,13 +415,13 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jLabel9.setText("Celular:");
 
         try {
-            FormattedTxtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            TxtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        FormattedTxtTelefone.addActionListener(new java.awt.event.ActionListener() {
+        TxtCelular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FormattedTxtTelefoneActionPerformed(evt);
+                TxtCelularActionPerformed(evt);
             }
         });
 
@@ -425,15 +437,15 @@ public class Cliente_View extends javax.swing.JInternalFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FormattedTxtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(FormattedTxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextFieldEmail)))
+                        .addComponent(txEmail)))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -441,13 +453,13 @@ public class Cliente_View extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FormattedTxtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FormattedTxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
 
@@ -468,28 +480,121 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 460, 590, 100);
+        jScrollPane1.setBounds(10, 470, 590, 100);
+
+        btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btSalvar);
+        btSalvar.setBounds(610, 120, 73, 30);
+
+        btCancelar.setText("Cancelar");
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btCancelar);
+        btCancelar.setBounds(690, 120, 80, 30);
+
+        btLimpar.setText("Limpar");
+        getContentPane().add(btLimpar);
+        btLimpar.setBounds(610, 170, 70, 30);
+
+        btExcluir.setText("Excluir");
+        getContentPane().add(btExcluir);
+        btExcluir.setBounds(690, 170, 80, 30);
+
+        btNovo.setText("Novo");
+        getContentPane().add(btNovo);
+        btNovo.setBounds(660, 30, 57, 40);
+
+        btAlterar.setText("Alterar");
+        getContentPane().add(btAlterar);
+        btAlterar.setBounds(610, 210, 70, 30);
 
         setBounds(0, 0, 798, 629);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBoxEstadoCivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEstadoCivilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxEstadoCivilActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    public void Limpar()
+    {
+        jPFisica.setVisible(false);
+        jPJuridica.setVisible(false);
+        rbPessoaFisica.setSelected(false);
+        rbPessoaJuridica.setSelected(false);
+        //fisico 
+        TxtID.setText(""); 
+        cbStatusFis.setSelectedItem("Selecionar");  
+        TxtMatricula.setText("");
+        TxNome.setText("");
+        TxtApelido.setText("");
+        cbEstadoCivil.setSelectedItem("Selecionar");
+        TxCPF.setText("");
+        TxRG.setText("");
+        cbSexo.setSelectedItem("Selecionar");
+        //txdate.setToolTipText("");
+        //juridico
+        TxIdjur.setText("");
+        cbStatusJur.setSelectedItem("Selecionar");
+        TxMatriculaJuri.setText("");
+        TxNomeFan.setText("");
+        TxCnpj.setText("");
+        TxRasao.setText("");
+        TxIncricao.setText("");
+        
+        TxtCelular.setText("");
+        txEmail.setText("");
+        TxtBairro.setText("");
+        TxtRua.setText("");
+        TxtNumero.setText("");
+        TxtCidade.setText("");
+        TxCEP.setText("");
+        TxtEstado.setText("");
+        TxtComplemento.setText("");
+        TxtTelefone1.setText("");
+    }
+    public boolean verificaCampo(){
+        if(rbPessoaFisica.isSelected()){
+            if(cbStatusFis.getSelectedItem().equals("Selecione")||
+                TxtMatricula.getText().isEmpty()||TxCPF.getText().isEmpty()||
+                TxRG.getText().isEmpty()||TxNome.getText().isEmpty()||
+                cbSexo.getSelectedItem().equals("Selecionar")|| TxtTelefone1.getText().isEmpty() ||
+                TxtCelular.getText().isEmpty() || txEmail.getText().isEmpty() ||
+                TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() ||
+                TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty())
+            {
+                return false;
+            }else{
+                return true;
+            }
+        }else
+        {
+            if(cbStatusJur.getSelectedItem().equals("Selecione")||TxMatriculaJuri.getText().isEmpty()||
+                TxNomeFan.getText().isEmpty()||TxRasao.getText().isEmpty()||TxCnpj.getText().isEmpty()||
+                TxIncricao.getText().isEmpty()|| TxtTelefone1.getText().isEmpty()||TxtCelular.getText().isEmpty()|| 
+                txEmail.getText().isEmpty() ||TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() ||
+                TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty()){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+    private void rbPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPessoaFisicaActionPerformed
         jPFisica.setVisible(true);
         jPJuridica.setVisible(false);
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rbPessoaFisicaActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void rbPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPessoaJuridicaActionPerformed
         jPFisica.setVisible(false);
         jPJuridica.setVisible(true);
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_rbPessoaJuridicaActionPerformed
 
-    private void FormattedTxtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormattedTxtTelefoneActionPerformed
+    private void TxtCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCelularActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FormattedTxtTelefoneActionPerformed
+    }//GEN-LAST:event_TxtCelularActionPerformed
 
     private void TxIdjurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxIdjurActionPerformed
         // TODO add your handling code here:
@@ -499,14 +604,88 @@ public class Cliente_View extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtBairroActionPerformed
 
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+      boolean a = verificaCampo();
+      if(a){
+          if(rbPessoaFisica.isSelected()){
+             fis= new ClienteFisico();
+             fis.setStatus((String) cbStatusFis.getSelectedItem());
+             fis.setMatricula(TxtMatricula.getText());
+             fis.setNome(TxNome.getText());
+             fis.setApelido(TxtApelido.getText());
+             fis.setEstadoCivil((String) cbEstadoCivil.getSelectedItem());
+             fis.setCPF(TxCPF.getText());
+             fis.setRG(TxRG.getText());
+             fis.setSexo((String) cbSexo.getSelectedItem());
+              try {
+                  fis.setDtNasc(sdf.parse(txData.getText()));
+              } catch (ParseException ex) {
+                  Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+              }
+     
+                fis.setTelefone(TxtTelefone1.getText());
+                fis.setCelular(TxtCelular.getText());
+                fis.setEmail(txEmail.getText());
+                fis.setBairro(TxtBairro.getText());
+                fis.setRua(TxtRua.getText());
+                fis.setNumero(TxtNumero.getText());
+                fis.setCidade(TxtCidade.getText());
+                fis.setCep(TxCEP.getText());
+                fis.setEstado(TxtEstado.getText());
+                fis.setComplemento(TxtComplemento.getText());
+                
+              try {
+                  fis_dao.salvar(fis);
+                  JOptionPane.showMessageDialog(null, "Salvo!");
+              } catch (SQLException ex) {
+                  Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+              }
+            }
+            if(rbPessoaJuridica.isSelected()){
+             jur = new ClienteJuridico();
+             jur.setStatus((String) cbStatusJur.getSelectedItem());
+             jur.setMatricula(TxMatriculaJuri.getText());
+             jur.setNomeFantazia(TxNomeFan.getText());
+             jur.setCNPJ(TxCnpj.getText());
+             jur.setRasaoSocil(TxRasao.getText());
+             jur.setInscricao(TxIncricao.getText());
+             
+              jur.setTelefone(TxtTelefone1.getText());
+              jur.setCelular(TxtCelular.getText());
+              jur.setEmail(txEmail.getText());
+              jur.setBairro(TxtBairro.getText());
+              jur.setRua(TxtRua.getText());
+              jur.setNumero(TxtNumero.getText());
+              jur.setCidade(TxtCidade.getText());
+              jur.setCep(TxCEP.getText());
+              jur.setEstado(TxtEstado.getText());
+              jur.setComplemento(TxtComplemento.getText());
+              
+              try {
+                  jur_dao.salvar(jur);
+                  JOptionPane.showMessageDialog(null, "Salvo!");
+              } catch (SQLException ex) {
+                  Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+              }
+          }
+          else{
+              JOptionPane.showMessageDialog(null,"Escolha uma pessoa");
+                System.out.println(rbPessoaFisica.getFocusTraversalKeysEnabled());
+          }
+          
+      }else
+           JOptionPane.showMessageDialog(null,"A campos a serem preenchidos");
+    }//GEN-LAST:event_btSalvarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField FormattedTxtCEP;
-    private javax.swing.JFormattedTextField FormattedTxtTelefone;
-    private javax.swing.JFormattedTextField FormattedTxtTelefone1;
+    private javax.swing.JFormattedTextField TxCEP;
     private javax.swing.JTextField TxCPF;
     private javax.swing.JTextField TxCnpj;
-    private javax.swing.JFormattedTextField TxDATA;
     private javax.swing.JTextField TxIdjur;
     private javax.swing.JTextField TxIncricao;
     private javax.swing.JTextField TxMatriculaJuri;
@@ -516,6 +695,7 @@ public class Cliente_View extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxRasao;
     private javax.swing.JTextField TxtApelido;
     private javax.swing.JTextField TxtBairro;
+    private javax.swing.JFormattedTextField TxtCelular;
     private javax.swing.JTextField TxtCidade;
     private javax.swing.JTextField TxtComplemento;
     private javax.swing.JTextField TxtEstado;
@@ -523,12 +703,18 @@ public class Cliente_View extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxtMatricula;
     private javax.swing.JTextField TxtNumero;
     private javax.swing.JTextField TxtRua;
+    private javax.swing.JFormattedTextField TxtTelefone1;
+    private javax.swing.JButton btAlterar;
+    private javax.swing.JButton btCancelar;
+    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btNovo;
+    private javax.swing.JButton btSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBoxEstado;
-    private javax.swing.JComboBox<String> jComboBoxEstadoCivil;
-    private javax.swing.JComboBox<String> jComboBoxSexo;
+    private javax.swing.JComboBox<String> cbEstadoCivil;
+    private javax.swing.JComboBox<String> cbSexo;
+    private javax.swing.JComboBox<String> cbStatusFis;
+    private javax.swing.JComboBox<String> cbStatusJur;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -555,7 +741,6 @@ public class Cliente_View extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
@@ -564,11 +749,12 @@ public class Cliente_View extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JRadioButton rbPessoaFisica;
+    private javax.swing.JRadioButton rbPessoaJuridica;
+    private javax.swing.JFormattedTextField txData;
+    private javax.swing.JTextField txEmail;
     // End of variables declaration//GEN-END:variables
 
 }
