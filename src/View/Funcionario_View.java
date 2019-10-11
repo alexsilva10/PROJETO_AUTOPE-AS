@@ -845,11 +845,13 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setSalarioatual(TxtSalarioatual.getText());
                                 funcionario.setCargo(String.valueOf(TxtCargo.getSelectedItem()));
                                 funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
-                                try {
+
+                                    try {
                                         funci_Dao.salvar(funcionario);
                                     } catch (SQLException ex) {
-                                    Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+                                        Logger.getLogger(Funcionario_View.class.getName()).log(Level.SEVERE, null, ex);
                                     }
+                              
                                 
                                     JOptionPane.showMessageDialog(null, "Gravado com Sucesso");
                                     atualizarTabela();

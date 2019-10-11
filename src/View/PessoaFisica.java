@@ -102,6 +102,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         Tabela_Funcionario = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(113, 207, 231));
+        setClosable(true);
 
         jPFisica.setBackground(new java.awt.Color(28, 203, 248));
         jPFisica.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pessoa Física", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -623,11 +624,13 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
                     fis.setCPF(TxCPF.getText());
                     fis.setRG(TxRG.getText());
                     fis.setSexo((String) cbSexo.getSelectedItem());
+                    
                     try {
                         fis.setDtNasc(sdf.parse(txData.getText()));
                     } catch (ParseException ex) {
-                        Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(PessoaFisica.class.getName()).log(Level.SEVERE, null, ex);
                     }
+
 
                     fis.setTelefone(TxtTelefone1.getText());
                     fis.setCelular(TxtCelular.getText());
@@ -642,15 +645,17 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
                     int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Alterar os Dados!");
                     if( i == 0 )
                     {
+
                         try {
                             fis_dao.alterar(fis);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(PessoaFisica.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                             Limpar();
                             iniciar();
                             atualizarTabela();
                             JOptionPane.showMessageDialog(null, "Salvo!");
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+
                     }
         }
     }//GEN-LAST:event_btAlterarActionPerformed
@@ -666,11 +671,13 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         fis = new ClienteFisico();
         jPFisica.setVisible(true);
 
+
         try {
             fis = fis_dao.buscaFicicaID(Integer.parseInt(ID));
         } catch (SQLException ex) {
-            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PessoaFisica.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         if(fis == null)
         {
             JOptionPane.showMessageDialog(null, "Cliente não encontrado");

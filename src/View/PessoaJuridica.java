@@ -76,6 +76,7 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
         btPesquisarid1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(113, 207, 231));
+        setClosable(true);
 
         jPanel2.setBackground(new java.awt.Color(28, 203, 248));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -486,15 +487,17 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
                     jur.setEstado(TxtEstado.getText());
                     jur.setComplemento(TxtComplemento.getText());
 
-                    try {
-                        jur_dao.salvar(jur);
+
+            try {
+                jur_dao.salvar(jur);
+            } catch (SQLException ex) {
+                Logger.getLogger(PessoaJuridica.class.getName()).log(Level.SEVERE, null, ex);
+            }
                         Limpar();
                         iniciar();
                         atualizarTabela();
                         JOptionPane.showMessageDialog(null, "Salvo!");
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+
                 }else{
                     JOptionPane.showMessageDialog(null, "a campos a serem preenchidos");
                 }
@@ -556,15 +559,17 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
                 int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Alterar os Dados!");
                 if( i == 0 )
                 {
+
                     try {
                         jur_dao.alterar(jur);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PessoaJuridica.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                         iniciar();
                         Limpar();
                         atualizarTabela();
                         JOptionPane.showMessageDialog(null, "Salvo!");
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+
                 }
                 }else{
                 JOptionPane.showMessageDialog(null, "a campos a serem preenchidos");
@@ -631,11 +636,13 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
 
         String ID = JOptionPane.showInputDialog("Digite o ID do Cliente Juridico: ");
         jur = new ClienteJuridico();
+        
         try {
             jur = jur_dao.buscaJuridicaID(Integer.parseInt(ID));
         } catch (SQLException ex) {
-            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PessoaJuridica.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         if(jur == null)
         {
             JOptionPane.showMessageDialog(null, "Cliente não encontrado");

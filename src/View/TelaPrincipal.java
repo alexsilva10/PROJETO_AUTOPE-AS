@@ -23,9 +23,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
-       JpVenda.setVisible(false);
-       JpHistorico.setVisible(false);
-       JpPedidos.setVisible(false);
+
     }
 
     /**
@@ -45,12 +43,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jButtonPedido = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        JpVenda = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        JpHistorico = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        JpPedidos = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -113,70 +105,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Venda");
-
-        javax.swing.GroupLayout JpVendaLayout = new javax.swing.GroupLayout(JpVenda);
-        JpVenda.setLayout(JpVendaLayout);
-        JpVendaLayout.setHorizontalGroup(
-            JpVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JpVendaLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
-        );
-        JpVendaLayout.setVerticalGroup(
-            JpVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JpVendaLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(520, Short.MAX_VALUE))
-        );
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("Historico");
-
-        javax.swing.GroupLayout JpHistoricoLayout = new javax.swing.GroupLayout(JpHistorico);
-        JpHistorico.setLayout(JpHistoricoLayout);
-        JpHistoricoLayout.setHorizontalGroup(
-            JpHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JpHistoricoLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
-        );
-        JpHistoricoLayout.setVerticalGroup(
-            JpHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JpHistoricoLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(438, Short.MAX_VALUE))
-        );
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel3.setText("Pedidos");
-
-        javax.swing.GroupLayout JpPedidosLayout = new javax.swing.GroupLayout(JpPedidos);
-        JpPedidos.setLayout(JpPedidosLayout);
-        JpPedidosLayout.setHorizontalGroup(
-            JpPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
-            .addGroup(JpPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpPedidosLayout.createSequentialGroup()
-                    .addContainerGap(200, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(113, Short.MAX_VALUE)))
-        );
-        JpPedidosLayout.setVerticalGroup(
-            JpPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
-            .addGroup(JpPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpPedidosLayout.createSequentialGroup()
-                    .addContainerGap(264, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(314, Short.MAX_VALUE)))
-        );
-
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
@@ -188,29 +116,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 642, Short.MAX_VALUE)
         );
 
-        jLayeredPane1.setLayer(JpVenda, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(JpHistorico, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(JpPedidos, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jDesktopPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(JpVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(JpHistorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(JpPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGap(0, 464, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -219,20 +131,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(JpVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(JpHistorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(JpPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGap(0, 664, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -319,28 +218,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
     Fun= new Funcionario_View();
     }
     jDesktopPane1.add(Fun);
-    JpVenda.setVisible(false);
-    JpHistorico.setVisible(false);
-    JpPedidos.setVisible(false);
+
     Fun.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButtonVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendaActionPerformed
-       JpVenda.setVisible(true);
-       JpHistorico.setVisible(false);
-       JpPedidos.setVisible(false);
+
     }//GEN-LAST:event_jButtonVendaActionPerformed
 
     private void jButtonHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHistoricoActionPerformed
-       JpVenda.setVisible(false);
-       JpHistorico.setVisible(true);
-       JpPedidos.setVisible(false);
+
     }//GEN-LAST:event_jButtonHistoricoActionPerformed
 
     private void jButtonPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPedidoActionPerformed
-       JpVenda.setVisible(false);
-       JpHistorico.setVisible(false);
-       JpPedidos.setVisible(true);
+
     }//GEN-LAST:event_jButtonPedidoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -348,9 +239,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         fisica = new PessoaFisica();
         }
         jDesktopPane1.add(fisica);
-        JpVenda.setVisible(false);
-        JpHistorico.setVisible(false);
-        JpPedidos.setVisible(false);
+
         fisica.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -360,9 +249,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         juridica = new PessoaJuridica();
         }
         jDesktopPane1.add(juridica);
-        JpVenda.setVisible(false);
-        JpHistorico.setVisible(false);
-        JpPedidos.setVisible(false);
+
         juridica.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -379,17 +266,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel JpHistorico;
-    private javax.swing.JPanel JpPedidos;
-    private javax.swing.JPanel JpVenda;
     private javax.swing.JPanel back;
     private javax.swing.JButton jButtonHistorico;
     private javax.swing.JButton jButtonPedido;
     private javax.swing.JButton jButtonVenda;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
