@@ -137,10 +137,10 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         setTitle("Cadastro de Funcionário");
         getContentPane().setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(82, 203, 248));
+        jPanel2.setBackground(new java.awt.Color(0, 149, 255));
         jPanel2.setLayout(null);
 
-        jPanel3.setBackground(new java.awt.Color(82, 203, 248));
+        jPanel3.setBackground(new java.awt.Color(0, 149, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Pessoais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
         jPanel3.setLayout(null);
 
@@ -245,7 +245,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel2.add(jPanel3);
         jPanel3.setBounds(10, 40, 710, 140);
 
-        jPanel4.setBackground(new java.awt.Color(28, 203, 248));
+        jPanel4.setBackground(new java.awt.Color(0, 149, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
         jPanel4.setLayout(null);
 
@@ -316,7 +316,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel2.add(jPanel4);
         jPanel4.setBounds(10, 190, 710, 150);
 
-        jPanel5.setBackground(new java.awt.Color(28, 203, 248));
+        jPanel5.setBackground(new java.awt.Color(0, 149, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Profissionais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
         jPanel5.setLayout(null);
 
@@ -424,7 +424,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel2.add(Btn_Novo);
         Btn_Novo.setBounds(910, 30, 110, 40);
 
-        jPanel6.setBackground(new java.awt.Color(82, 203, 246));
+        jPanel6.setBackground(new java.awt.Color(0, 149, 255));
 
         Btn_Alterar.setText("Alterar");
         Btn_Alterar.addActionListener(new java.awt.event.ActionListener() {
