@@ -5,12 +5,15 @@
  */
 package View;
 
+import Dao.Cargo_Dao;
 import Dao.Funcionario_Dao;
+import Model.Cargo_Model;
 import Model.Funcionario_Model;
 import Util.ValidaCPF;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +30,8 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
     Funcionario_Model funcionario;
     Funcionario_Dao funci_Dao;
+    Cargo_Dao cargo_Dao;
+    List<Cargo_Model> cargo;
     
     List<Funcionario_Model> funcionarios;
     DefaultTableModel modelo = new DefaultTableModel();
@@ -37,6 +42,8 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     
     public Funcionario_View() {
         funci_Dao = new Funcionario_Dao();
+        cargo_Dao = new Cargo_Dao();
+        cargo = new ArrayList<>();
          
         initComponents();
         this.setVisible(true);
@@ -45,6 +52,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         
         Campos_Botão(true, false, false, false, false,true,false);
         atualizarTabela();
+        preencheComboCargo();
     }
 
     /**
@@ -388,7 +396,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtStatus.setBounds(560, 80, 140, 20);
 
         TxtCargo.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        TxtCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Gerente", "Administrador", "Operador", " " }));
         jPanel5.add(TxtCargo);
         TxtCargo.setBounds(300, 80, 140, 20);
 
@@ -534,7 +541,18 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
 
         setBounds(0, 0, 1058, 647);
     }// </editor-fold>//GEN-END:initComponents
-
+    public void preencheComboCargo(){
+        try {
+            cargo = cargo_Dao.todosCargos();
+        } catch (SQLException ex) {
+            Logger.getLogger(Funcionario_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        for (Cargo_Model cargo : cargo){
+            TxtCargo.addItem(cargo.getNomecargo());
+        }
+    }
+    
     public void Limpar()
     {
         TxtID.setText(""); 
@@ -560,7 +578,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtSalarioadmissao.setText("");
         TxtDatademissao.setText("");
         TxtSalarioatual.setText("");
-        TxtCargo.setSelectedItem("Selecionar");
+        TxtCargo.setSelectedItem("");
         TxtStatus.setSelectedItem("Selecionar");  
     }
  public void Campos(boolean Id, boolean Mat, boolean Nom, boolean Estc, boolean Dtnasc, boolean Sex, boolean Cpf, boolean Tel, boolean Cel, boolean Emai,boolean Bair, boolean Rua, boolean Num,
@@ -682,7 +700,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
              if (TxtMatricula.getText().isEmpty() || TxtNome.getText().isEmpty() || TxtEstadocivil.getSelectedItem().equals("Selecionar") || TxtDatanascimento.getText().isEmpty() || TxtSexo.getSelectedItem().equals("Selecionar") || TxtCPF.getText().isEmpty() ||
                      TxtTelefone.getText().isEmpty() || TxtCelular.getText().isEmpty() || TxtEmail.getText().isEmpty() || TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() || TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty() ||
                      TxtCep.getText().isEmpty() || TxtEstado.getSelectedItem().equals("Selecionar")|| TxtComplemento.getText().isEmpty() || TxtEscolaridade.getSelectedItem().equals("Selecionar") ||  TxtRG.getText().isEmpty() || TxtDataadmissao.getText().isEmpty() ||
-                     TxtSalarioadmissao.getText().isEmpty() || TxtDatademissao.getText().isEmpty() || TxtSalarioatual.getText().isEmpty() || TxtCargo.getSelectedItem().equals("Selecionar") || TxtStatus.getSelectedItem().equals("Selecionar")){
+                     TxtSalarioadmissao.getText().isEmpty() || TxtDatademissao.getText().isEmpty() || TxtSalarioatual.getText().isEmpty() || TxtCargo.getSelectedItem().equals("") || TxtStatus.getSelectedItem().equals("Selecionar")){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos");
             TxtNome.requestFocusInWindow();
                 } 
@@ -729,7 +747,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
                                 funcionario.setDatademissao(sdf.parse(TxtDatademissao.getText()));
                                 funcionario.setSalarioatual(TxtSalarioatual.getText());
-                                funcionario.setCargo(String.valueOf(TxtCargo.getSelectedItem()));
+                                funcionario.setCargo(cargo.get(TxtCargo.getSelectedIndex()));
                                 funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
 
                                 int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Alterar os Dados!");   
@@ -792,7 +810,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
              if (TxtMatricula.getText().isEmpty() || TxtNome.getText().isEmpty() || TxtEstadocivil.getSelectedItem().equals("Selecionar") || TxtDatanascimento.getText().isEmpty() || TxtSexo.getSelectedItem().equals("Selecionar") || TxtCPF.getText().isEmpty() ||
                      TxtTelefone.getText().isEmpty() || TxtCelular.getText().isEmpty() || TxtEmail.getText().isEmpty() || TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() || TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty() ||
                      TxtCep.getText().isEmpty() || TxtEstado.getSelectedItem().equals("Selecionar") || TxtComplemento.getText().isEmpty() || TxtEscolaridade.getSelectedItem().equals("Selecionar") ||  TxtRG.getText().isEmpty() || TxtDataadmissao.getText().isEmpty() ||
-                     TxtSalarioadmissao.getText().isEmpty() || TxtDatademissao.getText().isEmpty() || TxtSalarioatual.getText().isEmpty() || TxtCargo.getSelectedItem().equals("Selecionar") || TxtStatus.getSelectedItem().equals("Selecionar")){
+                     TxtSalarioadmissao.getText().isEmpty() || TxtDatademissao.getText().isEmpty() || TxtSalarioatual.getText().isEmpty() || TxtCargo.getSelectedItem().equals("") || TxtStatus.getSelectedItem().equals("Selecionar")){
                     
                  JOptionPane.showMessageDialog(null, "Preencha todos os campos");
                  TxtNome.requestFocusInWindow();
@@ -843,7 +861,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                 funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
                                 funcionario.setDatademissao(sdf.parse(TxtDatademissao.getText()));
                                 funcionario.setSalarioatual(TxtSalarioatual.getText());
-                                funcionario.setCargo(String.valueOf(TxtCargo.getSelectedItem()));
+                                funcionario.setCargo(cargo.get(TxtCargo.getSelectedIndex()));
                                 funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
 
                                     try {

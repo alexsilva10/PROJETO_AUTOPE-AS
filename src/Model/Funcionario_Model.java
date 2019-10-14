@@ -31,13 +31,13 @@ public class Funcionario_Model {
     private String Salarioadmissao;
     private Date Datademissao;
     private String Salarioatual;
-    private String Cargo;
+    private Cargo_Model Cargo;
     private String Status;
 
     public Funcionario_Model() {
     }
 
-    public Funcionario_Model(int ID, String Matricula, String Nome, String Estadocivil, Date Datanascimento, String Sexo, String CPF, String Telefone, String Celular, String Email, String Bairro, String Rua, int Numero, String Cidade, String Cep, String Estado, String Complemento, String Escolaridade, String RG, Date Dataadmissao, String Salarioadmissao, Date Datademissao, String Salarioatual, String Cargo, String Status) {
+    public Funcionario_Model(int ID, String Matricula, String Nome, String Estadocivil, Date Datanascimento, String Sexo, String CPF, String Telefone, String Celular, String Email, String Bairro, String Rua, int Numero, String Cidade, String Cep, String Estado, String Complemento, String Escolaridade, String RG, Date Dataadmissao, String Salarioadmissao, Date Datademissao, String Salarioatual, Cargo_Model Cargo, String Status) {
         this.ID = ID;
         this.Matricula = Matricula;
         this.Nome = Nome;
@@ -249,11 +249,11 @@ public class Funcionario_Model {
         this.Salarioatual = Salarioatual;
     }
 
-    public String getCargo() {
+    public Cargo_Model getCargo() {
         return Cargo;
     }
 
-    public void setCargo(String Cargo) {
+    public void setCargo(Cargo_Model Cargo) {
         this.Cargo = Cargo;
     }
 
@@ -264,6 +264,36 @@ public class Funcionario_Model {
     public void setStatus(String Status) {
         this.Status = Status;
     }
-  
+
+    public Funcionario_Model(int ID, String Matricula, String Nome, String Estadocivil, Date Datanascimento, String Sexo, String CPF, String Telefone, String Celular, String Email, String Bairro, String Rua, int Numero, String Cidade, String Cep, String Estado, String Complemento, String Escolaridade, String RG, Date Dataadmissao, String Salarioadmissao, Date Datademissao, String Salarioatual, String Status) {
+        this.ID = ID;
+        this.Matricula = Matricula;
+        this.Nome = Nome;
+        this.Estadocivil = Estadocivil;
+        this.Datanascimento = Datanascimento;
+        this.Sexo = Sexo;
+        this.CPF = CPF;
+        this.Telefone = Telefone;
+        this.Celular = Celular;
+        this.Email = Email;
+        this.Bairro = Bairro;
+        this.Rua = Rua;
+        this.Numero = Numero;
+        this.Cidade = Cidade;
+        this.Cep = Cep;
+        this.Estado = Estado;
+        this.Complemento = Complemento;
+        this.Escolaridade = Escolaridade;
+        this.RG = RG;
+        this.Dataadmissao = Dataadmissao;
+        this.Salarioadmissao = Salarioadmissao;
+        this.Datademissao = Datademissao;
+        this.Salarioatual = Salarioatual;
+        this.Status = Status;
+    }
+
     
+    
+
+   
 }
