@@ -19,6 +19,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
    Funcionario_View Fun ;
    PessoaFisica fisica ;
    PessoaJuridica juridica;
+   View_Fornecedores fornecedor;
+   View_Categoria cadegoria;
     
     public TelaPrincipal() {
         initComponents();
@@ -47,8 +49,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -159,11 +163,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(51, 204, 255));
         jMenuBar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(92, 195, 234), 1, true));
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/medico.png"))); // NOI18N
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_add_32px_1.png"))); // NOI18N
         jMenu1.setText("Cadastro");
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seguidor.png"))); // NOI18N
-        jMenuItem1.setText("Cliente");
+        jMenuItem1.setText("Cliente Pes.Fisica");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -171,7 +175,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/o-negocio (1).png"))); // NOI18N
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_businesswoman_32px_1.png"))); // NOI18N
+        jMenuItem3.setText("Cliente Pes.Juridica");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_add_user_group_man_woman_32px.png"))); // NOI18N
+        jMenuItem4.setText("Fornecedor");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_add_administrator_32px.png"))); // NOI18N
         jMenuItem2.setText("Funcionario");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,17 +202,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setText("Pessoa Juritica");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_add_to_collection_32px.png"))); // NOI18N
+        jMenuItem5.setText("Categoria do Produto");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/001-estoque.png"))); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_accounting_32px.png"))); // NOI18N
         jMenu2.setText("Estoque");
         jMenuBar1.add(jMenu2);
 
@@ -253,6 +276,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         juridica.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        if(fornecedor==null){
+        fornecedor = new View_Fornecedores();
+        }
+        fornecedor.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+              if(cadegoria==null){
+         cadegoria = new View_Categoria();
+        }
+         cadegoria.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -278,6 +315,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
