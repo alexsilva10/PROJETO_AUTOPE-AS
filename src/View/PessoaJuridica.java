@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class PessoaJuridica extends javax.swing.JInternalFrame {
@@ -39,9 +41,9 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         TxCEP = new javax.swing.JFormattedTextField();
         jLabel16 = new javax.swing.JLabel();
-        TxtEstado = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         TxtComplemento = new javax.swing.JTextField();
+        TxtEstado = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         TxtTelefone1 = new javax.swing.JFormattedTextField();
@@ -93,33 +95,33 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(TxtBairro);
-        TxtBairro.setBounds(70, 20, 210, 20);
+        TxtBairro.setBounds(70, 20, 260, 20);
 
         jLabel12.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel12.setText("Rua:");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(290, 20, 30, 20);
+        jLabel12.setBounds(340, 20, 30, 20);
         jPanel2.add(TxtRua);
-        TxtRua.setBounds(330, 20, 240, 20);
+        TxtRua.setBounds(380, 20, 380, 20);
 
         jLabel13.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel13.setText("Número:");
         jPanel2.add(jLabel13);
-        jLabel13.setBounds(10, 50, 50, 20);
+        jLabel13.setBounds(810, 20, 50, 20);
         jPanel2.add(TxtNumero);
-        TxtNumero.setBounds(69, 50, 60, 20);
+        TxtNumero.setBounds(870, 20, 110, 20);
 
         jLabel14.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel14.setText("Cidade:");
         jPanel2.add(jLabel14);
-        jLabel14.setBounds(140, 50, 50, 20);
+        jLabel14.setBounds(10, 50, 50, 20);
         jPanel2.add(TxtCidade);
-        TxtCidade.setBounds(190, 50, 90, 20);
+        TxtCidade.setBounds(70, 50, 160, 20);
 
         jLabel15.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel15.setText("CEP:");
         jPanel2.add(jLabel15);
-        jLabel15.setBounds(290, 50, 30, 20);
+        jLabel15.setBounds(520, 50, 30, 20);
 
         try {
             TxCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
@@ -127,21 +129,23 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel2.add(TxCEP);
-        TxCEP.setBounds(330, 50, 240, 20);
+        TxCEP.setBounds(560, 50, 120, 20);
 
         jLabel16.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel16.setText("Estado:");
         jPanel2.add(jLabel16);
-        jLabel16.setBounds(10, 80, 50, 20);
-        jPanel2.add(TxtEstado);
-        TxtEstado.setBounds(70, 80, 150, 20);
+        jLabel16.setBounds(250, 50, 50, 20);
 
         jLabel17.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel17.setText("Complemento:");
         jPanel2.add(jLabel17);
-        jLabel17.setBounds(230, 80, 90, 20);
+        jLabel17.setBounds(710, 50, 90, 20);
         jPanel2.add(TxtComplemento);
-        TxtComplemento.setBounds(330, 80, 240, 20);
+        TxtComplemento.setBounds(800, 50, 180, 20);
+
+        TxtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        jPanel2.add(TxtEstado);
+        TxtEstado.setBounds(310, 50, 190, 20);
 
         jPanel3.setBackground(new java.awt.Color(28, 203, 248));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contato", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -177,20 +181,18 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(txEmail)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TxtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,12 +201,10 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TxtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 10, Short.MAX_VALUE))
+                    .addComponent(TxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btSalvar.setText("Salvar");
@@ -251,15 +251,20 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
 
         Tabela_Funcionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Matricula", "Nome Fantazia", "Telefone", "Email"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         Tabela_Funcionario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Tabela_FuncionarioMouseClicked(evt);
@@ -273,7 +278,7 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
 
         jLabel22.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel22.setText("ID:");
-        jPJuridica.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 19, 18, -1));
+        jPJuridica.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 19, 18, 20));
 
         TxIdjur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,35 +288,35 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
         jPJuridica.add(TxIdjur, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 68, -1));
 
         jLabel23.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel23.setText("Rasão Social");
-        jPJuridica.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 57, -1, -1));
-        jPJuridica.add(TxRasao, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 54, 99, -1));
-        jPJuridica.add(TxCnpj, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 70, -1));
+        jLabel23.setText("Rasão Social:");
+        jPJuridica.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, 20));
+        jPJuridica.add(TxRasao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 200, -1));
+        jPJuridica.add(TxCnpj, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 140, -1));
 
         jLabel24.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel24.setText("CNPJ:");
-        jPJuridica.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 57, 40, -1));
+        jPJuridica.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 40, 20));
 
         jLabel25.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel25.setText("Matricula:");
-        jPJuridica.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 19, 60, -1));
+        jPJuridica.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 19, 60, 20));
         jPJuridica.add(TxMatriculaJuri, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 99, -1));
-        jPJuridica.add(TxIncricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 143, -1));
+        jPJuridica.add(TxIncricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 340, -1));
 
         jLabel26.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel26.setText("Incrição Estadual:");
-        jPJuridica.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 100, -1));
+        jPJuridica.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 100, 20));
 
         jLabel27.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel27.setText("Nome Fantazia:");
-        jPJuridica.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 90, -1));
-        jPJuridica.add(TxNomeFan, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 144, -1));
+        jPJuridica.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 90, 20));
+        jPJuridica.add(TxNomeFan, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 340, -1));
 
         jLabel28.setText("Status:");
-        jPJuridica.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, 20));
+        jPJuridica.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, -1, 20));
 
         cbStatusJur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Nao Ativo" }));
-        jPJuridica.add(cbStatusJur, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 140, -1));
+        jPJuridica.add(cbStatusJur, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 60, 140, -1));
 
         jLabel31.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jLabel31.setText("Pessoa Juritica ID");
@@ -328,62 +333,56 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(69, 69, 69)
-                                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPJuridica, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                        .addGap(12, 12, 12)
                         .addComponent(jLabel31)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btPesquisarid1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPJuridica, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(36, 36, 36)
+                            .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jPJuridica, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel31)
-                            .addComponent(btPesquisarid1))))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(btPesquisarid1))
+                .addGap(13, 13, 13)
+                .addComponent(jPJuridica, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -442,7 +441,7 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
         TxtNumero.setText("");
         TxtCidade.setText("");
         TxCEP.setText("");
-        TxtEstado.setText("");
+        TxtEstado.setSelectedIndex(0);
         TxtComplemento.setText("");
         TxtTelefone1.setText("");
     }
@@ -484,7 +483,7 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
                     jur.setNumero(TxtNumero.getText());
                     jur.setCidade(TxtCidade.getText());
                     jur.setCep(TxCEP.getText());
-                    jur.setEstado(TxtEstado.getText());
+                    jur.setEstado((String) TxtEstado.getSelectedItem());
                     jur.setComplemento(TxtComplemento.getText());
 
 
@@ -554,7 +553,7 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
                 jur.setNumero(TxtNumero.getText());
                 jur.setCidade(TxtCidade.getText());
                 jur.setCep(TxCEP.getText());
-                jur.setEstado(TxtEstado.getText());
+                jur.setEstado((String) TxtEstado.getSelectedItem());
                 jur.setComplemento(TxtComplemento.getText());
                 int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Alterar os Dados!");
                 if( i == 0 )
@@ -599,14 +598,38 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
             TxtNumero.setText(jur.getNumero());
             TxtCidade.setText(jur.getCidade());
             TxCEP.setText(jur.getCep());
-            TxtEstado.setText(jur.getEstado());
+            TxtEstado.setSelectedItem(jur.getEstado());
             TxtComplemento.setText(jur.getComplemento());
       
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_Tabela_FuncionarioMouseClicked
-   public void atualizarTabela(){
+   
+                 //---------------------Fomataçao das tabelas--------------------------
+    String tituloColuna[] = {"ID", "Matricula", "Nome Fantazia", "Celular", "Email"};
+    public void modeloDATabela(String[][] a){
+            modelo.setDataVector(a, tituloColuna);
+            Tabela_Funcionario.setModel(new DefaultTableModel(a,tituloColuna){
+            boolean[] canEdit = new boolean[]{
+                false,false,false,false,false
+            };
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return canEdit[columnIndex];
+            }
+            });
+            Tabela_Funcionario.getColumnModel().getColumn(0).setPreferredWidth(30);
+            Tabela_Funcionario.getColumnModel().getColumn(1).setPreferredWidth(70);
+            Tabela_Funcionario.getColumnModel().getColumn(2).setPreferredWidth(200);
+            Tabela_Funcionario.getColumnModel().getColumn(3).setPreferredWidth(100);
+            Tabela_Funcionario.getColumnModel().getColumn(4).setPreferredWidth(100);
+            DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+            centralizado.setHorizontalAlignment(SwingConstants.CENTER);            
+            Tabela_Funcionario.getColumnModel().getColumn(0).setCellRenderer(centralizado);            
+            Tabela_Funcionario.setRowHeight(25);               
+    } 
+    
+    public void atualizarTabela(){
         jur = new ClienteJuridico();
         try {
             juridicos = jur_dao.todosJuridica();
@@ -620,9 +643,6 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
                 dados[i][4] = u.getEmail(); 
                 i++;
             }
-            String tituloColuna[] = {"ID", "Matricula", "Nome Fantazia", "Celular", "Email"};
-            modelo.setDataVector(dados, tituloColuna);
-            Tabela_Funcionario.setModel(modelo);
             Tabela_Funcionario.updateUI();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -664,7 +684,7 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
         TxtNumero.setText(jur.getNumero());
         TxtCidade.setText(jur.getCidade());
         TxCEP.setText(jur.getCep());
-        TxtEstado.setText(jur.getEstado());
+        TxtEstado.setSelectedItem(jur.getEstado());
         TxtComplemento.setText(jur.getComplemento());
     }//GEN-LAST:event_btPesquisarid1ActionPerformed
 
@@ -688,7 +708,7 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField TxtCelular;
     private javax.swing.JTextField TxtCidade;
     private javax.swing.JTextField TxtComplemento;
-    private javax.swing.JTextField TxtEstado;
+    private javax.swing.JComboBox<String> TxtEstado;
     private javax.swing.JTextField TxtNumero;
     private javax.swing.JTextField TxtRua;
     private javax.swing.JFormattedTextField TxtTelefone1;

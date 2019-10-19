@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -80,9 +82,9 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         TxCEP = new javax.swing.JFormattedTextField();
         jLabel16 = new javax.swing.JLabel();
-        TxtEstado = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         TxtComplemento = new javax.swing.JTextField();
+        TxtEstado = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         TxtTelefone1 = new javax.swing.JFormattedTextField();
@@ -103,6 +105,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(113, 207, 231));
         setClosable(true);
+        setTitle("Pessoa Fisica");
 
         jPFisica.setBackground(new java.awt.Color(28, 203, 248));
         jPFisica.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pessoa Física", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -113,75 +116,75 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         jPFisica.add(jLabel2);
         jLabel2.setBounds(10, 20, 30, 20);
         jPFisica.add(TxtID);
-        TxtID.setBounds(50, 20, 40, 20);
+        TxtID.setBounds(30, 20, 40, 20);
 
         jLabel3.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel3.setText("Matrícula:");
         jPFisica.add(jLabel3);
-        jLabel3.setBounds(210, 20, 60, 20);
+        jLabel3.setBounds(90, 20, 60, 20);
         jPFisica.add(TxtMatricula);
-        TxtMatricula.setBounds(280, 20, 110, 20);
+        TxtMatricula.setBounds(150, 20, 110, 20);
 
         jLabel4.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel4.setText("Apelido:");
         jPFisica.add(jLabel4);
-        jLabel4.setBounds(410, 50, 50, 20);
+        jLabel4.setBounds(640, 20, 50, 20);
         jPFisica.add(TxtApelido);
-        TxtApelido.setBounds(480, 50, 100, 20);
+        TxtApelido.setBounds(690, 20, 140, 20);
 
         jLabel5.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel5.setText("Estado Civil:");
         jPFisica.add(jLabel5);
-        jLabel5.setBounds(10, 80, 80, 20);
+        jLabel5.setBounds(10, 60, 80, 20);
 
         cbEstadoCivil.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         cbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Casado", "Solteiro" }));
         jPFisica.add(cbEstadoCivil);
-        cbEstadoCivil.setBounds(90, 80, 90, 20);
+        cbEstadoCivil.setBounds(90, 60, 170, 20);
 
         jLabel6.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel6.setText("Dt de Nasc:");
         jPFisica.add(jLabel6);
-        jLabel6.setBounds(200, 110, 70, 20);
+        jLabel6.setBounds(840, 20, 70, 20);
 
         jLabel10.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel10.setText("Sexo:");
         jPFisica.add(jLabel10);
-        jLabel10.setBounds(10, 110, 40, 20);
+        jLabel10.setBounds(650, 60, 40, 20);
 
         cbSexo.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Masculino", "Feminino" }));
         jPFisica.add(cbSexo);
-        cbSexo.setBounds(50, 110, 130, 20);
+        cbSexo.setBounds(690, 60, 140, 20);
 
         jLabel19.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel19.setText("CPF:");
         jPFisica.add(jLabel19);
-        jLabel19.setBounds(230, 80, 30, 14);
+        jLabel19.setBounds(270, 60, 30, 14);
 
         jLabel20.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel20.setText("RG:");
         jPFisica.add(jLabel20);
-        jLabel20.setBounds(430, 80, 40, 14);
+        jLabel20.setBounds(470, 60, 30, 20);
         jPFisica.add(TxCPF);
-        TxCPF.setBounds(280, 80, 110, 20);
+        TxCPF.setBounds(310, 60, 150, 20);
         jPFisica.add(TxRG);
-        TxRG.setBounds(480, 80, 100, 20);
+        TxRG.setBounds(500, 60, 130, 20);
 
         jLabel21.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel21.setText("Nome:");
         jPFisica.add(jLabel21);
-        jLabel21.setBounds(10, 50, 40, 14);
+        jLabel21.setBounds(270, 20, 40, 20);
         jPFisica.add(TxNome);
-        TxNome.setBounds(50, 50, 340, 20);
+        TxNome.setBounds(310, 20, 320, 20);
 
         jLabel29.setText("Status:");
         jPFisica.add(jLabel29);
-        jLabel29.setBounds(420, 110, 40, 14);
+        jLabel29.setBounds(840, 60, 40, 14);
 
         cbStatusFis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Nao Ativo" }));
         jPFisica.add(cbStatusFis);
-        cbStatusFis.setBounds(480, 110, 100, 20);
+        cbStatusFis.setBounds(910, 60, 90, 20);
 
         try {
             txData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -189,7 +192,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPFisica.add(txData);
-        txData.setBounds(280, 110, 110, 20);
+        txData.setBounds(910, 20, 90, 20);
 
         jPanel2.setBackground(new java.awt.Color(28, 203, 248));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -206,33 +209,33 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(TxtBairro);
-        TxtBairro.setBounds(70, 20, 210, 20);
+        TxtBairro.setBounds(70, 20, 240, 20);
 
         jLabel12.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel12.setText("Rua:");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(290, 20, 30, 20);
+        jLabel12.setBounds(330, 20, 30, 20);
         jPanel2.add(TxtRua);
-        TxtRua.setBounds(330, 20, 240, 20);
+        TxtRua.setBounds(370, 20, 400, 20);
 
         jLabel13.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel13.setText("Número:");
         jPanel2.add(jLabel13);
-        jLabel13.setBounds(10, 50, 50, 20);
+        jLabel13.setBounds(850, 20, 50, 20);
         jPanel2.add(TxtNumero);
-        TxtNumero.setBounds(69, 50, 60, 20);
+        TxtNumero.setBounds(910, 20, 90, 20);
 
         jLabel14.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel14.setText("Cidade:");
         jPanel2.add(jLabel14);
-        jLabel14.setBounds(140, 50, 50, 20);
+        jLabel14.setBounds(10, 50, 50, 20);
         jPanel2.add(TxtCidade);
-        TxtCidade.setBounds(190, 50, 90, 20);
+        TxtCidade.setBounds(70, 50, 240, 20);
 
         jLabel15.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel15.setText("CEP:");
         jPanel2.add(jLabel15);
-        jLabel15.setBounds(290, 50, 30, 20);
+        jLabel15.setBounds(600, 50, 30, 20);
 
         try {
             TxCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
@@ -240,21 +243,23 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel2.add(TxCEP);
-        TxCEP.setBounds(330, 50, 240, 20);
+        TxCEP.setBounds(650, 50, 120, 20);
 
         jLabel16.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel16.setText("Estado:");
         jPanel2.add(jLabel16);
-        jLabel16.setBounds(10, 80, 50, 20);
-        jPanel2.add(TxtEstado);
-        TxtEstado.setBounds(70, 80, 150, 20);
+        jLabel16.setBounds(320, 50, 50, 20);
 
         jLabel17.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel17.setText("Complemento:");
         jPanel2.add(jLabel17);
-        jLabel17.setBounds(230, 80, 90, 20);
+        jLabel17.setBounds(790, 50, 90, 20);
         jPanel2.add(TxtComplemento);
-        TxtComplemento.setBounds(330, 80, 240, 20);
+        TxtComplemento.setBounds(890, 50, 110, 20);
+
+        TxtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        jPanel2.add(TxtEstado);
+        TxtEstado.setBounds(370, 50, 190, 20);
 
         jPanel3.setBackground(new java.awt.Color(28, 203, 248));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contato", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -290,20 +295,18 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(txEmail)))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TxtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel18)
+                .addGap(27, 27, 27)
+                .addComponent(txEmail)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,11 +315,10 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TxtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(TxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btSalvar.setText("Salvar");
@@ -361,6 +363,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Pessoa Fisica ID");
 
         jButtonPesquisarid.setText("Pesquisar");
@@ -372,15 +375,20 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
 
         Tabela_Funcionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Matricula", "Nome", "Telefone", "Email"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         Tabela_Funcionario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Tabela_FuncionarioMouseClicked(evt);
@@ -393,61 +401,56 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94)
-                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPFisica, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(27, 27, 27)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonPesquisarid)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                        .addComponent(jButtonPesquisarid)
+                        .addGap(231, 231, 231))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(108, 108, 108)
+                                .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPFisica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jButtonPesquisarid))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jButtonPesquisarid))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -470,7 +473,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         TxtNumero.setText("");
         TxtCidade.setText("");
         TxCEP.setText("");
-        TxtEstado.setText("");
+        TxtEstado.setSelectedItem(0);
         TxtComplemento.setText("");
         TxtTelefone1.setText("");
     }
@@ -559,7 +562,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
                     fis.setNumero(TxtNumero.getText());
                     fis.setCidade(TxtCidade.getText());
                     fis.setCep(TxCEP.getText());
-                    fis.setEstado(TxtEstado.getText());
+                    fis.setEstado((String) TxtEstado.getSelectedItem());
                     fis.setComplemento(TxtComplemento.getText());
                   try {
                       fis_dao.salvar(fis);
@@ -602,8 +605,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "ERRO!");
                     e.printStackTrace();
                 }
-        }else
-        JOptionPane.showMessageDialog(null,"Escolha o tipo de pessoa");
+        }
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
@@ -640,7 +642,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
                     fis.setNumero(TxtNumero.getText());
                     fis.setCidade(TxtCidade.getText());
                     fis.setCep(TxCEP.getText());
-                    fis.setEstado(TxtEstado.getText());
+                    fis.setEstado((String) TxtEstado.getSelectedItem());
                     fis.setComplemento(TxtComplemento.getText());
                     int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Alterar os Dados!");
                     if( i == 0 )
@@ -671,7 +673,6 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         fis = new ClienteFisico();
         jPFisica.setVisible(true);
 
-
         try {
             fis = fis_dao.buscaFicicaID(Integer.parseInt(ID));
         } catch (SQLException ex) {
@@ -685,9 +686,9 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         Campos(false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true,true, true, true, true);
         Botão(false, true, true, true, false, true, true);
         TxtID.setText(ID);
-        cbStatusFis.setSelectedItem(fis.getStatus());
         TxtMatricula.setText(fis.getMatricula());
         TxNome.setText(fis.getNome());
+        cbStatusFis.setSelectedItem(fis.getStatus());
         TxtApelido.setText(fis.getApelido());
         cbEstadoCivil.setSelectedItem(fis.getEstadoCivil());
         txData.setText(sdf.format(fis.getDtNasc()));
@@ -702,7 +703,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         TxtNumero.setText(fis.getNumero());
         TxtCidade.setText(fis.getCidade());
         TxCEP.setText(fis.getCep());
-        TxtEstado.setText(fis.getEstado());
+        TxtEstado.setSelectedItem(fis.getEstado());
         TxtComplemento.setText(fis.getComplemento());
 
         //user = funcionario.getNome();
@@ -734,14 +735,39 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
             TxtNumero.setText(fis.getNumero());
             TxtCidade.setText(fis.getCidade());
             TxCEP.setText(fis.getCep());
-            TxtEstado.setText(fis.getEstado());
+            TxtEstado.setSelectedItem(fis.getEstado());
             TxtComplemento.setText(fis.getComplemento());
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_Tabela_FuncionarioMouseClicked
-       public void atualizarTabela(){
+             //---------------------Fomataçao das tabelas--------------------------
+    String tituloColuna[] = {"ID", "Matricula", "Nome", "Celular", "Email"};
+    public void modeloDATabela(String[][] a){
+            modelo.setDataVector(a, tituloColuna);
+            Tabela_Funcionario.setModel(new DefaultTableModel(a,tituloColuna){
+            boolean[] canEdit = new boolean[]{
+                false,false,false,false,false
+            };
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return canEdit[columnIndex];
+            }
+            });
+            Tabela_Funcionario.getColumnModel().getColumn(0).setPreferredWidth(30);
+            Tabela_Funcionario.getColumnModel().getColumn(1).setPreferredWidth(70);
+            Tabela_Funcionario.getColumnModel().getColumn(2).setPreferredWidth(200);
+            Tabela_Funcionario.getColumnModel().getColumn(3).setPreferredWidth(100);
+            Tabela_Funcionario.getColumnModel().getColumn(4).setPreferredWidth(100);
+            DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+            centralizado.setHorizontalAlignment(SwingConstants.CENTER);            
+            Tabela_Funcionario.getColumnModel().getColumn(0).setCellRenderer(centralizado);            
+            Tabela_Funcionario.setRowHeight(25);               
+    } 
+    
+    
+    
+    public void atualizarTabela(){
         fis = new ClienteFisico();
         try {
             fisicos = fis_dao.todosFisicos();
@@ -755,9 +781,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
                 dados[i][4] = u.getEmail(); 
                 i++;
             }
-            String tituloColuna[] = {"ID", "Matricula", "Nome", "Celular", "Email"};
-            modelo.setDataVector(dados, tituloColuna);
-            Tabela_Funcionario.setModel(modelo);
+            modeloDATabela(dados);
             Tabela_Funcionario.updateUI();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -775,7 +799,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField TxtCelular;
     private javax.swing.JTextField TxtCidade;
     private javax.swing.JTextField TxtComplemento;
-    private javax.swing.JTextField TxtEstado;
+    private javax.swing.JComboBox<String> TxtEstado;
     private javax.swing.JTextField TxtID;
     private javax.swing.JTextField TxtMatricula;
     private javax.swing.JTextField TxtNumero;

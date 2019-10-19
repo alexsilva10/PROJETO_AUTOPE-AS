@@ -103,10 +103,12 @@ public class View_Fornecedores extends javax.swing.JFrame {
         btpesquisaNome = new javax.swing.JButton();
         btPesquisaCod = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Fornecedores");
         setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(82, 203, 248));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         jPanel4.setBackground(new java.awt.Color(82, 203, 248));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados de Cadastro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N

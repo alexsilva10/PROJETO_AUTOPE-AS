@@ -12,6 +12,7 @@ import Model.Funcionario_Model;
 import Util.ValidaCPF;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -806,7 +807,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_Btn_ExcluirActionPerformed
 
     private void Btn_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SalvarActionPerformed
-     try {
+
              if (TxtMatricula.getText().isEmpty() || TxtNome.getText().isEmpty() || TxtEstadocivil.getSelectedItem().equals("Selecionar") || TxtDatanascimento.getText().isEmpty() || TxtSexo.getSelectedItem().equals("Selecionar") || TxtCPF.getText().isEmpty() ||
                      TxtTelefone.getText().isEmpty() || TxtCelular.getText().isEmpty() || TxtEmail.getText().isEmpty() || TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() || TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty() ||
                      TxtCep.getText().isEmpty() || TxtEstado.getSelectedItem().equals("Selecionar") || TxtComplemento.getText().isEmpty() || TxtEscolaridade.getSelectedItem().equals("Selecionar") ||  TxtRG.getText().isEmpty() || TxtDataadmissao.getText().isEmpty() ||
@@ -819,79 +820,77 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                 if (new ValidaCPF().validaCPF(TxtCPF.getText()) == false) {
                     JOptionPane.showMessageDialog(null, "O CPF digitado é Inválido");
         } else {
-                    if (sdf.parse(TxtDatanascimento.getText()).equals(new java.util.Date()) || sdf.parse(TxtDatanascimento.getText()).after(new java.util.Date())) {
-                        JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser igual ou depois da data de hoje");
-                    } else {
-                        cpf2 = funci_Dao.validarCpfFuncionario(TxtCPF.getText());
-                        if (!cpf.equals(TxtCPF.getText()) && cpf2.equals(TxtCPF.getText())) {
-                            JOptionPane.showMessageDialog(null, "O CPF já possui um funcionario cadastrado");
+                    try {
+                        if (sdf.parse(TxtDatanascimento.getText()).equals(new java.util.Date()) || sdf.parse(TxtDatanascimento.getText()).after(new java.util.Date())) {
+                            JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser igual ou depois da data de hoje");
                         } else {
-                            user2 = funci_Dao.validarNomeUsuario(TxtNome.getText());
-                            if (!user.equals(TxtNome.getText()) && user2.equals(TxtNome.getText())) {
-                                JOptionPane.showMessageDialog(null, "Já existe um funcionario com este nome");
-                            }
-             
-                            else {
-                            user2 = funci_Dao.validarNomeUsuario(TxtNome.getText());
-                            if (!user.equals(TxtNome.getText()) && user2.equals(TxtNome.getText())) {
-                                JOptionPane.showMessageDialog(null, "Já existe um funcionario com este nome");
-                            } 
-                            
-                        else{
-                                funcionario.setMatricula(TxtMatricula.getText());
+                            cpf2 = funci_Dao.validarCpfFuncionario(TxtCPF.getText());
+                            if (!cpf.equals(TxtCPF.getText()) && cpf2.equals(TxtCPF.getText())) {
+                                JOptionPane.showMessageDialog(null, "O CPF já possui um funcionario cadastrado");
+                            } else {
+                                user2 = funci_Dao.validarNomeUsuario(TxtNome.getText());
+                                if (!user.equals(TxtNome.getText()) && user2.equals(TxtNome.getText())) {
+                                    JOptionPane.showMessageDialog(null, "Já existe um funcionario com este nome");
+                                }
                                 
-                                funcionario.setNome(TxtNome.getText());
-                                funcionario.setEstadocivil(String.valueOf(TxtEstadocivil.getSelectedItem()));
-                                funcionario.setDatanascimento(sdf.parse(TxtDatanascimento.getText()));
-                                funcionario.setSexo(String.valueOf(TxtSexo.getSelectedItem()));
-                                funcionario.setCPF(TxtCPF.getText());
-                                funcionario.setTelefone(TxtTelefone.getText());
-                                funcionario.setCelular(TxtCelular.getText());
-                                funcionario.setEmail(TxtEmail.getText());
-                                funcionario.setBairro(TxtBairro.getText());
-                                funcionario.setRua(TxtRua.getText());
-                                funcionario.setNumero(Integer.parseInt(TxtNumero.getText()));
-                                funcionario.setCidade(TxtCidade.getText());
-                                funcionario.setCep(TxtCep.getText());
-                                funcionario.setEstado(String.valueOf(TxtEstado.getSelectedItem()));
-                                funcionario.setComplemento(TxtComplemento.getText());
-                                funcionario.setEscolaridade(String.valueOf(TxtEscolaridade.getSelectedItem()));
-                                funcionario.setRG(TxtRG.getText());
-                                funcionario.setDataadmissao(sdf.parse(TxtDataadmissao.getText()));
-                                funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
-                                funcionario.setDatademissao(sdf.parse(TxtDatademissao.getText()));
-                                funcionario.setSalarioatual(TxtSalarioatual.getText());
-                                funcionario.setCargo(cargo.get(TxtCargo.getSelectedIndex()));
-                                funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
-
-                                    try {
-                                        funci_Dao.salvar(funcionario);
-                                    } catch (SQLException ex) {
-                                        Logger.getLogger(Funcionario_View.class.getName()).log(Level.SEVERE, null, ex);
+                                else {
+                                    user2 = funci_Dao.validarNomeUsuario(TxtNome.getText());
+                                    if (!user.equals(TxtNome.getText()) && user2.equals(TxtNome.getText())) {
+                                        JOptionPane.showMessageDialog(null, "Já existe um funcionario com este nome");
                                     }
-                              
-                                
-                                    JOptionPane.showMessageDialog(null, "Gravado com Sucesso");
-                                    atualizarTabela();
-                                    Campos(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
-                                            false,false, false, false, false, false, false, false, false,false);
-        
-                                    Campos_Botão(true, false, false, false, false,true,false);
-                            }                                   
+                                    
+                                    else{
+                                        funcionario.setMatricula(TxtMatricula.getText());
+                                        
+                                        funcionario.setNome(TxtNome.getText());
+                                        funcionario.setEstadocivil(String.valueOf(TxtEstadocivil.getSelectedItem()));
+                                        funcionario.setDatanascimento(sdf.parse(TxtDatanascimento.getText()));
+                                        funcionario.setSexo(String.valueOf(TxtSexo.getSelectedItem()));
+                                        funcionario.setCPF(TxtCPF.getText());                                   
+                                        funcionario.setTelefone(TxtTelefone.getText());
+                                        funcionario.setCelular(TxtCelular.getText());
+                                        funcionario.setEmail(TxtEmail.getText());
+                                        funcionario.setBairro(TxtBairro.getText());
+                                        funcionario.setRua(TxtRua.getText());
+                                        funcionario.setNumero(Integer.parseInt(TxtNumero.getText()));
+                                        funcionario.setCidade(TxtCidade.getText());
+                                        funcionario.setCep(TxtCep.getText());
+                                        funcionario.setEstado(String.valueOf(TxtEstado.getSelectedItem()));
+                                        funcionario.setComplemento(TxtComplemento.getText());
+                                        funcionario.setEscolaridade(String.valueOf(TxtEscolaridade.getSelectedItem()));
+                                        funcionario.setRG(TxtRG.getText());
+                                        funcionario.setDataadmissao(sdf.parse(TxtDataadmissao.getText()));
+                                        funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
+                                        funcionario.setDatademissao(sdf.parse(TxtDatademissao.getText()));
+                                        funcionario.setSalarioatual(TxtSalarioatual.getText());
+                                        funcionario.setCargo(cargo.get(TxtCargo.getSelectedIndex()));
+                                        funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
+                                        
+                                        try {
+                                            funci_Dao.salvar(funcionario);
+                                        } catch (SQLException ex) {
+                                            Logger.getLogger(Funcionario_View.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                        
+                                        
+                                        JOptionPane.showMessageDialog(null, "Gravado com Sucesso");
+                                        atualizarTabela();
+                                        Campos(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
+                                                false,false, false, false, false, false, false, false, false,false);
+                                        
+                                        Campos_Botão(true, false, false, false, false,true,false);
+                                    }
+                                }
+                            }
                         }
-                      }
+                    } catch (ParseException ex) {
+                        Logger.getLogger(Funcionario_View.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Funcionario_View.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "A data informada é inválida");
-                 
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "ERRO!");
-            ex.printStackTrace();
-
-        }
     }//GEN-LAST:event_Btn_SalvarActionPerformed
 
     private void Tabela_FuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabela_FuncionarioMouseClicked
