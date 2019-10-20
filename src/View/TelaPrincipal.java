@@ -21,8 +21,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
    PessoaFisica fisica ;
    PessoaJuridica juridica;
    View_Fornecedores fornecedor;
-   View_Categoria cadegoria;
+   View_Categoria categoria;
    Cargo_View cargo;
+   Produto_View produto;
     
     public TelaPrincipal() {
         initComponents();
@@ -56,6 +57,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -223,6 +225,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem6);
 
+        jMenuItem7.setText("Produto");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem7);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_accounting_32px.png"))); // NOI18N
@@ -247,6 +257,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    fechar();
     if(Fun==null){
     Fun= new Funcionario_View();
     }
@@ -254,7 +265,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     Fun.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
+    
+    public void fechar(){
+//        Fun.dispose();
+//        fisica.dispose();
+//        juridica.dispose();
+//        fornecedor.dispose();
+//        categoria.dispose();
+//        cargo.dispose();
+//        produto.dispose();
+        jDesktopPane1.removeAll();
+    }
     private void jButtonVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendaActionPerformed
 
     }//GEN-LAST:event_jButtonVendaActionPerformed
@@ -268,6 +289,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPedidoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+     fechar();
         if(fisica==null){
         fisica = new PessoaFisica();
         }
@@ -278,6 +300,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        fechar();
         if(juridica==null){
         juridica = new PessoaJuridica();
         }
@@ -287,6 +310,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        fechar();
         if(fornecedor==null){
         fornecedor = new View_Fornecedores();
         }
@@ -294,14 +318,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-              if(cadegoria==null){
-         cadegoria = new View_Categoria();
+        fechar(); 
+        if(categoria==null){
+         categoria = new View_Categoria();
         }
-         cadegoria.setVisible(true);
+         categoria.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-       if(cargo == null){
+        fechar();
+        if(cargo == null){
            cargo = new Cargo_View();
        }
         jDesktopPane1.add(cargo);
@@ -309,6 +335,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cargo.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+       fechar();
+        if(produto == null){
+        produto = new Produto_View();
+       }
+        jDesktopPane1.add(produto);
+        
+        produto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,6 +374,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
