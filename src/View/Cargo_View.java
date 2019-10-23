@@ -60,6 +60,7 @@ public class Cargo_View extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela_Cargo = new javax.swing.JTable();
         Btn_Alterar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         Btn_Pesquisar.setText("Pesquisar");
         Btn_Pesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -142,12 +143,22 @@ public class Cargo_View extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("Sair");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE))
@@ -198,7 +209,9 @@ public class Cargo_View extends javax.swing.JInternalFrame {
                     .addComponent(Btn_Limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Btn_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Btn_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -388,6 +401,10 @@ public class Cargo_View extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_Btn_AlterarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
      public void atualizarTabela() {
         cargo = new Cargo_Model();
         try {
@@ -420,6 +437,7 @@ public class Cargo_View extends javax.swing.JInternalFrame {
     private javax.swing.JTable Tabela_Cargo;
     private javax.swing.JTextField TxtID;
     private javax.swing.JTextField TxtNomecargo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

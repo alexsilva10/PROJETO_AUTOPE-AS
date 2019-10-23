@@ -7,18 +7,14 @@ package Model;
 
 import java.util.Date;
 
-/**
- *
- * @author ALEX DIAS
- */
 public class Produto_Model {
     private int IDproduto;
     private String Descricao;
     private Categoria Categoriaprod;
     private String Codigobarras;
-    private String Precovenda;
-    private String Precocusto;
-    private String Margemlucro;
+    private Double Precovenda;
+    private Double Precocusto;
+    private Double Margemlucro;
     private String Unidademedida;
     private String Localizacao;
     private Fornecedor Fornecedorprod;
@@ -30,7 +26,7 @@ public class Produto_Model {
     public Produto_Model() {
     }
 
-    public Produto_Model(int IDproduto, String Descricao, Categoria Categoriaprod, String Codigobarras, String Precovenda, String Precocusto, String Margemlucro, String Unidademedida, String Localizacao, Fornecedor Fornecedorprod, String Marca, Date Datacadastro, String Estoque, Date Dataultvenda) {
+    public Produto_Model(int IDproduto, String Descricao, Categoria Categoriaprod, String Codigobarras, Double Precovenda, Double Precocusto, Double Margemlucro, String Unidademedida, String Localizacao, Fornecedor Fornecedorprod, String Marca, Date Datacadastro) {
         this.IDproduto = IDproduto;
         this.Descricao = Descricao;
         this.Categoriaprod = Categoriaprod;
@@ -43,24 +39,9 @@ public class Produto_Model {
         this.Fornecedorprod = Fornecedorprod;
         this.Marca = Marca;
         this.Datacadastro = Datacadastro;
-        this.Estoque = Estoque;
-        this.Dataultvenda = Dataultvenda;
     }
-
-    public Produto_Model(int IDproduto, String Descricao, String Codigobarras, String Precovenda, String Precocusto, String Margemlucro, String Unidademedida, String Localizacao, String Marca, Date Datacadastro, String Estoque, Date Dataultvenda) {
-        this.IDproduto = IDproduto;
-        this.Descricao = Descricao;
-        this.Codigobarras = Codigobarras;
-        this.Precovenda = Precovenda;
-        this.Precocusto = Precocusto;
-        this.Margemlucro = Margemlucro;
-        this.Unidademedida = Unidademedida;
-        this.Localizacao = Localizacao;
-        this.Marca = Marca;
-        this.Datacadastro = Datacadastro;
-        this.Estoque = Estoque;
-        this.Dataultvenda = Dataultvenda;
-    }
+    
+    
 
     public int getIDproduto() {
         return IDproduto;
@@ -94,27 +75,27 @@ public class Produto_Model {
         this.Codigobarras = Codigobarras;
     }
 
-    public String getPrecovenda() {
+    public Double getPrecovenda() {
         return Precovenda;
     }
 
-    public void setPrecovenda(String Precovenda) {
+    public void setPrecovenda(Double Precovenda) {
         this.Precovenda = Precovenda;
     }
 
-    public String getPrecocusto() {
+    public Double getPrecocusto() {
         return Precocusto;
     }
 
-    public void setPrecocusto(String Precocusto) {
+    public void setPrecocusto(Double Precocusto) {
         this.Precocusto = Precocusto;
     }
 
-    public String getMargemlucro() {
+    public Double getMargemlucro() {
         return Margemlucro;
     }
 
-    public void setMargemlucro(String Margemlucro) {
+    public void setMargemlucro(Double Margemlucro) {
         this.Margemlucro = Margemlucro;
     }
 
@@ -173,5 +154,7 @@ public class Produto_Model {
     public void setDataultvenda(Date Dataultvenda) {
         this.Dataultvenda = Dataultvenda;
     }
+   
+    
 
 }

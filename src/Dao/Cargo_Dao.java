@@ -124,6 +124,21 @@ public class Cargo_Dao implements Serializable{
 
         return resposta;
     }
-    
+       public Cargo_Model getCargoByNome(String Nome) throws SQLException {
+        Cargo_Model cargo = null;
+        sql = "Select * from cargo where Nomecargo=?";
+        Statement st;
+        pst = Conexao.getConnection().prepareStatement(sql);
+        pst.setString(1, Nome);
+        pst.executeQuery();
+        ResultSet rs = pst.getResultSet();
+        while (rs.next()) {
+            
+        cargo = new Cargo_Model(rs.getInt("ID"), rs.getString("Nomecargo"));
+        }
+        pst.close();
+
+        return cargo;
+    }
     
 }

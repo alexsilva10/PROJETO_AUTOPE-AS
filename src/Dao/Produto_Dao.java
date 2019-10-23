@@ -21,6 +21,8 @@ import java.util.List;
 public class Produto_Dao {
     PreparedStatement pst;
     String sql;
+    Dao_CadastroCategoria categoria = new Dao_CadastroCategoria();
+    Dao_CadastroFornecedores fornecedor = new Dao_CadastroFornecedores();
 
     public void salvar(Produto_Model produto) throws SQLException {
         int ID = 0;
@@ -30,9 +32,9 @@ public class Produto_Dao {
         pst.setString(2, produto.getDescricao());
         pst.setInt(3, produto.getCategoriaprod().getCodigo());
         pst.setString(4, produto.getCodigobarras());
-        pst.setString(5, produto.getPrecovenda());
-        pst.setString(6, produto.getPrecocusto());
-        pst.setString(7, produto.getMargemlucro());
+        pst.setDouble(5, produto.getPrecovenda());
+        pst.setDouble(6, produto.getPrecocusto());
+        pst.setDouble(7, produto.getMargemlucro());
         pst.setString(8, produto.getUnidademedida());
         pst.setString(9,produto.getLocalizacao());
         pst.setInt(10, produto.getFornecedorprod().getCodigo());
@@ -48,21 +50,23 @@ public class Produto_Dao {
     
     public void alterar(Produto_Model produto) throws SQLException {
 
-        sql = "Update produto  set Descricao=?, Categoriaprod=?, Codigobarras=?, Precovenda=?, Precocusto=?, Margemlucro=?, Unidademedida=?, Localizacao=?, Fornecedorprod=?, Marca=?, Datacadastro=?, Estoque=?, Dataultvenda=?  where ID=?";
+        sql = "Update produto  set Descricao=?, Categoriaprod=?, Codigobarras=?,"
+                + " Precovenda=?, Precocusto=?, Margemlucro=?, Unidademedida=?, Localizacao=?, "
+                + "Fornecedorprod=?, Marca=?, Datacadastro=?, Estoque=?, Dataultvenda=?  where ID=?";
          pst.setInt(1, 0);
         pst.setString(2, produto.getDescricao());
         pst.setInt(3, produto.getCategoriaprod().getCodigo());
-         pst.setString(4, produto.getCodigobarras());
-        pst.setString(5, produto.getPrecovenda());
-        pst.setString(6, produto.getPrecocusto());
-        pst.setString(7, produto.getMargemlucro());
+        pst.setString(4, produto.getCodigobarras());
+        pst.setDouble(5, produto.getPrecovenda());
+        pst.setDouble(6, produto.getPrecocusto());
+        pst.setDouble(7, produto.getMargemlucro());
         pst.setString(8, produto.getUnidademedida());
         pst.setString(9,produto.getLocalizacao());
         pst.setInt(10, produto.getFornecedorprod().getCodigo());
         pst.setString(11, produto.getMarca());
         pst.setDate(12, new java.sql.Date(produto.getDatacadastro().getTime()));
         pst.setString(13, produto.getEstoque());
-       pst.setDate(14, new java.sql.Date(produto.getDataultvenda().getTime()));
+        pst.setDate(14, new java.sql.Date(produto.getDataultvenda().getTime()));
    
         pst.setInt(13, produto.getIDproduto());
         pst.execute();
@@ -77,10 +81,11 @@ public class Produto_Dao {
 
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {        
-           produto = new Produto_Model(rs.getInt("IDproduto"), rs.getString("Descricao"), rs.getString("Codigobarras"),
-        rs.getString("Precovenda"), rs.getString("Precocusto"), rs.getString("Margemlucro"), rs.getString("Unidademedida"),
-        rs.getString("Localizacao"),rs.getString("Marca"), rs.getDate("Datacadastro"), rs.getString("Estoque"), 
-        rs.getDate("Dataultvenda"));
+        produto = new Produto_Model(rs.getInt("IDproduto"), rs.getString("Descricao"),
+        categoria.getCategoriaByCodigo(rs.getInt("id_categoria")), rs.getString("Codigobarras"),
+        rs.getDouble("Precovenda"), rs.getDouble("Precocusto"), rs.getDouble("Margemlucro"), rs.getString("Unidademedida"),
+        rs.getString("Localizacao"),fornecedor.getUsuarioByCodigo(rs.getInt("id_fornecedor")),
+        rs.getString("Marca"), rs.getDate("Datacadastro"));
         }
         pst.close();
         return produto;
@@ -92,7 +97,6 @@ public class Produto_Dao {
         pst.setInt(1, ID);
         pst.execute();
         pst.close();
-
     }
     
      public String validarNomeProduto(String Descricao) throws SQLException {
@@ -123,10 +127,11 @@ public class Produto_Dao {
         pst.executeQuery();
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {
-           produto = new Produto_Model(rs.getInt("IDproduto"), rs.getString("Descricao"), rs.getString("Codigobarras"),
-        rs.getString("Precovenda"), rs.getString("Precocusto"), rs.getString("Margemlucro"), rs.getString("Unidademedida"),
-        rs.getString("Localizacao"),rs.getString("Marca"), rs.getDate("Datacadastro"), rs.getString("Estoque"), 
-        rs.getDate("Dataultvenda"));
+        produto = new Produto_Model(rs.getInt("IDproduto"), rs.getString("Descricao"),
+        categoria.getCategoriaByCodigo(rs.getInt("id_categoria")), rs.getString("Codigobarras"),
+        rs.getDouble("Precovenda"), rs.getDouble("Precocusto"), rs.getDouble("Margemlucro"), rs.getString("Unidademedida"),
+        rs.getString("Localizacao"),fornecedor.getUsuarioByCodigo(rs.getInt("id_fornecedor")),
+        rs.getString("Marca"), rs.getDate("Datacadastro"));
         
         produtos.add(produto);
         }
@@ -145,12 +150,11 @@ public class Produto_Dao {
         pst.executeQuery();
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {           
-            produto = new Produto_Model(rs.getInt("IDproduto"), rs.getString("Descricao"), rs.getString("Codigobarras"),
-        rs.getString("Precovenda"), rs.getString("Precocusto"), rs.getString("Margemlucro"), rs.getString("Unidademedida"),
-        rs.getString("Localizacao"),rs.getString("Marca"), rs.getDate("Datacadastro"), rs.getString("Estoque"), 
-        rs.getDate("Dataultvenda"));
-        
-        
+        produto = new Produto_Model(rs.getInt("IDproduto"), rs.getString("Descricao"),
+        categoria.getCategoriaByCodigo(rs.getInt("id_categoria")), rs.getString("Codigobarras"),
+        rs.getDouble("Precovenda"), rs.getDouble("Precocusto"), rs.getDouble("Margemlucro"), rs.getString("Unidademedida"),
+        rs.getString("Localizacao"),fornecedor.getUsuarioByCodigo(rs.getInt("id_fornecedor")),
+        rs.getString("Marca"), rs.getDate("Datacadastro"));
         }
       pst.close();
 

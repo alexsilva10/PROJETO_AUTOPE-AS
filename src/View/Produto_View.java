@@ -21,6 +21,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
     SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
     Produto_Model produto;
     Produto_Dao prod_Dao;
+    
     Dao_CadastroCategoria categoria_Dao;
     List<Categoria> categoria;
     Dao_CadastroFornecedores fornecedores_Dao;
@@ -327,8 +328,6 @@ public class Produto_View extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Produto_View.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
         for (Categoria categoria : categoria){
             TxtCategoria.addItem(categoria.getNome());
         }
@@ -343,7 +342,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
             Logger.getLogger(Produto_View.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (Fornecedor fornecedores : fornecedores){
-            TxtCategoria.addItem(fornecedores.getRazao());
+            TxtFornecedor.addItem(fornecedores.getNomeFantasia());
         }
     }
     
@@ -421,9 +420,9 @@ public class Produto_View extends javax.swing.JInternalFrame {
                 TxtDescricao.setText(produto.getDescricao());
                 TxtCategoria.setSelectedItem(produto.getCategoriaprod());
                 TxtCodigoDeBarras.setText(produto.getCodigobarras());
-                TxtPrecoVenda.setText(produto.getPrecovenda());
-                TxtPrecoCusto.setText(produto.getPrecocusto());
-                TxtMargemlucro.setText(produto.getMargemlucro());
+                TxtPrecoVenda.setText(String.valueOf(produto.getPrecovenda()));
+                TxtPrecoCusto.setText(String.valueOf(produto.getPrecocusto()));
+                TxtMargemlucro.setText(String.valueOf(produto.getMargemlucro()));
                 TxtUnidademedida.setSelectedItem(produto.getCodigobarras());
                 TxtLocaliza.setText(produto.getLocalizacao());
                 TxtFornecedor.setSelectedItem(produto.getFornecedorprod());
@@ -468,9 +467,9 @@ public class Produto_View extends javax.swing.JInternalFrame {
                                 produto.setDescricao(TxtDescricao.getText());
                                 produto.setCategoriaprod(categoria.get(TxtCategoria.getSelectedIndex()));
                                 produto.setCodigobarras(TxtCodigoDeBarras.getText());
-                                produto.setPrecovenda(TxtPrecoVenda.getText());
-                                produto.setPrecocusto(TxtPrecoCusto.getText());
-                                produto.setMargemlucro(TxtMargemlucro.getText());
+                                produto.setPrecovenda(Double.parseDouble(TxtPrecoVenda.getText()));
+                                produto.setPrecocusto(Double.parseDouble(TxtPrecoCusto.getText()));
+                                produto.setMargemlucro(Double.parseDouble(TxtMargemlucro.getText()));
                                 produto.setUnidademedida(String.valueOf(TxtUnidademedida.getSelectedItem()));
                                 produto.setLocalizacao(TxtLocaliza.getText());
                                 produto.setFornecedorprod(fornecedores.get(TxtFornecedor.getSelectedIndex()));
@@ -549,9 +548,9 @@ public class Produto_View extends javax.swing.JInternalFrame {
                                 produto.setDescricao(TxtDescricao.getText());
                                 produto.setCategoriaprod(categoria.get(TxtCategoria.getSelectedIndex()));
                                 produto.setCodigobarras(TxtCodigoDeBarras.getText());
-                                produto.setPrecovenda(TxtPrecoVenda.getText());
-                                produto.setPrecocusto(TxtPrecoCusto.getText());
-                                produto.setMargemlucro(TxtMargemlucro.getText());
+                                produto.setPrecovenda(Double.parseDouble(TxtPrecoVenda.getText()));
+                                produto.setPrecocusto(Double.parseDouble(TxtPrecoCusto.getText()));
+                                produto.setMargemlucro(Double.parseDouble(TxtMargemlucro.getText()));
                                 produto.setUnidademedida(String.valueOf(TxtUnidademedida.getSelectedItem()));
                                 produto.setLocalizacao(TxtLocaliza.getText());
                                 produto.setFornecedorprod(fornecedores.get(TxtFornecedor.getSelectedIndex()));
@@ -596,14 +595,14 @@ public class Produto_View extends javax.swing.JInternalFrame {
                 produto = prod_Dao.getProdutoById(Integer.parseInt(TxtID.getText()));
 
                 TxtDescricao.setText(produto.getDescricao());
-                TxtCategoria.setSelectedItem(produto.getCategoriaprod());
+                TxtCategoria.setSelectedIndex(produto.getCategoriaprod().getCodigo());
                 TxtCodigoDeBarras.setText(produto.getCodigobarras());
-                TxtPrecoVenda.setText(produto.getPrecovenda());
-                TxtPrecoCusto.setText(produto.getPrecocusto());
-                TxtMargemlucro.setText(produto.getMargemlucro());
+                TxtPrecoVenda.setText(String.valueOf(produto.getPrecovenda()));
+                TxtPrecoCusto.setText(String.valueOf(produto.getPrecocusto()));
+                TxtMargemlucro.setText(String.valueOf(produto.getMargemlucro()));
                 TxtUnidademedida.setSelectedItem(produto.getCodigobarras());
                 TxtLocaliza.setText(produto.getLocalizacao());
-                TxtFornecedor.setSelectedItem(produto.getFornecedorprod());
+                TxtFornecedor.setSelectedIndex(produto.getFornecedorprod().getCodigo());
                 TxtMarca.setText(produto.getMarca());
                 TxtDtcadastro.setText(sdf.format(produto.getDatacadastro()));
                 TxtEstoque.setText(produto.getEstoque());

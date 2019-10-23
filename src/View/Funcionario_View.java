@@ -648,6 +648,8 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                       true,true, true, true, true, true, true, true, true, true);          
                Campos_Botão(false, true, true, true, false, false,true);
             
+                int a =funcionario.getCargo().getID();
+                
                 TxtID.setText(ID);
                 TxtMatricula.setText(funcionario.getMatricula());
                 TxtNome.setText(funcionario.getNome());
@@ -671,10 +673,15 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                 TxtSalarioadmissao.setText(funcionario.getSalarioadmissao());
                 TxtDatademissao.setText(sdf.format(funcionario.getDatademissao()));
                 TxtSalarioatual.setText(funcionario.getSalarioatual());
-                TxtCargo.setSelectedItem(funcionario.getCargo());
+                TxtCargo.setSelectedIndex(funcionario.getCargo().getID());
                 TxtStatus.setSelectedItem(funcionario.getStatus());
                
                 user = funcionario.getNome();
+       
+                
+                
+                
+                
     }//GEN-LAST:event_Btn_PesquisarActionPerformed
 
     private void TxtComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtComplementoActionPerformed
@@ -863,6 +870,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                                         funcionario.setSalarioadmissao(TxtSalarioadmissao.getText());
                                         funcionario.setDatademissao(sdf.parse(TxtDatademissao.getText()));
                                         funcionario.setSalarioatual(TxtSalarioatual.getText());
+                                        //--------------Uma boa maneira----------------
                                         funcionario.setCargo(cargo.get(TxtCargo.getSelectedIndex()));
                                         funcionario.setStatus(String.valueOf(TxtStatus.getSelectedItem()));
                                         
@@ -926,7 +934,8 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                 TxtSalarioadmissao.setText(funcionario.getSalarioadmissao());
                 TxtDatademissao.setText(sdf.format(funcionario.getDatademissao()));
                 TxtSalarioatual.setText(funcionario.getSalarioatual());
-                TxtCargo.setSelectedItem(funcionario.getCargo());
+                //-------------Rapais bem mais facil --------------------
+                TxtCargo.setSelectedIndex(funcionario.getCargo().getID());
                 TxtStatus.setSelectedItem(funcionario.getStatus());
                 cpf = funcionario.getCPF();
                 user = funcionario.getNome();
