@@ -1,6 +1,7 @@
 package View;
 
 
+import Controller.ControllerProduto;
 import Dao.Dao_CadastroCategoria;
 import Dao.Dao_CadastroFornecedores;
 import Dao.Produto_Dao;
@@ -125,81 +126,92 @@ public class Produto_View extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel1.setText("Descrição:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 60, 60, 20);
+        jLabel1.setBounds(50, 60, 60, 20);
         jPanel1.add(TxtDescricao);
-        TxtDescricao.setBounds(90, 60, 590, 20);
+        TxtDescricao.setBounds(120, 60, 350, 20);
 
         jLabel2.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel2.setText("Categoria:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 100, 70, 20);
+        jLabel2.setBounds(50, 90, 60, 20);
 
+        TxtCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtCategoriaActionPerformed(evt);
+            }
+        });
         jPanel1.add(TxtCategoria);
-        TxtCategoria.setBounds(110, 100, 130, 20);
+        TxtCategoria.setBounds(120, 90, 160, 20);
 
         jLabel3.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel3.setText("Código de barras:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(310, 100, 100, 20);
+        jLabel3.setBounds(750, 90, 100, 20);
         jPanel1.add(TxtCodigoDeBarras);
-        TxtCodigoDeBarras.setBounds(430, 100, 250, 20);
+        TxtCodigoDeBarras.setBounds(860, 90, 130, 20);
 
         jLabel4.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel4.setText("Preço de venda:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 140, 100, 20);
+        jLabel4.setBounds(20, 120, 100, 20);
         jPanel1.add(TxtPrecoVenda);
-        TxtPrecoVenda.setBounds(130, 140, 150, 20);
+        TxtPrecoVenda.setBounds(120, 120, 130, 20);
 
         jLabel5.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel5.setText("Preço de custo:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(310, 140, 100, 20);
+        jLabel5.setBounds(260, 120, 100, 20);
+
+        TxtPrecoCusto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtPrecoCustoActionPerformed(evt);
+            }
+        });
         jPanel1.add(TxtPrecoCusto);
-        TxtPrecoCusto.setBounds(430, 140, 250, 20);
+        TxtPrecoCusto.setBounds(350, 120, 120, 20);
 
         jLabel6.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel6.setText("Margem de lucro:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 180, 110, 20);
+        jLabel6.setBounds(480, 120, 110, 20);
         jPanel1.add(TxtMargemlucro);
-        TxtMargemlucro.setBounds(130, 180, 150, 20);
+        TxtMargemlucro.setBounds(590, 120, 150, 20);
 
         jLabel7.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel7.setText("Unidade de medida:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(310, 180, 120, 20);
+        jLabel7.setBounds(480, 60, 120, 20);
 
         TxtUnidademedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(TxtUnidademedida);
-        TxtUnidademedida.setBounds(430, 180, 250, 20);
+        TxtUnidademedida.setBounds(600, 60, 140, 20);
 
         jLabel8.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel8.setText("Localização:");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(20, 220, 80, 20);
+        jLabel8.setBounds(780, 120, 80, 20);
         jPanel1.add(TxtLocaliza);
-        TxtLocaliza.setBounds(130, 220, 150, 20);
+        TxtLocaliza.setBounds(860, 120, 130, 20);
 
         jLabel9.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel9.setText("Fornecedor:");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(310, 220, 80, 20);
+        jLabel9.setBounds(480, 90, 80, 20);
 
         jPanel1.add(TxtFornecedor);
-        TxtFornecedor.setBounds(430, 220, 250, 20);
+        TxtFornecedor.setBounds(560, 90, 180, 20);
 
         jLabel10.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel10.setText("Marca:");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(20, 260, 50, 20);
+        jLabel10.setBounds(760, 60, 50, 20);
         jPanel1.add(TxtMarca);
-        TxtMarca.setBounds(130, 260, 150, 20);
+        TxtMarca.setBounds(810, 60, 180, 20);
 
         jLabel11.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel11.setText("Data de cadastro:");
         jPanel1.add(jLabel11);
-        jLabel11.setBounds(310, 260, 100, 20);
+        jLabel11.setBounds(10, 150, 100, 20);
 
         try {
             TxtDtcadastro.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -207,19 +219,19 @@ public class Produto_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel1.add(TxtDtcadastro);
-        TxtDtcadastro.setBounds(430, 260, 250, 20);
+        TxtDtcadastro.setBounds(120, 150, 130, 20);
 
         jLabel12.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel12.setText("Estoque:");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(20, 300, 60, 20);
+        jLabel12.setBounds(290, 90, 50, 20);
         jPanel1.add(TxtEstoque);
-        TxtEstoque.setBounds(130, 300, 150, 20);
+        TxtEstoque.setBounds(350, 90, 120, 20);
 
         jLabel13.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel13.setText("Data última venda:");
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(310, 300, 110, 20);
+        jLabel13.setBounds(270, 150, 110, 20);
 
         try {
             TxtDtutlvenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -227,7 +239,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel1.add(TxtDtutlvenda);
-        TxtDtutlvenda.setBounds(430, 300, 250, 20);
+        TxtDtutlvenda.setBounds(380, 150, 210, 20);
 
         Btn_Novo.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
         Btn_Novo.setText("Novo");
@@ -237,7 +249,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Novo);
-        Btn_Novo.setBounds(590, 10, 90, 30);
+        Btn_Novo.setBounds(10, 200, 90, 30);
 
         Btn_Cancelar.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
         Btn_Cancelar.setText("Cancelar");
@@ -247,7 +259,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Cancelar);
-        Btn_Cancelar.setBounds(490, 10, 90, 30);
+        Btn_Cancelar.setBounds(120, 200, 90, 30);
 
         Btn_Alterar.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
         Btn_Alterar.setText("Alterar");
@@ -257,7 +269,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Alterar);
-        Btn_Alterar.setBounds(150, 350, 90, 30);
+        Btn_Alterar.setBounds(780, 200, 90, 30);
 
         Btn_Limpar.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
         Btn_Limpar.setText("Limpar");
@@ -267,7 +279,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Limpar);
-        Btn_Limpar.setBounds(370, 350, 90, 30);
+        Btn_Limpar.setBounds(230, 200, 90, 30);
 
         Btn_Excluir.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
         Btn_Excluir.setText("Excluir");
@@ -277,7 +289,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Excluir);
-        Btn_Excluir.setBounds(260, 350, 90, 30);
+        Btn_Excluir.setBounds(620, 200, 90, 30);
 
         Btn_Salvar.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
         Btn_Salvar.setText("Salvar");
@@ -287,7 +299,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Salvar);
-        Btn_Salvar.setBounds(590, 350, 90, 30);
+        Btn_Salvar.setBounds(920, 200, 90, 30);
 
         Tabela_Produto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -305,17 +317,17 @@ public class Produto_View extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(Tabela_Produto);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 392, 670, 100);
+        jScrollPane1.setBounds(10, 242, 1010, 310);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
         );
 
         pack();
@@ -334,8 +346,6 @@ public class Produto_View extends javax.swing.JInternalFrame {
     }
      
      public void preencheComboFornecedor(){
-    
-        
         try {
             fornecedores = fornecedores_Dao.todosUsuarios();
         } catch (SQLException ex) {
@@ -404,7 +414,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         produto = new Produto_Model();
   
             try {
-                produto = prod_Dao.getProdutoById(Integer.parseInt(ID));
+               produto = new ControllerProduto().retornaProduto(Integer.parseInt(TxtID.getText()));
             } catch (SQLException ex) {
                 Logger.getLogger(Produto_View.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -418,17 +428,17 @@ public class Produto_View extends javax.swing.JInternalFrame {
             
                 TxtID.setText(ID);
                 TxtDescricao.setText(produto.getDescricao());
-                TxtCategoria.setSelectedItem(produto.getCategoriaprod());
+                TxtCategoria.setSelectedItem(produto.getCategoriaprod().getNome());
                 TxtCodigoDeBarras.setText(produto.getCodigobarras());
                 TxtPrecoVenda.setText(String.valueOf(produto.getPrecovenda()));
                 TxtPrecoCusto.setText(String.valueOf(produto.getPrecocusto()));
                 TxtMargemlucro.setText(String.valueOf(produto.getMargemlucro()));
                 TxtUnidademedida.setSelectedItem(produto.getCodigobarras());
                 TxtLocaliza.setText(produto.getLocalizacao());
-                TxtFornecedor.setSelectedItem(produto.getFornecedorprod());
+                TxtFornecedor.setSelectedItem(produto.getFornecedorprod().getNomeFantasia());
                 TxtMarca.setText(produto.getMarca());
                 TxtDtcadastro.setText(sdf.format(produto.getDatacadastro()));
-                TxtEstoque.setText(produto.getEstoque());
+                TxtEstoque.setText(String.valueOf(produto.getEstoque()));
                 TxtDtutlvenda.setText(sdf.format(produto.getDataultvenda()));
                 
                 user = produto.getDescricao();
@@ -443,7 +453,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_Btn_CancelarActionPerformed
 
     private void Btn_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_NovoActionPerformed
-        Campos(false, true, true, true, true, true, true, true, true, true, true, true, true, true);
+        Campos(false, true, true, true, true, true, true, true, true, true, true, false, true, false);
         Campos_Botão(false, false, false, false, true, false, true);
         Limpar();
     }//GEN-LAST:event_Btn_NovoActionPerformed
@@ -451,7 +461,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
     private void Btn_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SalvarActionPerformed
      try {
             if (TxtDescricao.getText().isEmpty() || TxtCategoria.getSelectedItem().equals("") || TxtCodigoDeBarras.getText().isEmpty() || TxtPrecoVenda.getText().isEmpty() || TxtPrecoCusto.getText().isEmpty() || TxtMargemlucro.getText().isEmpty() ||
-                     TxtUnidademedida.getSelectedItem().equals("Selecionar") || TxtLocaliza.getText().isEmpty() || TxtFornecedor.getSelectedItem().equals("") || TxtMarca.getText().isEmpty() || TxtDtcadastro.getText().isEmpty() || TxtEstoque.getText().isEmpty() || TxtDtutlvenda.getText().isEmpty())
+                     TxtUnidademedida.getSelectedItem().equals("Selecionar") || TxtLocaliza.getText().isEmpty() || TxtFornecedor.getSelectedItem().equals("") || TxtMarca.getText().isEmpty() || TxtEstoque.getText().isEmpty())
                 {    
                  JOptionPane.showMessageDialog(null, "Preencha todos os campos");
                  TxtDescricao.requestFocusInWindow();
@@ -465,7 +475,9 @@ public class Produto_View extends javax.swing.JInternalFrame {
                             
                         else{  
                                 produto.setDescricao(TxtDescricao.getText());
+                                
                                 produto.setCategoriaprod(categoria.get(TxtCategoria.getSelectedIndex()));
+                                
                                 produto.setCodigobarras(TxtCodigoDeBarras.getText());
                                 produto.setPrecovenda(Double.parseDouble(TxtPrecoVenda.getText()));
                                 produto.setPrecocusto(Double.parseDouble(TxtPrecoCusto.getText()));
@@ -474,10 +486,9 @@ public class Produto_View extends javax.swing.JInternalFrame {
                                 produto.setLocalizacao(TxtLocaliza.getText());
                                 produto.setFornecedorprod(fornecedores.get(TxtFornecedor.getSelectedIndex()));
                                 produto.setMarca(TxtMarca.getText());
-                                produto.setDatacadastro(sdf.parse(TxtDtcadastro.getText()));
-                                produto.setEstoque(TxtEstoque.getText());
-                                produto.setDataultvenda(sdf.parse(TxtDtutlvenda.getText()));
-                  
+                                //produto.setDatacadastro(sdf.parse(TxtDtcadastro.getText()));
+                                produto.setEstoque(Integer.parseInt(TxtEstoque.getText()));
+                                //produto.setDataultvenda(sdf.parse(TxtDtutlvenda.getText()));
                                     try {
                                         prod_Dao.salvar(produto);
                                     } catch (SQLException ex) {
@@ -556,7 +567,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
                                 produto.setFornecedorprod(fornecedores.get(TxtFornecedor.getSelectedIndex()));
                                 produto.setMarca(TxtMarca.getText());
                                 produto.setDatacadastro(sdf.parse(TxtDtcadastro.getText()));
-                                produto.setEstoque(TxtEstoque.getText());
+                                produto.setEstoque(Integer.parseInt(TxtEstoque.getText()));
                                 produto.setDataultvenda(sdf.parse(TxtDtutlvenda.getText()));
                                
 
@@ -592,21 +603,24 @@ public class Produto_View extends javax.swing.JInternalFrame {
              Campos(false, true, true, true, true, true, false, true, true, true, true, true, true, true);        
              Campos_Botão(false, true, true, true, false, true,true);
             
-                produto = prod_Dao.getProdutoById(Integer.parseInt(TxtID.getText()));
-
+                produto = new ControllerProduto().retornaProduto(Integer.parseInt(TxtID.getText()));
+                
                 TxtDescricao.setText(produto.getDescricao());
-                TxtCategoria.setSelectedIndex(produto.getCategoriaprod().getCodigo());
+
+                TxtCategoria.setSelectedItem(produto.getCategoriaprod().getNome());
+                
                 TxtCodigoDeBarras.setText(produto.getCodigobarras());
                 TxtPrecoVenda.setText(String.valueOf(produto.getPrecovenda()));
                 TxtPrecoCusto.setText(String.valueOf(produto.getPrecocusto()));
                 TxtMargemlucro.setText(String.valueOf(produto.getMargemlucro()));
                 TxtUnidademedida.setSelectedItem(produto.getCodigobarras());
                 TxtLocaliza.setText(produto.getLocalizacao());
-                TxtFornecedor.setSelectedIndex(produto.getFornecedorprod().getCodigo());
+                
+                TxtFornecedor.setSelectedItem(produto.getFornecedorprod().getNomeFantasia());
                 TxtMarca.setText(produto.getMarca());
                 TxtDtcadastro.setText(sdf.format(produto.getDatacadastro()));
-                TxtEstoque.setText(produto.getEstoque());
-                TxtDtutlvenda.setText(sdf.format(produto.getDataultvenda()));
+                TxtEstoque.setText(String.valueOf(produto.getEstoque()));
+                //TxtDtutlvenda.setText(sdf.format(produto.getDataultvenda()));
 
                 user = produto.getDescricao();
 
@@ -615,20 +629,31 @@ public class Produto_View extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_Tabela_ProdutoMouseClicked
 
+    private void TxtPrecoCustoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPrecoCustoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrecoCustoActionPerformed
+
+    private void TxtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCategoriaActionPerformed
+
+    }//GEN-LAST:event_TxtCategoriaActionPerformed
+
      public void atualizarTabela() {
         produto = new Produto_Model();
         try {
             produtos = prod_Dao.todosProdutos();
-            String dados[][] = new String[produtos.size()][4];
+            String dados[][] = new String[produtos.size()][7];
             int i = 0;
             for (Produto_Model u : produtos) {
                 dados[i][0] = String.valueOf(u.getIDproduto());
                 dados[i][1] = u.getDescricao();
-                dados[i][2] = String.valueOf(u.getIDproduto());
-                dados[i][3] = u.getCodigobarras();
+                dados[i][2] = u.getUnidademedida();
+                dados[i][3] = String.valueOf(u.getCategoriaprod().getNome());
+                dados[i][4] = u.getCodigobarras();
+                dados[i][5] = String.valueOf(u.getPrecocusto());
+                dados[i][6] = u.getFornecedorprod().getNomeFantasia();
                 i++;
             }
-            String tituloColuna[] = {"ID", "Descrição", "Categoria", "Cod.barras", "Email"};
+            String tituloColuna[] = {"ID", "Descrição", "UniMedida","Categoria", "Cod.barras", "Preço","Fornecedor"};
             modelo.setDataVector(dados, tituloColuna);
             Tabela_Produto.setModel(modelo);
             Tabela_Produto.updateUI();

@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.ControllerFuncionario;
 import Dao.Cargo_Dao;
 import Dao.Funcionario_Dao;
 import Model.Cargo_Model;
@@ -122,14 +123,13 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel26 = new javax.swing.JLabel();
         Btn_Pesquisar = new javax.swing.JButton();
         Btn_Novo = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        Btn_Alterar = new javax.swing.JButton();
-        Btn_Limpar = new javax.swing.JButton();
-        Btn_Excluir = new javax.swing.JButton();
         Btn_Cancelar = new javax.swing.JButton();
         Btn_Salvar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela_Funcionario = new javax.swing.JTable();
+        Btn_Excluir = new javax.swing.JButton();
+        Btn_Alterar = new javax.swing.JButton();
+        Btn_Limpar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -176,17 +176,17 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel6.setText("Sexo:");
         jPanel3.add(jLabel6);
-        jLabel6.setBounds(20, 50, 40, 20);
+        jLabel6.setBounds(740, 20, 40, 20);
 
         TxtSexo.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         TxtSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Masculino", "Feminino" }));
         jPanel3.add(TxtSexo);
-        TxtSexo.setBounds(60, 50, 160, 20);
+        TxtSexo.setBounds(780, 20, 190, 20);
 
         jLabel7.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel7.setText("CPF:");
         jPanel3.add(jLabel7);
-        jLabel7.setBounds(25, 80, 30, 20);
+        jLabel7.setBounds(20, 50, 30, 20);
 
         try {
             TxtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
@@ -194,12 +194,12 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel3.add(TxtCPF);
-        TxtCPF.setBounds(60, 80, 160, 20);
+        TxtCPF.setBounds(60, 50, 160, 20);
 
         jLabel8.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel8.setText("Telefone:");
+        jLabel8.setText("Tel:");
         jPanel3.add(jLabel8);
-        jLabel8.setBounds(270, 80, 60, 20);
+        jLabel8.setBounds(10, 80, 40, 20);
 
         try {
             TxtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -207,12 +207,12 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel3.add(TxtTelefone);
-        TxtTelefone.setBounds(330, 80, 110, 20);
+        TxtTelefone.setBounds(60, 80, 160, 20);
 
         jLabel9.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel9.setText("Celular:");
         jPanel3.add(jLabel9);
-        jLabel9.setBounds(490, 80, 50, 20);
+        jLabel9.setBounds(280, 80, 50, 20);
 
         try {
             TxtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -220,14 +220,14 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel3.add(TxtCelular);
-        TxtCelular.setBounds(540, 80, 160, 20);
+        TxtCelular.setBounds(330, 80, 110, 20);
 
         jLabel10.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel10.setText("E-mail:");
         jPanel3.add(jLabel10);
-        jLabel10.setBounds(10, 110, 50, 20);
+        jLabel10.setBounds(490, 80, 50, 20);
         jPanel3.add(TxtEmail);
-        TxtEmail.setBounds(60, 110, 380, 20);
+        TxtEmail.setBounds(540, 80, 430, 20);
 
         jLabel4.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel4.setText("Estado Civil:");
@@ -247,12 +247,12 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel1.setText("     Matrícula:");
         jPanel3.add(jLabel1);
-        jLabel1.setBounds(460, 110, 80, 20);
+        jLabel1.setBounds(700, 50, 80, 20);
         jPanel3.add(TxtMatricula);
-        TxtMatricula.setBounds(540, 110, 160, 20);
+        TxtMatricula.setBounds(780, 50, 190, 20);
 
         jPanel2.add(jPanel3);
-        jPanel3.setBounds(10, 40, 710, 140);
+        jPanel3.setBounds(10, 40, 990, 110);
 
         jPanel4.setBackground(new java.awt.Color(0, 149, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -263,33 +263,33 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel4.add(jLabel11);
         jLabel11.setBounds(10, 20, 38, 20);
         jPanel4.add(TxtBairro);
-        TxtBairro.setBounds(60, 20, 640, 20);
+        TxtBairro.setBounds(60, 20, 420, 20);
 
         jLabel12.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel12.setText(" Rua:");
         jPanel4.add(jLabel12);
-        jLabel12.setBounds(20, 50, 40, 20);
+        jLabel12.setBounds(490, 20, 40, 20);
         jPanel4.add(TxtRua);
-        TxtRua.setBounds(60, 50, 420, 20);
+        TxtRua.setBounds(530, 20, 440, 20);
 
         jLabel13.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel13.setText("Número:");
         jPanel4.add(jLabel13);
-        jLabel13.setBounds(510, 50, 50, 20);
+        jLabel13.setBounds(10, 50, 50, 20);
         jPanel4.add(TxtNumero);
-        TxtNumero.setBounds(570, 50, 130, 20);
+        TxtNumero.setBounds(60, 50, 130, 20);
 
         jLabel14.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel14.setText("Cidade:");
         jPanel4.add(jLabel14);
-        jLabel14.setBounds(10, 110, 50, 20);
+        jLabel14.setBounds(630, 50, 50, 20);
         jPanel4.add(TxtCidade);
-        TxtCidade.setBounds(60, 110, 190, 20);
+        TxtCidade.setBounds(680, 50, 110, 20);
 
         jLabel16.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel16.setText("Estado:");
         jPanel4.add(jLabel16);
-        jLabel16.setBounds(280, 110, 50, 20);
+        jLabel16.setBounds(800, 50, 50, 20);
 
         TxtComplemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,17 +297,17 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel4.add(TxtComplemento);
-        TxtComplemento.setBounds(60, 80, 420, 20);
+        TxtComplemento.setBounds(290, 50, 190, 20);
 
         jLabel17.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel17.setText("  Comple:");
+        jLabel17.setText("  Complemento:");
         jPanel4.add(jLabel17);
-        jLabel17.setBounds(0, 80, 80, 20);
+        jLabel17.setBounds(200, 50, 90, 20);
 
         jLabel15.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel15.setText("     CEP:");
         jPanel4.add(jLabel15);
-        jLabel15.setBounds(520, 80, 50, 20);
+        jLabel15.setBounds(480, 50, 50, 20);
 
         try {
             TxtCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
@@ -315,15 +315,15 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel4.add(TxtCep);
-        TxtCep.setBounds(570, 80, 130, 20);
+        TxtCep.setBounds(530, 50, 90, 20);
 
         TxtEstado.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         TxtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espiríto Santo", "Góias", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
         jPanel4.add(TxtEstado);
-        TxtEstado.setBounds(330, 110, 150, 20);
+        TxtEstado.setBounds(860, 50, 110, 20);
 
         jPanel2.add(jPanel4);
-        jPanel4.setBounds(10, 190, 710, 150);
+        jPanel4.setBounds(10, 170, 990, 100);
 
         jPanel5.setBackground(new java.awt.Color(0, 149, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Profissionais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -337,14 +337,14 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jLabel19.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel19.setText("  RG:");
         jPanel5.add(jLabel19);
-        jLabel19.setBounds(270, 20, 30, 20);
+        jLabel19.setBounds(340, 20, 30, 20);
         jPanel5.add(TxtRG);
-        TxtRG.setBounds(300, 20, 140, 20);
+        TxtRG.setBounds(380, 20, 140, 20);
 
         jLabel20.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel20.setText("Data de Admissão:");
         jPanel5.add(jLabel20);
-        jLabel20.setBounds(450, 20, 110, 20);
+        jLabel20.setBounds(530, 20, 110, 20);
 
         try {
             TxtDatademissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -352,19 +352,19 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel5.add(TxtDatademissao);
-        TxtDatademissao.setBounds(560, 50, 140, 20);
+        TxtDatademissao.setBounds(860, 20, 110, 20);
 
         jLabel21.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel21.setText("Sal. Admissão:");
         jPanel5.add(jLabel21);
         jLabel21.setBounds(10, 50, 90, 20);
         jPanel5.add(TxtSalarioatual);
-        TxtSalarioatual.setBounds(100, 80, 150, 20);
+        TxtSalarioatual.setBounds(380, 50, 140, 20);
 
         jLabel22.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel22.setText("Data de Demissão:");
         jPanel5.add(jLabel22);
-        jLabel22.setBounds(450, 50, 110, 20);
+        jLabel22.setBounds(750, 20, 110, 20);
 
         try {
             TxtDataadmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -372,40 +372,40 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jPanel5.add(TxtDataadmissao);
-        TxtDataadmissao.setBounds(560, 20, 140, 20);
+        TxtDataadmissao.setBounds(640, 20, 90, 20);
 
         jLabel23.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel23.setText("  Salário Atual:");
         jPanel5.add(jLabel23);
-        jLabel23.setBounds(10, 80, 90, 20);
+        jLabel23.setBounds(290, 50, 90, 20);
         jPanel5.add(TxtSalarioadmissao);
-        TxtSalarioadmissao.setBounds(100, 50, 150, 20);
+        TxtSalarioadmissao.setBounds(100, 50, 180, 20);
 
         jLabel24.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel24.setText("Cargo:");
         jPanel5.add(jLabel24);
-        jLabel24.setBounds(260, 80, 36, 20);
+        jLabel24.setBounds(530, 50, 36, 20);
 
         jLabel25.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel25.setText("    Status:");
         jPanel5.add(jLabel25);
-        jLabel25.setBounds(500, 80, 60, 20);
+        jLabel25.setBounds(800, 50, 60, 20);
 
         TxtStatus.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         TxtStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Ativo", "Inativo" }));
         jPanel5.add(TxtStatus);
-        TxtStatus.setBounds(560, 80, 140, 20);
+        TxtStatus.setBounds(860, 50, 110, 20);
 
         TxtCargo.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jPanel5.add(TxtCargo);
-        TxtCargo.setBounds(300, 80, 140, 20);
+        TxtCargo.setBounds(590, 50, 140, 20);
 
         TxtEscolaridade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Fundamental - Incompleto", "Fundamental - Completo", "Médio - Incompleto", "Médio - Completo", "Superior - Incompleto", "Superior - Completo", "Pós-graduação - Incompleto", "Pós-graduação - Completo", "Mestrado - Incompleto", "Mestrado - Completo", "Doutorado - Incompleto", "Doutorado - Completo" }));
         jPanel5.add(TxtEscolaridade);
-        TxtEscolaridade.setBounds(100, 20, 150, 20);
+        TxtEscolaridade.setBounds(100, 20, 230, 20);
 
         jPanel2.add(jPanel5);
-        jPanel5.setBounds(10, 350, 710, 120);
+        jPanel5.setBounds(10, 300, 990, 90);
         jPanel2.add(TxtID);
         TxtID.setBounds(70, 10, 130, 20);
 
@@ -414,6 +414,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel26);
         jLabel26.setBounds(50, 10, 16, 20);
 
+        Btn_Pesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_search_16px_1.png"))); // NOI18N
         Btn_Pesquisar.setText("Pesquisar");
         Btn_Pesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -421,8 +422,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Pesquisar);
-        Btn_Pesquisar.setBounds(210, 0, 120, 40);
+        Btn_Pesquisar.setBounds(210, 7, 120, 30);
 
+        Btn_Novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_new_16px.png"))); // NOI18N
         Btn_Novo.setText("Novo");
         Btn_Novo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -430,61 +432,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Novo);
-        Btn_Novo.setBounds(910, 30, 110, 40);
+        Btn_Novo.setBounds(10, 400, 110, 30);
 
-        jPanel6.setBackground(new java.awt.Color(0, 149, 255));
-
-        Btn_Alterar.setText("Alterar");
-        Btn_Alterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_AlterarActionPerformed(evt);
-            }
-        });
-
-        Btn_Limpar.setText("Limpar");
-        Btn_Limpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_LimparActionPerformed(evt);
-            }
-        });
-
-        Btn_Excluir.setText("Excluir");
-        Btn_Excluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_ExcluirActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Btn_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Btn_Limpar, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Btn_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Btn_Limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(Btn_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
-        );
-
-        jPanel2.add(jPanel6);
-        jPanel6.setBounds(750, 230, 280, 190);
-
+        Btn_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_cancel_2_16px.png"))); // NOI18N
         Btn_Cancelar.setText("Cancelar");
         Btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -492,8 +442,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Cancelar);
-        Btn_Cancelar.setBounds(750, 30, 110, 40);
+        Btn_Cancelar.setBounds(160, 400, 110, 30);
 
+        Btn_Salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_16px_1.png"))); // NOI18N
         Btn_Salvar.setText("Salvar");
         Btn_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -501,7 +452,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Salvar);
-        Btn_Salvar.setBounds(840, 520, 140, 50);
+        Btn_Salvar.setBounds(870, 400, 130, 30);
 
         Tabela_Funcionario.setBackground(new java.awt.Color(62, 203, 246));
         Tabela_Funcionario.setModel(new javax.swing.table.DefaultTableModel(
@@ -535,12 +486,42 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 480, 710, 120);
+        jScrollPane1.setBounds(10, 440, 990, 160);
+
+        Btn_Excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_delete_16px.png"))); // NOI18N
+        Btn_Excluir.setText("Excluir");
+        Btn_Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_ExcluirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Btn_Excluir);
+        Btn_Excluir.setBounds(600, 400, 136, 30);
+
+        Btn_Alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_edit_16px.png"))); // NOI18N
+        Btn_Alterar.setText("Alterar");
+        Btn_Alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AlterarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Btn_Alterar);
+        Btn_Alterar.setBounds(740, 400, 127, 30);
+
+        Btn_Limpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_broom_16px_4.png"))); // NOI18N
+        Btn_Limpar.setText("Limpar");
+        Btn_Limpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_LimparActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Btn_Limpar);
+        Btn_Limpar.setBounds(300, 400, 115, 30);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 1050, 610);
 
-        setBounds(0, 0, 1058, 647);
+        setBounds(0, 0, 1056, 647);
     }// </editor-fold>//GEN-END:initComponents
     public void preencheComboCargo(){
         try {
@@ -910,8 +891,8 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                 true,true, true, true, true, true, true, true, true, true);        
              Campos_Botão(false, true, true, true, false, true,true);
             
-             funcionario = funci_Dao.getFuncionarioById(Integer.parseInt(TxtID.getText()));
-            
+             //funcionario = funci_Dao.getFuncionarioById(Integer.parseInt(TxtID.getText()));
+                funcionario = new ControllerFuncionario().retornaFuncionario(Integer.parseInt(TxtID.getText()));
                 TxtMatricula.setText(funcionario.getMatricula());
                 TxtNome.setText(funcionario.getNome());
                 TxtEstadocivil.setSelectedItem(funcionario.getEstadocivil());
@@ -935,7 +916,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
                 TxtDatademissao.setText(sdf.format(funcionario.getDatademissao()));
                 TxtSalarioatual.setText(funcionario.getSalarioatual());
                 //-------------Rapais bem mais facil --------------------
-                TxtCargo.setSelectedIndex(funcionario.getCargo().getID());
+                
+                //TxtCargo.setSelectedIndex(funcionario.getCargo().getID());
+                TxtCargo.setSelectedItem(funcionario.getCargo().getNomecargo());
                 TxtStatus.setSelectedItem(funcionario.getStatus());
                 cpf = funcionario.getCPF();
                 user = funcionario.getNome();
@@ -1053,7 +1036,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,7 +26,7 @@ public class Produto_Dao {
 
     public void salvar(Produto_Model produto) throws SQLException {
         int ID = 0;
-        sql = "INSERT INTO produto values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        sql = "INSERT INTO produto values(?,?,?,?,?,?,?,?,?,?,?,now(),?,?)";
         pst = Conexao.getConnection().prepareStatement(sql);
         pst.setInt(1, 0);
         pst.setString(2, produto.getDescricao());
@@ -39,9 +39,9 @@ public class Produto_Dao {
         pst.setString(9,produto.getLocalizacao());
         pst.setInt(10, produto.getFornecedorprod().getCodigo());
         pst.setString(11, produto.getMarca());
-        pst.setDate(12, new java.sql.Date(produto.getDatacadastro().getTime()));
-        pst.setString(13, produto.getEstoque());
-       pst.setDate(14, new java.sql.Date(produto.getDataultvenda().getTime()));
+        //pst.setDate(12, new java.sql.Date(produto.getDatacadastro().getTime()));
+        pst.setInt(12, produto.getEstoque());
+        pst.setDate(13, null);
 
         pst.execute();
         pst.close();
@@ -52,7 +52,7 @@ public class Produto_Dao {
 
         sql = "Update produto  set Descricao=?, Categoriaprod=?, Codigobarras=?,"
                 + " Precovenda=?, Precocusto=?, Margemlucro=?, Unidademedida=?, Localizacao=?, "
-                + "Fornecedorprod=?, Marca=?, Datacadastro=?, Estoque=?, Dataultvenda=?  where ID=?";
+                + "Fornecedorprod=?, Marca=?, Estoque=?, where ID=?";
          pst.setInt(1, 0);
         pst.setString(2, produto.getDescricao());
         pst.setInt(3, produto.getCategoriaprod().getCodigo());
@@ -64,9 +64,9 @@ public class Produto_Dao {
         pst.setString(9,produto.getLocalizacao());
         pst.setInt(10, produto.getFornecedorprod().getCodigo());
         pst.setString(11, produto.getMarca());
-        pst.setDate(12, new java.sql.Date(produto.getDatacadastro().getTime()));
-        pst.setString(13, produto.getEstoque());
-        pst.setDate(14, new java.sql.Date(produto.getDataultvenda().getTime()));
+        //pst.setDate(12, new java.sql.Date(produto.getDatacadastro().getTime()));
+        pst.setInt(13, produto.getEstoque());
+        //pst.setDate(14, new java.sql.Date(produto.getDataultvenda().getTime()));
    
         pst.setInt(13, produto.getIDproduto());
         pst.execute();
@@ -81,11 +81,11 @@ public class Produto_Dao {
 
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {        
-        produto = new Produto_Model(rs.getInt("IDproduto"), rs.getString("Descricao"),
+        produto = new Produto_Model(rs.getInt("ID"), rs.getString("Descricao"),
         categoria.getCategoriaByCodigo(rs.getInt("id_categoria")), rs.getString("Codigobarras"),
         rs.getDouble("Precovenda"), rs.getDouble("Precocusto"), rs.getDouble("Margemlucro"), rs.getString("Unidademedida"),
         rs.getString("Localizacao"),fornecedor.getUsuarioByCodigo(rs.getInt("id_fornecedor")),
-        rs.getString("Marca"), rs.getDate("Datacadastro"));
+        rs.getString("Marca"), rs.getDate("Datacadastro"),rs.getInt("estoque"));
         }
         pst.close();
         return produto;
@@ -127,11 +127,11 @@ public class Produto_Dao {
         pst.executeQuery();
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {
-        produto = new Produto_Model(rs.getInt("IDproduto"), rs.getString("Descricao"),
+        produto = new Produto_Model(rs.getInt("id"), rs.getString("descricao"),
         categoria.getCategoriaByCodigo(rs.getInt("id_categoria")), rs.getString("Codigobarras"),
         rs.getDouble("Precovenda"), rs.getDouble("Precocusto"), rs.getDouble("Margemlucro"), rs.getString("Unidademedida"),
         rs.getString("Localizacao"),fornecedor.getUsuarioByCodigo(rs.getInt("id_fornecedor")),
-        rs.getString("Marca"), rs.getDate("Datacadastro"));
+        rs.getString("Marca"), rs.getDate("Datacadastro"),rs.getInt("estoque"));
         
         produtos.add(produto);
         }
@@ -150,11 +150,11 @@ public class Produto_Dao {
         pst.executeQuery();
         ResultSet rs = pst.getResultSet();
         while (rs.next()) {           
-        produto = new Produto_Model(rs.getInt("IDproduto"), rs.getString("Descricao"),
+        produto = new Produto_Model(rs.getInt("id"), rs.getString("Descricao"),
         categoria.getCategoriaByCodigo(rs.getInt("id_categoria")), rs.getString("Codigobarras"),
         rs.getDouble("Precovenda"), rs.getDouble("Precocusto"), rs.getDouble("Margemlucro"), rs.getString("Unidademedida"),
         rs.getString("Localizacao"),fornecedor.getUsuarioByCodigo(rs.getInt("id_fornecedor")),
-        rs.getString("Marca"), rs.getDate("Datacadastro"));
+        rs.getString("Marca"), rs.getDate("Datacadastro"),rs.getInt("estoque"));
         }
       pst.close();
 

@@ -20,13 +20,13 @@ public class Produto_Model {
     private Fornecedor Fornecedorprod;
     private String Marca;
     private Date Datacadastro;
-    private String Estoque;
+    private int Estoque;
     private Date Dataultvenda;
 
     public Produto_Model() {
     }
 
-    public Produto_Model(int IDproduto, String Descricao, Categoria Categoriaprod, String Codigobarras, Double Precovenda, Double Precocusto, Double Margemlucro, String Unidademedida, String Localizacao, Fornecedor Fornecedorprod, String Marca, Date Datacadastro) {
+    public Produto_Model(int IDproduto, String Descricao, Categoria Categoriaprod, String Codigobarras, Double Precovenda, Double Precocusto, Double Margemlucro, String Unidademedida, String Localizacao, Fornecedor Fornecedorprod, String Marca, Date Datacadastro,int estoque) {
         this.IDproduto = IDproduto;
         this.Descricao = Descricao;
         this.Categoriaprod = Categoriaprod;
@@ -39,6 +39,7 @@ public class Produto_Model {
         this.Fornecedorprod = Fornecedorprod;
         this.Marca = Marca;
         this.Datacadastro = Datacadastro;
+        this.Estoque = estoque;
     }
     
     
@@ -139,11 +140,11 @@ public class Produto_Model {
         this.Datacadastro = Datacadastro;
     }
 
-    public String getEstoque() {
+    public int getEstoque() {
         return Estoque;
     }
 
-    public void setEstoque(String Estoque) {
+    public void setEstoque(int Estoque) {
         this.Estoque = Estoque;
     }
 
