@@ -144,6 +144,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Cadastro de Funcionário");
+        setPreferredSize(new java.awt.Dimension(1078, 637));
         getContentPane().setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(0, 149, 255));
@@ -519,9 +520,9 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         Btn_Limpar.setBounds(300, 400, 115, 30);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 1050, 610);
+        jPanel2.setBounds(0, 0, 1060, 610);
 
-        setBounds(0, 0, 1056, 647);
+        setBounds(0, 0, 1068, 647);
     }// </editor-fold>//GEN-END:initComponents
     public void preencheComboCargo(){
         try {

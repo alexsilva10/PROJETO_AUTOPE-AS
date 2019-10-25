@@ -97,6 +97,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Cadastro de produtos");
+        setPreferredSize(new java.awt.Dimension(1078, 637));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -299,7 +300,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Salvar);
-        Btn_Salvar.setBounds(920, 200, 90, 30);
+        Btn_Salvar.setBounds(910, 200, 80, 30);
 
         Tabela_Produto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -317,7 +318,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(Tabela_Produto);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 242, 1010, 310);
+        jScrollPane1.setBounds(10, 242, 980, 310);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

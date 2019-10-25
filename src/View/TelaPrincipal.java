@@ -20,10 +20,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
    Funcionario_View Fun ;
    PessoaFisica fisica ;
    PessoaJuridica juridica;
-   View_Fornecedores fornecedor;
-   View_Categoria categoria;
+   Categoria_View categoria;
    Cargo_View cargo;
    Produto_View produto;
+   Fornecedores_View fornecedor;
     
     public TelaPrincipal() {
         initComponents();
@@ -312,16 +312,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         fechar();
         if(fornecedor==null){
-        fornecedor = new View_Fornecedores();
+        fornecedor = new Fornecedores_View();
         }
+        jDesktopPane1.add(fornecedor);
         fornecedor.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         fechar(); 
         if(categoria==null){
-         categoria = new View_Categoria();
+         categoria = new Categoria_View();
         }
+        jDesktopPane1.add(categoria);
          categoria.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
