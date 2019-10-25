@@ -94,6 +94,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         Btn_Salvar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela_Produto = new javax.swing.JTable();
+        ButtonSair = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Cadastro de produtos");
@@ -318,7 +319,17 @@ public class Produto_View extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(Tabela_Produto);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 242, 980, 310);
+        jScrollPane1.setBounds(10, 240, 980, 310);
+
+        ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_close_window_40px_2.png"))); // NOI18N
+        ButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSairActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ButtonSair);
+        ButtonSair.setBounds(1020, 0, 40, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -638,6 +649,13 @@ public class Produto_View extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_TxtCategoriaActionPerformed
 
+    private void ButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSairActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Deseja realmente sair?") == 0)
+        {
+            this.dispose();
+        }
+    }//GEN-LAST:event_ButtonSairActionPerformed
+
      public void atualizarTabela() {
         produto = new Produto_Model();
         try {
@@ -672,6 +690,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
     private javax.swing.JButton Btn_Novo;
     private javax.swing.JButton Btn_Pesquisar;
     private javax.swing.JButton Btn_Salvar;
+    private javax.swing.JButton ButtonSair;
     private javax.swing.JTable Tabela_Produto;
     private javax.swing.JComboBox<String> TxtCategoria;
     private javax.swing.JTextField TxtCodigoDeBarras;

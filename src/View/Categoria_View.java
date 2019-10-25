@@ -123,16 +123,17 @@ public class Categoria_View extends javax.swing.JInternalFrame {
         jPanel4.setBounds(20, 40, 860, 100);
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSair.setText("Sair");
+        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_close_window_40px_2.png"))); // NOI18N
         ButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonSairActionPerformed(evt);
             }
         });
         jPanel2.add(ButtonSair);
-        ButtonSair.setBounds(1000, 0, 60, 30);
+        ButtonSair.setBounds(1020, 0, 40, 40);
 
-        ButtonSalvarAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonSalvarAlterar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ButtonSalvarAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_16px_1.png"))); // NOI18N
         ButtonSalvarAlterar.setText("Alterar");
         ButtonSalvarAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,9 +141,10 @@ public class Categoria_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(ButtonSalvarAlterar);
-        ButtonSalvarAlterar.setBounds(430, 160, 120, 30);
+        ButtonSalvarAlterar.setBounds(650, 160, 120, 30);
 
-        ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonNovo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_new_16px.png"))); // NOI18N
         ButtonNovo.setText("Novo");
         ButtonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +154,8 @@ public class Categoria_View extends javax.swing.JInternalFrame {
         jPanel2.add(ButtonNovo);
         ButtonNovo.setBounds(20, 160, 100, 30);
 
-        ButtonSalvar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonSalvar1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ButtonSalvar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_16px_1.png"))); // NOI18N
         ButtonSalvar1.setText("Salvar");
         ButtonSalvar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,9 +163,10 @@ public class Categoria_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(ButtonSalvar1);
-        ButtonSalvar1.setBounds(765, 160, 110, 30);
+        ButtonSalvar1.setBounds(130, 160, 110, 30);
 
-        ButtonLimpar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonLimpar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_broom_16px_4.png"))); // NOI18N
         ButtonLimpar.setText("Limpar");
         ButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,7 +174,7 @@ public class Categoria_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(ButtonLimpar);
-        ButtonLimpar.setBounds(570, 160, 120, 30);
+        ButtonLimpar.setBounds(250, 160, 120, 30);
 
         JTabCadastro.setBackground(new java.awt.Color(82, 203, 248));
         JTabCadastro.setModel(new javax.swing.table.DefaultTableModel(
@@ -207,7 +211,7 @@ public class Categoria_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(680, 390, 80, 25);
+        jButton1.setBounds(800, 390, 80, 25);
 
         jPanel1.setBackground(new java.awt.Color(82, 203, 248));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Categoria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
@@ -218,6 +222,7 @@ public class Categoria_View extends javax.swing.JInternalFrame {
         TextCodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         ButtonPesqCod.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonPesqCod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_search_16px_1.png"))); // NOI18N
         ButtonPesqCod.setText("Buscar");
         ButtonPesqCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,6 +236,7 @@ public class Categoria_View extends javax.swing.JInternalFrame {
         TextNomeCons.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         ButtonPesqNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonPesqNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_search_16px_1.png"))); // NOI18N
         ButtonPesqNome.setText("Buscar");
         ButtonPesqNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,7 +285,8 @@ public class Categoria_View extends javax.swing.JInternalFrame {
         jPanel2.add(jPanel1);
         jPanel1.setBounds(20, 420, 860, 110);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_edit_16px.png"))); // NOI18N
         jButton3.setText("Editar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,7 +294,7 @@ public class Categoria_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(jButton3);
-        jButton3.setBounds(280, 160, 130, 30);
+        jButton3.setBounds(480, 160, 130, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

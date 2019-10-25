@@ -443,7 +443,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Cancelar);
-        Btn_Cancelar.setBounds(160, 400, 110, 30);
+        Btn_Cancelar.setBounds(870, 400, 110, 30);
 
         Btn_Salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_16px_1.png"))); // NOI18N
         Btn_Salvar.setText("Salvar");
@@ -453,7 +453,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Salvar);
-        Btn_Salvar.setBounds(870, 400, 130, 30);
+        Btn_Salvar.setBounds(140, 400, 130, 30);
 
         Tabela_Funcionario.setBackground(new java.awt.Color(62, 203, 246));
         Tabela_Funcionario.setModel(new javax.swing.table.DefaultTableModel(
@@ -517,7 +517,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Limpar);
-        Btn_Limpar.setBounds(300, 400, 115, 30);
+        Btn_Limpar.setBounds(280, 400, 115, 30);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 1060, 610);

@@ -102,6 +102,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         jButtonPesquisarid = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela_Funcionario = new javax.swing.JTable();
+        ButtonSair = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(113, 207, 231));
         setClosable(true);
@@ -321,6 +322,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_16px_1.png"))); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,6 +330,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
             }
         });
 
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_cancel_2_16px.png"))); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,6 +338,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
             }
         });
 
+        btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_broom_16px_4.png"))); // NOI18N
         btLimpar.setText("Limpar");
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,6 +346,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
             }
         });
 
+        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_delete_16px.png"))); // NOI18N
         btExcluir.setText("Excluir");
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -349,6 +354,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
             }
         });
 
+        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_new_16px.png"))); // NOI18N
         btNovo.setText("Novo");
         btNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,6 +362,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
             }
         });
 
+        btAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_edit_16px.png"))); // NOI18N
         btAlterar.setText("Alterar");
         btAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -366,6 +373,8 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Pessoa Fisica ID");
 
+        jButtonPesquisarid.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonPesquisarid.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_search_16px_1.png"))); // NOI18N
         jButtonPesquisarid.setText("Pesquisar");
         jButtonPesquisarid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,45 +405,55 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(Tabela_Funcionario);
 
+        ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_close_window_40px_2.png"))); // NOI18N
+        ButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
+                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addComponent(jPFisica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonPesquisarid)
-                        .addGap(231, 231, 231))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(108, 108, 108)
-                                .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPFisica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jButtonPesquisarid))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jButtonPesquisarid)
+                    .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -449,8 +468,8 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
                     .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -458,14 +477,14 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
      public void Limpar()
     {
         TxtID.setText(""); 
-        cbStatusFis.setSelectedItem("Selecionar");  
+        cbStatusFis.setSelectedIndex(0);  
         TxtMatricula.setText("");
         TxNome.setText("");
         TxtApelido.setText("");
-        cbEstadoCivil.setSelectedItem("Selecionar");
+        cbEstadoCivil.setSelectedIndex(0);
         TxCPF.setText("");
         TxRG.setText("");
-        cbSexo.setSelectedItem("Selecionar");
+        cbSexo.setSelectedIndex(0);
         TxtCelular.setText("");
         txEmail.setText("");
         TxtBairro.setText("");
@@ -473,23 +492,26 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         TxtNumero.setText("");
         TxtCidade.setText("");
         TxCEP.setText("");
-        TxtEstado.setSelectedItem(0);
+        TxtEstado.setSelectedIndex(0);
         TxtComplemento.setText("");
         TxtTelefone1.setText("");
+        txData.setText("");
     }
         public void Campos(boolean Id,boolean status, boolean Mat, boolean NomFan, boolean cnpj, boolean razao, boolean inscricao,boolean Tel, boolean Cel, boolean Emai,boolean Bair, boolean Rua, boolean Num,
          boolean Cid, boolean Cep, boolean Est, boolean Comp,boolean a , boolean b, boolean c, boolean d)
     {      
         TxtID.setEnabled(Id);
-        cbStatusFis.setEditable(status);
+        cbStatusFis.setEnabled(status);
         TxtMatricula.setEnabled(Mat);
         TxNome.setEnabled(NomFan);
         TxtApelido.setEnabled(cnpj);
         TxCPF.setEnabled(razao);
         TxRG.setEnabled(inscricao);
         txData.setEnabled(a);
-        cbEstadoCivil.setEditable(b);
-        cbSexo.setEditable(c);
+        cbEstadoCivil.setEnabled(status);
+        cbSexo.setEnabled(c);
+        TxtTelefone1.setEnabled(Tel);
+        cbSexo.setEnabled(a);
         TxtCelular.setEnabled(Cel);
         txEmail.setEnabled(Emai);
         TxtBairro.setEnabled(Bair);
@@ -512,7 +534,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
     }
    private void iniciar(){
       Campos(false, false, false,false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
-      Botão(true, false, false, false, false, true, true);
+      Botão(true, false, false, false, false, true, false);
    }
      public boolean verificaCampo(){
         if(cbStatusFis.getSelectedItem().equals("Selecione")||
@@ -664,7 +686,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
         Campos(false,true, true, true,true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true);
-        Botão(false, false, false, false, true, false, true);
+        Botão(false, true, false, false, true,false, true);
         Limpar();
     }//GEN-LAST:event_btNovoActionPerformed
 
@@ -742,6 +764,13 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_Tabela_FuncionarioMouseClicked
+
+    private void ButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSairActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Deseja realmente sair?") == 0)
+        {
+            this.dispose();
+        }
+    }//GEN-LAST:event_ButtonSairActionPerformed
              //---------------------Fomataçao das tabelas--------------------------
     String tituloColuna[] = {"ID", "Matricula", "Nome", "Celular", "Email"};
     public void modeloDATabela(String[][] a){
@@ -789,6 +818,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonSair;
     private javax.swing.JTable Tabela_Funcionario;
     private javax.swing.JFormattedTextField TxCEP;
     private javax.swing.JTextField TxCPF;
