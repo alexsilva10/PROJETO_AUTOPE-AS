@@ -101,7 +101,6 @@ public class Fornecedores_View extends javax.swing.JInternalFrame {
         btPesquisaCod = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
 
-        setClosable(true);
         setTitle("Cadastro de Fornecedores");
 
         jPanel2.setBackground(new java.awt.Color(82, 203, 248));

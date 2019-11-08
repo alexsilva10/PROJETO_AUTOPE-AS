@@ -96,7 +96,6 @@ public class Produto_View extends javax.swing.JInternalFrame {
         Tabela_Produto = new javax.swing.JTable();
         ButtonSair = new javax.swing.JButton();
 
-        setClosable(true);
         setTitle("Cadastro de produtos");
         setPreferredSize(new java.awt.Dimension(1078, 637));
         addMouseListener(new java.awt.event.MouseAdapter() {

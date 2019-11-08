@@ -130,6 +130,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         Btn_Excluir = new javax.swing.JButton();
         Btn_Alterar = new javax.swing.JButton();
         Btn_Limpar = new javax.swing.JButton();
+        ButtonSair = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,7 +143,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setClosable(true);
         setTitle("Cadastro de Funcionário");
         setPreferredSize(new java.awt.Dimension(1078, 637));
         getContentPane().setLayout(null);
@@ -518,6 +518,16 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         });
         jPanel2.add(Btn_Limpar);
         Btn_Limpar.setBounds(280, 400, 115, 30);
+
+        ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_close_window_40px_2.png"))); // NOI18N
+        ButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSairActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ButtonSair);
+        ButtonSair.setBounds(1010, 0, 40, 40);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 1060, 610);
@@ -929,6 +939,13 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_Tabela_FuncionarioMouseClicked
 
+    private void ButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSairActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Deseja realmente sair?") == 0)
+        {
+            this.dispose();
+        }
+    }//GEN-LAST:event_ButtonSairActionPerformed
+
 
     public void atualizarTabela() {
         funcionario = new Funcionario_Model();
@@ -981,6 +998,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JButton Btn_Novo;
     private javax.swing.JButton Btn_Pesquisar;
     private javax.swing.JButton Btn_Salvar;
+    private javax.swing.JButton ButtonSair;
     private javax.swing.JTable Tabela_Funcionario;
     private javax.swing.JTextField TxtBairro;
     private javax.swing.JFormattedTextField TxtCPF;

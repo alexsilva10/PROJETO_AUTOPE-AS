@@ -72,7 +72,6 @@ public class Categoria_View extends javax.swing.JInternalFrame {
         ButtonPesqNome = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        setClosable(true);
         setTitle("Cadastro de Categoria");
         setPreferredSize(new java.awt.Dimension(1078, 637));
 
