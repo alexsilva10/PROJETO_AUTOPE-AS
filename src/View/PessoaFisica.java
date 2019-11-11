@@ -6,7 +6,7 @@
 package View;
 
 import Dao.ClienteFisico_dao;
-import Model.ClienteFisico;
+import Model.Cliente;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,9 +26,9 @@ import javax.swing.table.DefaultTableModel;
 public class PessoaFisica extends javax.swing.JInternalFrame {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
-    ClienteFisico fis;
+    Cliente cliente;
     ClienteFisico_dao fis_dao;
-    List <ClienteFisico> fisicos;
+    List <Cliente> clientes;
     DefaultTableModel modelo = new DefaultTableModel();
     public PessoaFisica() {
         fis_dao = new ClienteFisico_dao();
@@ -52,15 +52,8 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         jPFisica = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         TxtID = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        TxtMatricula = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         TxtApelido = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        cbEstadoCivil = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        cbSexo = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         TxCPF = new javax.swing.JTextField();
@@ -69,7 +62,8 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         TxNome = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         cbStatusFis = new javax.swing.JComboBox<>();
-        txData = new javax.swing.JFormattedTextField();
+        jLabel10 = new javax.swing.JLabel();
+        cbTipoPessoa = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         TxtBairro = new javax.swing.JTextField();
@@ -119,81 +113,51 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         jPFisica.add(TxtID);
         TxtID.setBounds(30, 20, 40, 20);
 
-        jLabel3.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel3.setText("Matrícula:");
-        jPFisica.add(jLabel3);
-        jLabel3.setBounds(90, 20, 60, 20);
-        jPFisica.add(TxtMatricula);
-        TxtMatricula.setBounds(150, 20, 110, 20);
-
         jLabel4.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel4.setText("Apelido:");
+        jLabel4.setText("Apelido/ NomeFantazia:");
         jPFisica.add(jLabel4);
-        jLabel4.setBounds(640, 20, 50, 20);
+        jLabel4.setBounds(570, 20, 140, 20);
         jPFisica.add(TxtApelido);
-        TxtApelido.setBounds(690, 20, 140, 20);
-
-        jLabel5.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel5.setText("Estado Civil:");
-        jPFisica.add(jLabel5);
-        jLabel5.setBounds(10, 60, 80, 20);
-
-        cbEstadoCivil.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        cbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Casado", "Solteiro" }));
-        jPFisica.add(cbEstadoCivil);
-        cbEstadoCivil.setBounds(90, 60, 170, 20);
-
-        jLabel6.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel6.setText("Dt de Nasc:");
-        jPFisica.add(jLabel6);
-        jLabel6.setBounds(840, 20, 70, 20);
-
-        jLabel10.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel10.setText("Sexo:");
-        jPFisica.add(jLabel10);
-        jLabel10.setBounds(650, 60, 40, 20);
-
-        cbSexo.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Masculino", "Feminino" }));
-        jPFisica.add(cbSexo);
-        cbSexo.setBounds(690, 60, 140, 20);
+        TxtApelido.setBounds(730, 20, 280, 20);
 
         jLabel19.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel19.setText("CPF:");
+        jLabel19.setText("CPF ou CNPJ:");
         jPFisica.add(jLabel19);
-        jLabel19.setBounds(270, 60, 30, 14);
+        jLabel19.setBounds(10, 60, 80, 14);
 
         jLabel20.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel20.setText("RG:");
+        jLabel20.setText("RG ou InscriçãoEstadual:");
         jPFisica.add(jLabel20);
-        jLabel20.setBounds(470, 60, 30, 20);
+        jLabel20.setBounds(270, 60, 140, 20);
         jPFisica.add(TxCPF);
-        TxCPF.setBounds(310, 60, 150, 20);
+        TxCPF.setBounds(90, 60, 170, 20);
         jPFisica.add(TxRG);
-        TxRG.setBounds(500, 60, 130, 20);
+        TxRG.setBounds(410, 60, 150, 20);
 
         jLabel21.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
-        jLabel21.setText("Nome:");
+        jLabel21.setText("Nome ou Razao Social:");
         jPFisica.add(jLabel21);
-        jLabel21.setBounds(270, 20, 40, 20);
+        jLabel21.setBounds(90, 20, 130, 20);
         jPFisica.add(TxNome);
-        TxNome.setBounds(310, 20, 320, 20);
+        TxNome.setBounds(220, 20, 340, 20);
 
         jLabel29.setText("Status:");
         jPFisica.add(jLabel29);
-        jLabel29.setBounds(840, 60, 40, 14);
+        jLabel29.setBounds(840, 60, 40, 20);
 
         cbStatusFis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Nao Ativo" }));
         jPFisica.add(cbStatusFis);
-        cbStatusFis.setBounds(910, 60, 90, 20);
+        cbStatusFis.setBounds(890, 60, 120, 20);
 
-        try {
-            txData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jPFisica.add(txData);
-        txData.setBounds(910, 20, 90, 20);
+        jLabel10.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        jLabel10.setText("Tipo");
+        jPFisica.add(jLabel10);
+        jLabel10.setBounds(580, 60, 40, 20);
+
+        cbTipoPessoa.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
+        cbTipoPessoa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Fisica", "Juridica" }));
+        jPFisica.add(cbTipoPessoa);
+        cbTipoPessoa.setBounds(620, 60, 140, 20);
 
         jPanel2.setBackground(new java.awt.Color(28, 203, 248));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -449,10 +413,11 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jButtonPesquisarid)
-                    .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(jButtonPesquisarid)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -468,7 +433,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
                     .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -478,13 +443,11 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
     {
         TxtID.setText(""); 
         cbStatusFis.setSelectedIndex(0);  
-        TxtMatricula.setText("");
         TxNome.setText("");
         TxtApelido.setText("");
-        cbEstadoCivil.setSelectedIndex(0);
         TxCPF.setText("");
         TxRG.setText("");
-        cbSexo.setSelectedIndex(0);
+        cbTipoPessoa.setSelectedIndex(0);
         TxtCelular.setText("");
         txEmail.setText("");
         TxtBairro.setText("");
@@ -495,23 +458,20 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         TxtEstado.setSelectedIndex(0);
         TxtComplemento.setText("");
         TxtTelefone1.setText("");
-        txData.setText("");
+        
     }
         public void Campos(boolean Id,boolean status, boolean Mat, boolean NomFan, boolean cnpj, boolean razao, boolean inscricao,boolean Tel, boolean Cel, boolean Emai,boolean Bair, boolean Rua, boolean Num,
          boolean Cid, boolean Cep, boolean Est, boolean Comp,boolean a , boolean b, boolean c, boolean d)
     {      
         TxtID.setEnabled(Id);
         cbStatusFis.setEnabled(status);
-        TxtMatricula.setEnabled(Mat);
         TxNome.setEnabled(NomFan);
         TxtApelido.setEnabled(cnpj);
         TxCPF.setEnabled(razao);
         TxRG.setEnabled(inscricao);
-        txData.setEnabled(a);
-        cbEstadoCivil.setEnabled(status);
-        cbSexo.setEnabled(c);
+        cbTipoPessoa.setEnabled(c);
         TxtTelefone1.setEnabled(Tel);
-        cbSexo.setEnabled(a);
+        cbTipoPessoa.setEnabled(a);
         TxtCelular.setEnabled(Cel);
         txEmail.setEnabled(Emai);
         TxtBairro.setEnabled(Bair);
@@ -538,9 +498,9 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
    }
      public boolean verificaCampo(){
         if(cbStatusFis.getSelectedItem().equals("Selecione")||
-            TxtMatricula.getText().isEmpty()||TxCPF.getText().isEmpty()||
+            TxCPF.getText().isEmpty()||
             TxRG.getText().isEmpty()||TxNome.getText().isEmpty()||
-            cbSexo.getSelectedItem().equals("Selecione")|| TxtTelefone1.getText().isEmpty() ||
+            cbTipoPessoa.getSelectedItem().equals("Selecione")|| TxtTelefone1.getText().isEmpty() ||
             TxtCelular.getText().isEmpty() || txEmail.getText().isEmpty() ||
             TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() ||
             TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty())
@@ -562,32 +522,26 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
           boolean a = verificaCampo();
                 if(a){
-                    fis= new ClienteFisico();
-                    fis.setStatus((String) cbStatusFis.getSelectedItem());
-                    fis.setMatricula(TxtMatricula.getText());
-                    fis.setNome(TxNome.getText());
-                    fis.setApelido(TxtApelido.getText());
-                    fis.setEstadoCivil((String) cbEstadoCivil.getSelectedItem());
-                    fis.setCPF(TxCPF.getText());
-                    fis.setRG(TxRG.getText());
-                    fis.setSexo((String) cbSexo.getSelectedItem());
+                    
+                    cliente= new Cliente();
+                    cliente.setStatus((String) cbStatusFis.getSelectedItem());
+                    cliente.setTipoPessoa((String)cbTipoPessoa.getSelectedItem());
+                    cliente.setNome_razao(TxNome.getText());
+                    cliente.setApelido_NomeFan(TxtApelido.getText());
+                    cliente.setCPF_Cnpj(TxCPF.getText());
+                    cliente.setRG_inscEsta(TxRG.getText());
+                    cliente.setTelefone(TxtTelefone1.getText());
+                    cliente.setCelular(TxtCelular.getText());
+                    cliente.setEmail(txEmail.getText());
+                    cliente.setBairro(TxtBairro.getText());
+                    cliente.setRua(TxtRua.getText());
+                    cliente.setNumero(TxtNumero.getText());
+                    cliente.setCidade(TxtCidade.getText());
+                    cliente.setCep(TxCEP.getText());
+                    cliente.setEstado((String) TxtEstado.getSelectedItem());
+                    cliente.setComplemento(TxtComplemento.getText());
                   try {
-                      fis.setDtNasc(sdf.parse(txData.getText()));
-                  } catch (ParseException ex) {
-                      Logger.getLogger(PessoaFisica.class.getName()).log(Level.SEVERE, null, ex);
-                  }
-                    fis.setTelefone(TxtTelefone1.getText());
-                    fis.setCelular(TxtCelular.getText());
-                    fis.setEmail(txEmail.getText());
-                    fis.setBairro(TxtBairro.getText());
-                    fis.setRua(TxtRua.getText());
-                    fis.setNumero(TxtNumero.getText());
-                    fis.setCidade(TxtCidade.getText());
-                    fis.setCep(TxCEP.getText());
-                    fis.setEstado((String) TxtEstado.getSelectedItem());
-                    fis.setComplemento(TxtComplemento.getText());
-                  try {
-                      fis_dao.salvar(fis);
+                      fis_dao.salvar(cliente);
                       iniciar();
                       Limpar();
                       atualizarTabela();
@@ -632,46 +586,36 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
 
-                if(cbStatusFis.getSelectedItem().equals("Selecione")|| TxtMatricula.getText().isEmpty()||TxCPF.getText().isEmpty()||
-                    TxRG.getText().isEmpty()||TxNome.getText().isEmpty()||cbSexo.getSelectedItem().equals("Selecione")|| TxtTelefone1.getText().isEmpty() ||
+                if(cbStatusFis.getSelectedItem().equals("Selecione")||TxCPF.getText().isEmpty()||
+                    TxRG.getText().isEmpty()||TxNome.getText().isEmpty()||cbTipoPessoa.getSelectedItem().equals("Selecione")|| TxtTelefone1.getText().isEmpty() ||
                     TxtCelular.getText().isEmpty() || txEmail.getText().isEmpty() || TxtBairro.getText().isEmpty() || TxtNumero.getText().isEmpty() ||TxtRua.getText().isEmpty() || TxtCidade.getText().isEmpty())
                 {
                     JOptionPane.showMessageDialog(null, "A campos a serem preenchidos");
                 }else{
-                    fis= new ClienteFisico();
-                    fis.setId(Integer.parseInt(TxtID.getText()));
-                    fis.setStatus((String) cbStatusFis.getSelectedItem());
-                    fis.setMatricula(TxtMatricula.getText());
-                    fis.setNome(TxNome.getText());
-                    fis.setApelido(TxtApelido.getText());
-                    fis.setEstadoCivil((String) cbEstadoCivil.getSelectedItem());
-                    fis.setCPF(TxCPF.getText());
-                    fis.setRG(TxRG.getText());
-                    fis.setSexo((String) cbSexo.getSelectedItem());
-                    
-                    try {
-                        fis.setDtNasc(sdf.parse(txData.getText()));
-                    } catch (ParseException ex) {
-                        Logger.getLogger(PessoaFisica.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-
-                    fis.setTelefone(TxtTelefone1.getText());
-                    fis.setCelular(TxtCelular.getText());
-                    fis.setEmail(txEmail.getText());
-                    fis.setBairro(TxtBairro.getText());
-                    fis.setRua(TxtRua.getText());
-                    fis.setNumero(TxtNumero.getText());
-                    fis.setCidade(TxtCidade.getText());
-                    fis.setCep(TxCEP.getText());
-                    fis.setEstado((String) TxtEstado.getSelectedItem());
-                    fis.setComplemento(TxtComplemento.getText());
+                    cliente= new Cliente();
+                    cliente.setId(Integer.parseInt(TxtID.getText()));
+                    cliente.setStatus((String) cbStatusFis.getSelectedItem());
+                    cliente.setTipoPessoa((String) cbTipoPessoa.getSelectedItem());
+                    cliente.setNome_razao(TxNome.getText());
+                    cliente.setApelido_NomeFan(TxtApelido.getText());
+                    cliente.setCPF_Cnpj(TxCPF.getText());
+                    cliente.setRG_inscEsta(TxRG.getText());
+                    cliente.setTelefone(TxtTelefone1.getText());
+                    cliente.setCelular(TxtCelular.getText());
+                    cliente.setEmail(txEmail.getText());
+                    cliente.setBairro(TxtBairro.getText());
+                    cliente.setRua(TxtRua.getText());
+                    cliente.setNumero(TxtNumero.getText());
+                    cliente.setCidade(TxtCidade.getText());
+                    cliente.setCep(TxCEP.getText());
+                    cliente.setEstado((String) TxtEstado.getSelectedItem());
+                    cliente.setComplemento(TxtComplemento.getText());
                     int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Alterar os Dados!");
                     if( i == 0 )
                     {
 
                         try {
-                            fis_dao.alterar(fis);
+                            fis_dao.alterar(cliente);
                         } catch (SQLException ex) {
                             Logger.getLogger(PessoaFisica.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -692,41 +636,38 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
 
     private void jButtonPesquisaridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaridActionPerformed
         String ID = JOptionPane.showInputDialog("Digite o ID do Cliente Fisico: ");
-        fis = new ClienteFisico();
+        cliente= new Cliente();
         jPFisica.setVisible(true);
 
         try {
-            fis = fis_dao.buscaFicicaID(Integer.parseInt(ID));
+            cliente= fis_dao.buscaClienteByID(Integer.parseInt(ID));
         } catch (SQLException ex) {
-            Logger.getLogger(PessoaFisica.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if(fis == null)
+        if(cliente== null)
         {
             JOptionPane.showMessageDialog(null, "Cliente não encontrado");
         }
         Campos(false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true,true, true, true, true);
         Botão(false, true, true, true, false, true, true);
         TxtID.setText(ID);
-        TxtMatricula.setText(fis.getMatricula());
-        TxNome.setText(fis.getNome());
-        cbStatusFis.setSelectedItem(fis.getStatus());
-        TxtApelido.setText(fis.getApelido());
-        cbEstadoCivil.setSelectedItem(fis.getEstadoCivil());
-        txData.setText(sdf.format(fis.getDtNasc()));
-        cbSexo.setSelectedItem(fis.getSexo());
-        TxCPF.setText(fis.getCPF());
-        TxRG.setText(fis.getRG());
-        TxtTelefone1.setText(fis.getTelefone());
-        TxtCelular.setText(fis.getCelular());
-        txEmail.setText(fis.getEmail());
-        TxtBairro.setText(fis.getBairro());
-        TxtRua.setText(fis.getRua());
-        TxtNumero.setText(fis.getNumero());
-        TxtCidade.setText(fis.getCidade());
-        TxCEP.setText(fis.getCep());
-        TxtEstado.setSelectedItem(fis.getEstado());
-        TxtComplemento.setText(fis.getComplemento());
+        TxNome.setText(cliente.getNome_razao());
+        cbStatusFis.setSelectedItem(cliente.getStatus());
+        TxtApelido.setText(cliente.getApelido_NomeFan());
+        cbTipoPessoa.setSelectedItem(cliente.getTipoPessoa());
+        TxCPF.setText(cliente.getCPF_Cnpj());
+        TxRG.setText(cliente.getRG_inscEsta());
+        TxtTelefone1.setText(cliente.getTelefone());
+        TxtCelular.setText(cliente.getCelular());
+        txEmail.setText(cliente.getEmail());
+        TxtBairro.setText(cliente.getBairro());
+        TxtRua.setText(cliente.getRua());
+        TxtNumero.setText(cliente.getNumero());
+        TxtCidade.setText(cliente.getCidade());
+        TxCEP.setText(cliente.getCep());
+        TxtEstado.setSelectedItem(cliente.getEstado());
+        TxtComplemento.setText(cliente.getComplemento());
 
         //user = funcionario.getNome();
     }//GEN-LAST:event_jButtonPesquisaridActionPerformed
@@ -738,27 +679,24 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         try {
             Campos(false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true,true, true, true, true);
             Botão(false, true, true, true, false, true, true);
-            fis = fis_dao.buscaFicicaID(Integer.parseInt(TxtID.getText()));
+            cliente= fis_dao.buscaClienteByID(Integer.parseInt(TxtID.getText()));
 
-            cbStatusFis.setSelectedItem(fis.getStatus());
-            TxtMatricula.setText(fis.getMatricula());
-            TxNome.setText(fis.getNome());
-            TxtApelido.setText(fis.getApelido());
-            cbEstadoCivil.setSelectedItem(fis.getEstadoCivil());
-            txData.setText(sdf.format(fis.getDtNasc()));
-            cbSexo.setSelectedItem(fis.getSexo());
-            TxCPF.setText(fis.getCPF());
-            TxRG.setText(fis.getRG());
-            TxtTelefone1.setText(fis.getTelefone());
-            TxtCelular.setText(fis.getCelular());
-            txEmail.setText(fis.getEmail());
-            TxtBairro.setText(fis.getBairro());
-            TxtRua.setText(fis.getRua());
-            TxtNumero.setText(fis.getNumero());
-            TxtCidade.setText(fis.getCidade());
-            TxCEP.setText(fis.getCep());
-            TxtEstado.setSelectedItem(fis.getEstado());
-            TxtComplemento.setText(fis.getComplemento());
+            cbStatusFis.setSelectedItem(cliente.getStatus());
+            cbTipoPessoa.setSelectedItem(cliente.getTipoPessoa());
+            TxNome.setText(cliente.getNome_razao());
+            TxtApelido.setText(cliente.getApelido_NomeFan());
+            TxCPF.setText(cliente.getCPF_Cnpj());
+            TxRG.setText(cliente.getRG_inscEsta());
+            TxtTelefone1.setText(cliente.getTelefone());
+            TxtCelular.setText(cliente.getCelular());
+            txEmail.setText(cliente.getEmail());
+            TxtBairro.setText(cliente.getBairro());
+            TxtRua.setText(cliente.getRua());
+            TxtNumero.setText(cliente.getNumero());
+            TxtCidade.setText(cliente.getCidade());
+            TxCEP.setText(cliente.getCep());
+            TxtEstado.setSelectedItem(cliente.getEstado());
+            TxtComplemento.setText(cliente.getComplemento());
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -772,7 +710,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_ButtonSairActionPerformed
              //---------------------Fomataçao das tabelas--------------------------
-    String tituloColuna[] = {"ID", "Matricula", "Nome", "Celular", "Email"};
+    String tituloColuna[] = {"ID", "Nome", "Tipo", "Celular", "Email"};
     public void modeloDATabela(String[][] a){
             modelo.setDataVector(a, tituloColuna);
             Tabela_Funcionario.setModel(new DefaultTableModel(a,tituloColuna){
@@ -797,17 +735,17 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
     
     
     public void atualizarTabela(){
-        fis = new ClienteFisico();
+        cliente= new Cliente();
         try {
-            fisicos = fis_dao.todosFisicos();
-            String dados[][] = new String[fisicos.size()][10];
+            clientes = fis_dao.todosFisicos();
+            String dados[][] = new String[clientes.size()][10];
             int i = 0;
-            for (ClienteFisico u : fisicos) {
-                dados[i][0] = String.valueOf(u.getId());
-                dados[i][1] = u.getMatricula();
-                dados[i][2] = u.getNome();
-                dados[i][3] = u.getCelular();
-                dados[i][4] = u.getEmail(); 
+            for (Cliente cli : clientes) {
+                dados[i][0] = String.valueOf(cli.getId());
+                dados[i][1] = cli.getNome_razao();
+                dados[i][2] = cli.getTipoPessoa();
+                dados[i][3] = cli.getCelular();
+                dados[i][4] = cli.getEmail(); 
                 i++;
             }
             modeloDATabela(dados);
@@ -831,7 +769,6 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxtComplemento;
     private javax.swing.JComboBox<String> TxtEstado;
     private javax.swing.JTextField TxtID;
-    private javax.swing.JTextField TxtMatricula;
     private javax.swing.JTextField TxtNumero;
     private javax.swing.JTextField TxtRua;
     private javax.swing.JFormattedTextField TxtTelefone1;
@@ -841,9 +778,8 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JComboBox<String> cbEstadoCivil;
-    private javax.swing.JComboBox<String> cbSexo;
     private javax.swing.JComboBox<String> cbStatusFis;
+    private javax.swing.JComboBox<String> cbTipoPessoa;
     private javax.swing.JButton jButtonPesquisarid;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -859,10 +795,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -870,7 +803,6 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JFormattedTextField txData;
     private javax.swing.JTextField txEmail;
     // End of variables declaration//GEN-END:variables
 }

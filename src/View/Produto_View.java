@@ -116,6 +116,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         TxtID.setBounds(40, 20, 130, 20);
 
         Btn_Pesquisar.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
+        Btn_Pesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_search_16px_1.png"))); // NOI18N
         Btn_Pesquisar.setText("Pesquisar");
         Btn_Pesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,6 +245,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         TxtDtutlvenda.setBounds(380, 150, 210, 20);
 
         Btn_Novo.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
+        Btn_Novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_new_16px.png"))); // NOI18N
         Btn_Novo.setText("Novo");
         Btn_Novo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,6 +256,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         Btn_Novo.setBounds(10, 200, 90, 30);
 
         Btn_Cancelar.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
+        Btn_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_cancel_2_16px.png"))); // NOI18N
         Btn_Cancelar.setText("Cancelar");
         Btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,9 +264,10 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Cancelar);
-        Btn_Cancelar.setBounds(120, 200, 90, 30);
+        Btn_Cancelar.setBounds(120, 200, 103, 30);
 
         Btn_Alterar.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
+        Btn_Alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_edit_16px.png"))); // NOI18N
         Btn_Alterar.setText("Alterar");
         Btn_Alterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,9 +275,10 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Alterar);
-        Btn_Alterar.setBounds(780, 200, 90, 30);
+        Btn_Alterar.setBounds(780, 200, 110, 30);
 
         Btn_Limpar.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
+        Btn_Limpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_broom_16px_4.png"))); // NOI18N
         Btn_Limpar.setText("Limpar");
         Btn_Limpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,9 +286,10 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Limpar);
-        Btn_Limpar.setBounds(230, 200, 90, 30);
+        Btn_Limpar.setBounds(260, 200, 110, 30);
 
         Btn_Excluir.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
+        Btn_Excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_delete_16px.png"))); // NOI18N
         Btn_Excluir.setText("Excluir");
         Btn_Excluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,9 +297,10 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Excluir);
-        Btn_Excluir.setBounds(620, 200, 90, 30);
+        Btn_Excluir.setBounds(610, 200, 100, 30);
 
         Btn_Salvar.setFont(new java.awt.Font("Sitka Small", 1, 11)); // NOI18N
+        Btn_Salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_16px_1.png"))); // NOI18N
         Btn_Salvar.setText("Salvar");
         Btn_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -301,7 +308,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Salvar);
-        Btn_Salvar.setBounds(910, 200, 80, 30);
+        Btn_Salvar.setBounds(910, 200, 100, 30);
 
         Tabela_Produto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
