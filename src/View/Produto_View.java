@@ -8,6 +8,7 @@ import Dao.Produto_Dao;
 import Model.Categoria;
 import Model.Fornecedor;
 import Model.Produto_Model;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
 
 public class Produto_View extends javax.swing.JInternalFrame {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -95,6 +97,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela_Produto = new javax.swing.JTable();
         ButtonSair = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Cadastro de produtos");
@@ -337,6 +340,16 @@ public class Produto_View extends javax.swing.JInternalFrame {
         });
         jPanel1.add(ButtonSair);
         ButtonSair.setBounds(1020, 0, 40, 40);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_activity_history_16px.png"))); // NOI18N
+        jButton1.setText("Relatorio");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(430, 200, 95, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -663,6 +676,20 @@ public class Produto_View extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_ButtonSairActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+ 
+        try {
+            prod_Dao.gerarRelatorioProduto();
+        } catch (SQLException ex) {
+            Logger.getLogger(Produto_View.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(Produto_View.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Produto_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
      public void atualizarTabela() {
         produto = new Produto_Model();
         try {
@@ -713,6 +740,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxtPrecoCusto;
     private javax.swing.JTextField TxtPrecoVenda;
     private javax.swing.JComboBox<String> TxtUnidademedida;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

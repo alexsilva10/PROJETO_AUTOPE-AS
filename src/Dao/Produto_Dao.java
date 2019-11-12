@@ -7,12 +7,22 @@ package Dao;
 
 
 import Model.Produto_Model;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 /**
  *
@@ -160,4 +170,61 @@ public class Produto_Dao {
 
         return produto;
     } 
+    
+            public boolean gerarRelatorioProduto() throws SQLException, JRException, IOException {
+                sql = "SELECT\n" +
+            "     *,\n" +
+            "     produto.`descricao`,\n" +
+            "     categoria.`nome`,\n" +
+            "     produto.`localizacao`,\n" +
+            "     fornecedores.`razao`,\n" +
+            "     produto.`id_categoria` AS produto_id_categoria,\n" +
+            "     produto.`codigobarras` AS produto_codigobarras,\n" +
+            "     produto.`precovenda` AS produto_precovenda,\n" +
+            "     produto.`precocusto` AS produto_precocusto,\n" +
+            "     produto.`margemlucro` AS produto_margemlucro,\n" +
+            "     produto.`UnidadeMedida` AS produto_UnidadeMedida,\n" +
+            "     produto.`id_fornecedor` AS produto_id_fornecedor,\n" +
+            "     produto.`marca` AS produto_marca,\n" +
+            "     produto.`Datacadastro` AS produto_Datacadastro,\n" +
+            "     produto.`estoque` AS produto_estoque,\n" +
+            "     produto.`dataUltvenda` AS produto_dataUltvenda,\n" +
+            "     categoria.`codigo` AS categoria_codigo,\n" +
+            "     fornecedores.`codigo` AS fornecedores_codigo,\n" +
+            "     fornecedores.`nomeFantasia` AS fornecedores_nomeFantasia,\n" +
+            "     fornecedores.`CNPJ_CPF` AS fornecedores_CNPJ_CPF,\n" +
+            "     fornecedores.`Inscricao_RG` AS fornecedores_Inscricao_RG,\n" +
+            "     fornecedores.`rua` AS fornecedores_rua,\n" +
+            "     fornecedores.`numero` AS fornecedores_numero,\n" +
+            "     fornecedores.`complemento` AS fornecedores_complemento,\n" +
+            "     fornecedores.`bairro` AS fornecedores_bairro,\n" +
+            "     fornecedores.`cidade` AS fornecedores_cidade,\n" +
+            "     fornecedores.`estado` AS fornecedores_estado,\n" +
+            "     fornecedores.`cep` AS fornecedores_cep,\n" +
+            "     fornecedores.`banco` AS fornecedores_banco,\n" +
+            "     fornecedores.`agencia` AS fornecedores_agencia,\n" +
+            "     fornecedores.`conta` AS fornecedores_conta,\n" +
+            "     fornecedores.`telefone` AS fornecedores_telefone,\n" +
+            "     fornecedores.`telefone2` AS fornecedores_telefone2,\n" +
+            "     fornecedores.`email` AS fornecedores_email,\n" +
+            "     fornecedores.`dataCadastro` AS fornecedores_dataCadastro,\n" +
+            "     produto.`id`\n" +
+            "FROM\n" +
+            "     `produto` produto INNER JOIN `categoria` categoria ON produto.`id_categoria` = categoria.`codigo`\n" +
+            "     INNER JOIN `fornecedores` fornecedores ON produto.`id_fornecedor` = fornecedores.`codigo`";
+        pst = Conexao.getConnection().prepareStatement(sql);
+        pst.executeQuery();
+        ResultSet rs = pst.getResultSet();
+        JRResultSetDataSource jrRS = new JRResultSetDataSource(pst.getResultSet());
+        
+        InputStream caminho = this.getClass().getClassLoader().getResourceAsStream("relatorios/produto.jasper");
+        JasperPrint jasper = JasperFillManager.fillReport(caminho, new HashMap(),jrRS);
+        JasperExportManager.exportReportToPdfFile(jasper,"C:/Users/User/Downloads/jcalendar-1.1.4.jar/produto.pdf");
+        File file =new File("C:/Users/User/Downloads/jcalendar-1.1.4.jar/produto.pdf");
+        Desktop.getDesktop().open(file);
+        file.deleteOnExit();
+        
+        pst.close();
+        return true;
+    }
 }

@@ -11,6 +11,7 @@ import Dao.Funcionario_Dao;
 import Model.Cargo_Model;
 import Model.Funcionario_Model;
 import Util.ValidaCPF;
+import java.io.IOException;
 
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -21,6 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -130,6 +132,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         Btn_Excluir = new javax.swing.JButton();
         Btn_Alterar = new javax.swing.JButton();
         Btn_Limpar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -324,7 +327,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtEstado.setBounds(860, 50, 110, 20);
 
         jPanel2.add(jPanel4);
-        jPanel4.setBounds(10, 170, 990, 100);
+        jPanel4.setBounds(10, 170, 990, 90);
 
         jPanel5.setBackground(new java.awt.Color(0, 149, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Profissionais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
@@ -518,6 +521,16 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         });
         jPanel2.add(Btn_Limpar);
         Btn_Limpar.setBounds(280, 400, 115, 30);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_activity_history_16px.png"))); // NOI18N
+        jButton1.setText("Relatorio");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1);
+        jButton1.setBounds(440, 400, 95, 30);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 1060, 610);
@@ -929,6 +942,20 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_Tabela_FuncionarioMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        try {
+            funci_Dao.gerarRelatorioFuncionario();
+        } catch (SQLException ex) {
+            Logger.getLogger(Funcionario_View.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(Funcionario_View.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Funcionario_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     public void atualizarTabela() {
         funcionario = new Funcionario_Model();
@@ -1007,6 +1034,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> TxtSexo;
     private javax.swing.JComboBox<String> TxtStatus;
     private javax.swing.JFormattedTextField TxtTelefone;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

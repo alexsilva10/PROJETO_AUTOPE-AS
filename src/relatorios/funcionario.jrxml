@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="funcionario" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7692eb4f-7cc5-4842-9bea-ea770b38d932">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     funcionario.`ID` AS funcionario_ID,
+     funcionario.`Matricula` AS funcionario_Matricula,
+     funcionario.`Nome` AS funcionario_Nome,
+     funcionario.`Estadocivil` AS funcionario_Estadocivil,
+     funcionario.`Datanascimento` AS funcionario_Datanascimento,
+     funcionario.`Sexo` AS funcionario_Sexo,
+     funcionario.`CPF` AS funcionario_CPF,
+     funcionario.`Telefone` AS funcionario_Telefone,
+     funcionario.`Celular` AS funcionario_Celular,
+     funcionario.`Email` AS funcionario_Email,
+     funcionario.`Bairro` AS funcionario_Bairro,
+     funcionario.`Rua` AS funcionario_Rua,
+     funcionario.`Numero` AS funcionario_Numero,
+     funcionario.`Cidade` AS funcionario_Cidade,
+     funcionario.`Cep` AS funcionario_Cep,
+     funcionario.`Estado` AS funcionario_Estado,
+     funcionario.`Complemento` AS funcionario_Complemento,
+     funcionario.`Escolaridade` AS funcionario_Escolaridade,
+     funcionario.`RG` AS funcionario_RG,
+     funcionario.`Dataadmissao` AS funcionario_Dataadmissao,
+     funcionario.`Salarioadmissao` AS funcionario_Salarioadmissao,
+     funcionario.`Datademissao` AS funcionario_Datademissao,
+     funcionario.`Salarioatual` AS funcionario_Salarioatual,
+     funcionario.`id_cargo` AS funcionario_id_cargo,
+     funcionario.`Status` AS funcionario_Status
+FROM
+     `funcionario` funcionario]]>
+	</queryString>
+	<field name="funcionario_ID" class="java.lang.Integer"/>
+	<field name="funcionario_Matricula" class="java.lang.String"/>
+	<field name="funcionario_Nome" class="java.lang.String"/>
+	<field name="funcionario_Estadocivil" class="java.lang.String"/>
+	<field name="funcionario_Datanascimento" class="java.sql.Date"/>
+	<field name="funcionario_Sexo" class="java.lang.String"/>
+	<field name="funcionario_CPF" class="java.lang.String"/>
+	<field name="funcionario_Telefone" class="java.lang.String"/>
+	<field name="funcionario_Celular" class="java.lang.String"/>
+	<field name="funcionario_Email" class="java.lang.String"/>
+	<field name="funcionario_Bairro" class="java.lang.String"/>
+	<field name="funcionario_Rua" class="java.lang.String"/>
+	<field name="funcionario_Numero" class="java.lang.Long"/>
+	<field name="funcionario_Cidade" class="java.lang.String"/>
+	<field name="funcionario_Cep" class="java.lang.String"/>
+	<field name="funcionario_Estado" class="java.lang.String"/>
+	<field name="funcionario_Complemento" class="java.lang.String"/>
+	<field name="funcionario_Escolaridade" class="java.lang.String"/>
+	<field name="funcionario_RG" class="java.lang.String"/>
+	<field name="funcionario_Dataadmissao" class="java.sql.Date"/>
+	<field name="funcionario_Salarioadmissao" class="java.lang.String"/>
+	<field name="funcionario_Datademissao" class="java.sql.Date"/>
+	<field name="funcionario_Salarioatual" class="java.lang.String"/>
+	<field name="funcionario_id_cargo" class="java.lang.Long"/>
+	<field name="funcionario_Status" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="148" y="14" width="253" height="42" uuid="ad4e6007-ba32-422b-9508-439878cd1742"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Relatório Funcionáriosa]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="391" y="12" width="164" height="20" uuid="86a784ac-fa92-4d35-9251-58928a4584fa"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#9999FF" uuid="f7584ce6-79da-4047-b8b4-49ff89757682"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="34" height="20" uuid="b3f0460f-d7ee-4c63-bc4b-2bc1d27728e9"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="0" width="56" height="20" uuid="3887da6d-cf88-4c98-8887-cb9e9f293934"/>
+				<text><![CDATA[Matricula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="0" width="164" height="20" uuid="ae167930-f70a-4a2f-9b9f-dbc8227a151f"/>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="63" height="20" uuid="cbba43a6-27ef-4a20-be3c-a0dff8ebffbe"/>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="0" width="68" height="20" uuid="780d81d7-4e73-4358-bdb5-2d3e4f33168b"/>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="0" width="126" height="20" uuid="fb501da5-e7e5-47c7-a531-1009c15693a2"/>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="34" height="20" uuid="7134b031-44b8-492a-b832-a61b1a787707"/>
+				<textFieldExpression><![CDATA[$F{funcionario_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="34" y="0" width="56" height="20" uuid="411546f8-58a3-4d2f-a8ec-2a1e657f3a4f"/>
+				<textFieldExpression><![CDATA[$F{funcionario_Matricula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="0" width="164" height="20" uuid="76748684-8ec6-4f1d-b0dc-ecb21793c2d7"/>
+				<textFieldExpression><![CDATA[$F{funcionario_Nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="63" height="20" uuid="8875d21e-bd62-42e5-b844-3d7555601d9b"/>
+				<textFieldExpression><![CDATA[$F{funcionario_CPF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="347" y="0" width="68" height="20" uuid="c3f3495d-baa6-4197-9254-0773db668b00"/>
+				<textFieldExpression><![CDATA[$F{funcionario_Telefone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="429" y="0" width="126" height="20" uuid="d6b0f94e-7968-4ebd-83f1-52ba6fb65412"/>
+				<textFieldExpression><![CDATA[$F{funcionario_Email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

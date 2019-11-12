@@ -1,6 +1,10 @@
 package Dao;
 
 import Model.Funcionario_Model;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -8,7 +12,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 public class Funcionario_Dao implements Serializable{
     PreparedStatement pst;
@@ -199,5 +209,50 @@ public class Funcionario_Dao implements Serializable{
         pst.close();
 
         return resposta;
+    }
+    
+                public boolean gerarRelatorioFuncionario() throws SQLException, JRException, IOException {
+                   sql = "SELECT\n" +
+                    "     funcionario.`ID` AS funcionario_ID,\n" +
+                    "     funcionario.`Matricula` AS funcionario_Matricula,\n" +
+                    "     funcionario.`Nome` AS funcionario_Nome,\n" +
+                    "     funcionario.`Estadocivil` AS funcionario_Estadocivil,\n" +
+                    "     funcionario.`Datanascimento` AS funcionario_Datanascimento,\n" +
+                    "     funcionario.`Sexo` AS funcionario_Sexo,\n" +
+                    "     funcionario.`CPF` AS funcionario_CPF,\n" +
+                    "     funcionario.`Telefone` AS funcionario_Telefone,\n" +
+                    "     funcionario.`Celular` AS funcionario_Celular,\n" +
+                    "     funcionario.`Email` AS funcionario_Email,\n" +
+                    "     funcionario.`Bairro` AS funcionario_Bairro,\n" +
+                    "     funcionario.`Rua` AS funcionario_Rua,\n" +
+                    "     funcionario.`Numero` AS funcionario_Numero,\n" +
+                    "     funcionario.`Cidade` AS funcionario_Cidade,\n" +
+                    "     funcionario.`Cep` AS funcionario_Cep,\n" +
+                    "     funcionario.`Estado` AS funcionario_Estado,\n" +
+                    "     funcionario.`Complemento` AS funcionario_Complemento,\n" +
+                    "     funcionario.`Escolaridade` AS funcionario_Escolaridade,\n" +
+                    "     funcionario.`RG` AS funcionario_RG,\n" +
+                    "     funcionario.`Dataadmissao` AS funcionario_Dataadmissao,\n" +
+                    "     funcionario.`Salarioadmissao` AS funcionario_Salarioadmissao,\n" +
+                    "     funcionario.`Datademissao` AS funcionario_Datademissao,\n" +
+                    "     funcionario.`Salarioatual` AS funcionario_Salarioatual,\n" +
+                    "     funcionario.`id_cargo` AS funcionario_id_cargo,\n" +
+                    "     funcionario.`Status` AS funcionario_Status\n" +
+                    "FROM\n" +
+                    "     `funcionario` funcionario";
+        pst = Conexao.getConnection().prepareStatement(sql);
+        pst.executeQuery();
+        ResultSet rs = pst.getResultSet();
+        JRResultSetDataSource jrRS = new JRResultSetDataSource(pst.getResultSet());
+        
+        InputStream caminho = this.getClass().getClassLoader().getResourceAsStream("relatorios/funcionario.jasper");
+        JasperPrint jasper = JasperFillManager.fillReport(caminho, new HashMap(),jrRS);
+        JasperExportManager.exportReportToPdfFile(jasper,"C:/Users/User/Downloads/jcalendar-1.1.4.jar/funcionario.pdf");
+        File file =new File("C:/Users/User/Downloads/jcalendar-1.1.4.jar/funcionario.pdf");
+        Desktop.getDesktop().open(file);
+        file.deleteOnExit();
+        
+        pst.close();
+        return true;
     }
 }
