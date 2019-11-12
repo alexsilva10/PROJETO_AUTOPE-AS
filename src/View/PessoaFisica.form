@@ -31,13 +31,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="btNovo" min="-2" pref="117" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btSalvar" min="-2" pref="122" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btLimpar" min="-2" pref="115" max="-2" attributes="0"/>
-                      <EmptySpace pref="247" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" pref="112" max="-2" attributes="0"/>
+                      <EmptySpace pref="125" max="32767" attributes="0"/>
                       <Component id="btExcluir" min="-2" pref="127" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btAlterar" min="-2" pref="107" max="-2" attributes="0"/>
@@ -77,16 +78,19 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btNovo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="btCancelar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="btLimpar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="btExcluir" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="btAlterar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="btSalvar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jButton1" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btNovo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btCancelar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btLimpar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btExcluir" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btAlterar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btSalvar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="225" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="222" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -100,7 +104,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Pessoa F&#xed;sica">
+            <TitledBorder title="Cliente">
               <Font PropertyName="font" name="Sitka Small" size="11" style="1"/>
             </TitledBorder>
           </Border>
@@ -647,7 +651,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Pessoa Fisica ID"/>
+        <Property name="text" type="java.lang.String" value="Cliente ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonPesquisarid">
@@ -732,6 +736,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSairActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/img/icons8_activity_history_16px.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Relatorio"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
