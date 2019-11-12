@@ -7,7 +7,13 @@ import Dao.Dao_CadastroFornecedores;
 import Dao.Produto_Dao;
 import Model.Categoria;
 import Model.Fornecedor;
+import Model.Funcionario_Model;
 import Model.Produto_Model;
+import java.awt.Desktop;
+import java.awt.Font;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,6 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.Document;
 
 public class Produto_View extends javax.swing.JInternalFrame {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -95,6 +102,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela_Produto = new javax.swing.JTable();
         ButtonSair = new javax.swing.JButton();
+        Btn_Relatorioproduto = new javax.swing.JButton();
 
         setTitle("Cadastro de produtos");
         setPreferredSize(new java.awt.Dimension(1078, 637));
@@ -149,7 +157,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(750, 90, 100, 20);
         jPanel1.add(TxtCodigoDeBarras);
-        TxtCodigoDeBarras.setBounds(860, 90, 130, 20);
+        TxtCodigoDeBarras.setBounds(860, 90, 150, 20);
 
         jLabel4.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel4.setText("Preço de venda:");
@@ -192,7 +200,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel8);
         jLabel8.setBounds(780, 120, 80, 20);
         jPanel1.add(TxtLocaliza);
-        TxtLocaliza.setBounds(860, 120, 130, 20);
+        TxtLocaliza.setBounds(860, 120, 150, 20);
 
         jLabel9.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel9.setText("Fornecedor:");
@@ -207,7 +215,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel10);
         jLabel10.setBounds(760, 60, 50, 20);
         jPanel1.add(TxtMarca);
-        TxtMarca.setBounds(810, 60, 180, 20);
+        TxtMarca.setBounds(810, 60, 200, 20);
 
         jLabel11.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         jLabel11.setText("Data de cadastro:");
@@ -300,7 +308,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(Btn_Salvar);
-        Btn_Salvar.setBounds(910, 200, 80, 30);
+        Btn_Salvar.setBounds(910, 200, 100, 30);
 
         Tabela_Produto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -318,7 +326,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(Tabela_Produto);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 240, 980, 310);
+        jScrollPane1.setBounds(10, 250, 1000, 290);
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_close_window_40px_2.png"))); // NOI18N
@@ -330,11 +338,20 @@ public class Produto_View extends javax.swing.JInternalFrame {
         jPanel1.add(ButtonSair);
         ButtonSair.setBounds(1020, 0, 40, 40);
 
+        Btn_Relatorioproduto.setText("Relatório de Produto");
+        Btn_Relatorioproduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_RelatorioprodutoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Btn_Relatorioproduto);
+        Btn_Relatorioproduto.setBounds(810, 550, 200, 40);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1062, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -655,6 +672,138 @@ public class Produto_View extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_ButtonSairActionPerformed
 
+    private void Btn_RelatorioprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_RelatorioprodutoActionPerformed
+        String nomediretorio = null;
+        String nomepasta = "SRS"; // Informe o nome da pasta que armazenará o relatório       
+	String separador = java.io.File.separator;        
+try {         
+	nomediretorio = "C:" + separador + nomepasta;            
+	if (!new File(nomediretorio).exists()){
+            (new File(nomediretorio)).mkdir(); 
+          }
+        //gerarDocumento();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_Btn_RelatorioprodutoActionPerformed
+
+    public void gerarDocumento() {
+     //   try {
+     //       List<Funcionario_Model> lista = new ArrayList<>();
+       //     lista = funci_Dao.ListaFuncionarios();
+      //      doc = new Document(PageSize.A4, 41.5f, 41.5f, 55.2f, 55.2f) {};
+        //    PdfWriter.getInstance(doc, new FileOutputStream("C:/SRS/PROJETO_AUTOPE-AS" + ".pdf"));
+          //  doc.open();
+
+            Font f1 = new Font(Font.HELVETICA, 14, Font.BOLD);
+            Font f2 = new Font(Font.HELVETICA, 12, Font.BOLD);
+            Font f3 = new Font(Font.HELVETICA, 12, Font.NORMAL);
+            Font f4 = new Font(Font.HELVETICA, 10, Font.BOLD);
+            Font f5 = new Font(Font.HELVETICA, 10, Font.NORMAL);
+
+            Paragraph titulo1 = new Paragraph("Universidade do Estado de Minas Gerais", f2);
+            titulo1.setAlignment(Element.ALIGN_CENTER);
+            titulo1.setSpacingAfter(10);
+
+           Paragraph titulo2 = new Paragraph("Relatório de Produtos", f1);
+           titulo2.setAlignment(Element.ALIGN_CENTER);
+            titulo2.setSpacingAfter(0);
+
+            PdfPTable tabela = new PdfPTable(new float[]{0.40f, 0.60f});
+            tabela.setHorizontalAlignment(Element.ALIGN_CENTER);
+            tabela.setWidthPercentage(100f);
+
+            PdfPCell cabecalho1 = new PdfPCell(new Paragraph("ID", f3));
+            //cabecalho1.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho1.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho1.setBorder(0);
+
+            PdfPCell cabecalho2 = new PdfPCell(new Paragraph("Descriçao", f3));
+            //cabecalho2.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho2.setBorder(0);
+
+            PdfPCell cabecalho3 = new PdfPCell(new Paragraph("Grupo", f3));
+            //cabecalho2.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho3.setBorder(0);
+            
+            PdfPCell cabecalho4 = new PdfPCell(new Paragraph("Localizãção", f3));
+            //cabecalho2.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho4.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho4.setBorder(0);
+            
+            PdfPCell cabecalho5 = new PdfPCell(new Paragraph("Fornecedor", f3));
+            //cabecalho2.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho5.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho5.setBorder(0);
+            
+         
+            
+            
+            tabela.addCell(cabecalho1);
+            tabela.addCell(cabecalho2);
+            tabela.addCell(cabecalho3);
+            tabela.addCell(cabecalho4);
+            tabela.addCell(cabecalho5);
+           
+            
+            
+            for (Produto_Model produto : lista) {
+               Paragraph p1 = new Paragraph(produto.getIDproduto(), f5);
+               p1.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col1 = new PdfPCell(p1);
+               col1.setBorder(0);
+              
+               Paragraph p2 = new Paragraph(produto.getDescricao(), f5);
+               p2.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col2 = new PdfPCell(p2);
+               col2.setBorder(0);
+               
+               Paragraph p3 = new Paragraph(produto.getEstoque(), f5);
+               p3.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col3 = new PdfPCell(p3);
+               col3.setBorder(0);
+               
+               Paragraph p4 = new Paragraph(produto.getLocalizacao(), f5);
+               p4.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col4 = new PdfPCell(p4);
+               col4.setBorder(0);
+               
+               Paragraph p5 = new Paragraph(produto.getFornecedorprod(), f5);
+               p5.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col5 = new PdfPCell(p5);
+               col5.setBorder(0);
+               
+              
+               
+               tabela.addCell(col1);
+               tabela.addCell(col2);
+               tabela.addCell(col3);
+               tabela.addCell(col4);
+               tabela.addCell(col5);
+              
+            }
+            
+           doc.add(titulo2);
+           doc.add(titulo1);
+           doc.add(tabela);
+           doc.close();
+           
+           JOptionPane.showMessageDialog(null, "Relatório salvo com sucesso");
+            String caminho = "C:/SRS/RelatorioCliente.pdf";
+            Desktop.getDesktop().open(new File(caminho));
+       } catch (DocumentException e) {
+           e.printStackTrace();
+       } catch (SQLException ex) {
+           ex.printStackTrace();
+        } catch (IOException exx) {
+            exx.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Documento de Requisitos aberto. Feche para gerar um novo.");
+        }
+    }//
+           
+    
      public void atualizarTabela() {
         produto = new Produto_Model();
         try {
@@ -688,6 +837,7 @@ public class Produto_View extends javax.swing.JInternalFrame {
     private javax.swing.JButton Btn_Limpar;
     private javax.swing.JButton Btn_Novo;
     private javax.swing.JButton Btn_Pesquisar;
+    private javax.swing.JButton Btn_Relatorioproduto;
     private javax.swing.JButton Btn_Salvar;
     private javax.swing.JButton ButtonSair;
     private javax.swing.JTable Tabela_Produto;

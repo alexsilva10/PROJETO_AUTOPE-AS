@@ -12,6 +12,12 @@ import Model.Cargo_Model;
 import Model.Funcionario_Model;
 import Util.ValidaCPF;
 
+import java.awt.Desktop;
+import java.awt.Font;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,6 +27,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import javax.swing.text.Document;
 
 /**
  *
@@ -34,7 +42,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     Funcionario_Dao funci_Dao;
     Cargo_Dao cargo_Dao;
     List<Cargo_Model> cargo;
-    
+    Document doc;
     List<Funcionario_Model> funcionarios;
     DefaultTableModel modelo = new DefaultTableModel();
     String cpf = "";
@@ -46,7 +54,8 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         funci_Dao = new Funcionario_Dao();
         cargo_Dao = new Cargo_Dao();
         cargo = new ArrayList<>();
-         
+        doc = new Document; 
+        
         initComponents();
         this.setVisible(true);
         Campos(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
@@ -131,6 +140,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         Btn_Alterar = new javax.swing.JButton();
         Btn_Limpar = new javax.swing.JButton();
         ButtonSair = new javax.swing.JButton();
+        Btn_Relatoriofuncionario = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -406,7 +416,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtEscolaridade.setBounds(100, 20, 230, 20);
 
         jPanel2.add(jPanel5);
-        jPanel5.setBounds(10, 300, 990, 90);
+        jPanel5.setBounds(10, 280, 990, 90);
         jPanel2.add(TxtID);
         TxtID.setBounds(70, 10, 130, 20);
 
@@ -433,7 +443,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Novo);
-        Btn_Novo.setBounds(10, 400, 110, 30);
+        Btn_Novo.setBounds(10, 380, 110, 30);
 
         Btn_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_cancel_2_16px.png"))); // NOI18N
         Btn_Cancelar.setText("Cancelar");
@@ -443,7 +453,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Cancelar);
-        Btn_Cancelar.setBounds(870, 400, 110, 30);
+        Btn_Cancelar.setBounds(890, 380, 110, 30);
 
         Btn_Salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_16px_1.png"))); // NOI18N
         Btn_Salvar.setText("Salvar");
@@ -453,7 +463,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Salvar);
-        Btn_Salvar.setBounds(140, 400, 130, 30);
+        Btn_Salvar.setBounds(140, 380, 130, 30);
 
         Tabela_Funcionario.setBackground(new java.awt.Color(62, 203, 246));
         Tabela_Funcionario.setModel(new javax.swing.table.DefaultTableModel(
@@ -487,7 +497,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 440, 990, 160);
+        jScrollPane1.setBounds(10, 420, 990, 130);
 
         Btn_Excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_delete_16px.png"))); // NOI18N
         Btn_Excluir.setText("Excluir");
@@ -497,7 +507,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Excluir);
-        Btn_Excluir.setBounds(600, 400, 136, 30);
+        Btn_Excluir.setBounds(600, 380, 136, 30);
 
         Btn_Alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_edit_16px.png"))); // NOI18N
         Btn_Alterar.setText("Alterar");
@@ -507,7 +517,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Alterar);
-        Btn_Alterar.setBounds(740, 400, 127, 30);
+        Btn_Alterar.setBounds(750, 380, 127, 30);
 
         Btn_Limpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_broom_16px_4.png"))); // NOI18N
         Btn_Limpar.setText("Limpar");
@@ -517,7 +527,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Limpar);
-        Btn_Limpar.setBounds(280, 400, 115, 30);
+        Btn_Limpar.setBounds(290, 380, 115, 30);
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_close_window_40px_2.png"))); // NOI18N
@@ -528,6 +538,15 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         });
         jPanel2.add(ButtonSair);
         ButtonSair.setBounds(1010, 0, 40, 40);
+
+        Btn_Relatoriofuncionario.setText("Relatório de Funcionário");
+        Btn_Relatoriofuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_RelatoriofuncionarioActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Btn_Relatoriofuncionario);
+        Btn_Relatoriofuncionario.setBounds(790, 560, 210, 40);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 1060, 610);
@@ -946,6 +965,160 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_ButtonSairActionPerformed
 
+    private void Btn_RelatoriofuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_RelatoriofuncionarioActionPerformed
+        String nomediretorio = null;
+        String nomepasta = "SRS"; // Informe o nome da pasta que armazenará o relatório       
+	String separador = java.io.File.separator;        
+try {         
+	nomediretorio = "C:" + separador + nomepasta;            
+	if (!new File(nomediretorio).exists()){
+            (new File(nomediretorio)).mkdir(); 
+          }
+        gerarDocumento();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_Btn_RelatoriofuncionarioActionPerformed
+
+    public void gerarDocumento() {
+        try {
+            List<Funcionario_Model> lista = new ArrayList<>();
+            lista = funci_Dao.ListaFuncionarios();
+            
+            doc = new Document(PageSize.A4, 41.5f, 41.5f, 55.2f, 55.2f);
+            PdfWriter.getInstance(doc, new FileOutputStream("C:/SRS/PROJETO_AUTOPE-AS" + ".pdf"));
+            doc.open();
+
+            Font f1 = new Font(Font.HELVETICA, 14, Font.BOLD);
+            Font f2 = new Font(Font.HELVETICA, 12, Font.BOLD);
+            Font f3 = new Font(Font.HELVETICA, 12, Font.NORMAL);
+            Font f4 = new Font(Font.HELVETICA, 10, Font.BOLD);
+            Font f5 = new Font(Font.HELVETICA, 10, Font.NORMAL);
+
+            Paragraph titulo1 = new Paragraph("Universidade do Estado de Minas Gerais", f2);
+            titulo1.setAlignment(Element.ALIGN_CENTER);
+            titulo1.setSpacingAfter(10);
+            
+
+           Paragraph titulo2 = new Paragraph("Relatório de Clientes", f1);
+           titulo2.setAlignment(Element.ALIGN_CENTER);
+            titulo2.setSpacingAfter(0);
+
+            PdfPTable tabela = new PdfPTable(new float[]{0.40f, 0.60f});
+            tabela.setHorizontalAlignment(Element.ALIGN_CENTER);
+            tabela.setWidthPercentage(100f);
+
+            PdfPCell cabecalho1 = new PdfPCell(new Paragraph("ID", f3));
+            //cabecalho1.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho1.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho1.setBorder(0);
+
+            PdfPCell cabecalho2 = new PdfPCell(new Paragraph("Matricula", f3));
+            //cabecalho2.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho2.setBorder(0);
+
+            PdfPCell cabecalho3 = new PdfPCell(new Paragraph("Nome", f3));
+            //cabecalho2.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho3.setBorder(0);
+            
+            PdfPCell cabecalho4 = new PdfPCell(new Paragraph("CPF", f3));
+            //cabecalho2.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho4.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho4.setBorder(0);
+            
+            PdfPCell cabecalho5 = new PdfPCell(new Paragraph("Telefone", f3));
+            //cabecalho2.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho5.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho5.setBorder(0);
+            
+            PdfPCell cabecalho6 = new PdfPCell(new Paragraph("Celular", f3));
+            //cabecalho2.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho6.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho6.setBorder(0);
+            
+            PdfPCell cabecalho7 = new PdfPCell(new Paragraph("E-mail", f3));
+            //cabecalho2.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho7.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho7.setBorder(0);
+            
+            
+            tabela.addCell(cabecalho1);
+            tabela.addCell(cabecalho2);
+            tabela.addCell(cabecalho3);
+            tabela.addCell(cabecalho4);
+            tabela.addCell(cabecalho5);
+            tabela.addCell(cabecalho6);
+            tabela.addCell(cabecalho7);
+            
+            
+            for (Funcionario_Model funcionario : lista) {
+               Paragraph p1 = new Paragraph(funcionario.getID(), f5);
+               p1.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col1 = new PdfPCell(p1);
+               col1.setBorder(0);
+              
+               Paragraph p2 = new Paragraph(funcionario.getMatricula(), f5);
+               p2.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col2 = new PdfPCell(p2);
+               col2.setBorder(0);
+               
+               Paragraph p3 = new Paragraph(funcionario.getNome(), f5);
+               p3.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col3 = new PdfPCell(p3);
+               col3.setBorder(0);
+               
+               Paragraph p4 = new Paragraph(funcionario.getCPF(), f5);
+               p4.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col4 = new PdfPCell(p4);
+               col4.setBorder(0);
+               
+               Paragraph p5 = new Paragraph(funcionario.getTelefone(), f5);
+               p5.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col5 = new PdfPCell(p5);
+               col5.setBorder(0);
+               
+               Paragraph p6 = new Paragraph(funcionario.getCelular(), f5);
+               p6.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col6 = new PdfPCell(p6);
+               col6.setBorder(0);
+               
+               Paragraph p7 = new Paragraph(funcionario.getEmail(), f5);
+               p7.setAlignment(Element.ALIGN_JUSTIFIED);
+               PdfPCell col7 = new PdfPCell(p7);
+               col7.setBorder(0);
+               
+               tabela.addCell(col1);
+               tabela.addCell(col2);
+               tabela.addCell(col3);
+               tabela.addCell(col4);
+               tabela.addCell(col5);
+               tabela.addCell(col6);
+               tabela.addCell(col7);
+               
+            }
+            
+           doc.add(titulo2);
+           doc.add(titulo1);
+           doc.add(tabela);
+           doc.close();
+           
+           JOptionPane.showMessageDialog(null, "Relatório salvo com sucesso");
+            String caminho = "C:/SRS/RelatorioCliente.pdf";
+            Desktop.getDesktop().open(new File(caminho));
+       } catch (DocumentException e) {
+           e.printStackTrace();
+       } catch (SQLException ex) {
+           ex.printStackTrace();
+        } catch (IOException exx) {
+            exx.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Documento de Requisitos aberto. Feche para gerar um novo.");
+        }
+    }
+           
+           
 
     public void atualizarTabela() {
         funcionario = new Funcionario_Model();
@@ -997,6 +1170,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JButton Btn_Limpar;
     private javax.swing.JButton Btn_Novo;
     private javax.swing.JButton Btn_Pesquisar;
+    private javax.swing.JButton Btn_Relatoriofuncionario;
     private javax.swing.JButton Btn_Salvar;
     private javax.swing.JButton ButtonSair;
     private javax.swing.JTable Tabela_Funcionario;
