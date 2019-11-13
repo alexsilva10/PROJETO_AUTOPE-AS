@@ -202,7 +202,7 @@ public class Fornecedores_View extends javax.swing.JInternalFrame {
                 ButtonSalvarAlterarActionPerformed(evt);
             }
         });
-        jPanel2.add(ButtonSalvarAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(869, 312, 107, -1));
+        jPanel2.add(ButtonSalvarAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 310, 107, -1));
 
         jPanel5.setBackground(new java.awt.Color(82, 203, 248));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados de Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
@@ -416,7 +416,7 @@ public class Fornecedores_View extends javax.swing.JInternalFrame {
                 btAlterarActionPerformed(evt);
             }
         });
-        jPanel2.add(btAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 312, -1, -1));
+        jPanel2.add(btAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Todos");
