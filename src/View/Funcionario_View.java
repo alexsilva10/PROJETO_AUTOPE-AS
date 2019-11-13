@@ -132,7 +132,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         Btn_Excluir = new javax.swing.JButton();
         Btn_Alterar = new javax.swing.JButton();
         Btn_Limpar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        ButtonRelatorio = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,7 +145,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setClosable(true);
         setTitle("Cadastro de Funcionário");
         setPreferredSize(new java.awt.Dimension(1078, 637));
         getContentPane().setLayout(null);
@@ -409,7 +408,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         TxtEscolaridade.setBounds(100, 20, 230, 20);
 
         jPanel2.add(jPanel5);
-        jPanel5.setBounds(10, 300, 990, 90);
+        jPanel5.setBounds(10, 280, 990, 90);
         jPanel2.add(TxtID);
         TxtID.setBounds(70, 10, 130, 20);
 
@@ -436,7 +435,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Novo);
-        Btn_Novo.setBounds(10, 400, 110, 30);
+        Btn_Novo.setBounds(10, 380, 110, 30);
 
         Btn_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_cancel_2_16px.png"))); // NOI18N
         Btn_Cancelar.setText("Cancelar");
@@ -446,7 +445,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Cancelar);
-        Btn_Cancelar.setBounds(870, 400, 110, 30);
+        Btn_Cancelar.setBounds(890, 380, 110, 30);
 
         Btn_Salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_16px_1.png"))); // NOI18N
         Btn_Salvar.setText("Salvar");
@@ -456,7 +455,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Salvar);
-        Btn_Salvar.setBounds(140, 400, 130, 30);
+        Btn_Salvar.setBounds(140, 380, 130, 30);
 
         Tabela_Funcionario.setBackground(new java.awt.Color(62, 203, 246));
         Tabela_Funcionario.setModel(new javax.swing.table.DefaultTableModel(
@@ -490,7 +489,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 440, 990, 160);
+        jScrollPane1.setBounds(10, 420, 990, 130);
 
         Btn_Excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_delete_16px.png"))); // NOI18N
         Btn_Excluir.setText("Excluir");
@@ -500,7 +499,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Excluir);
-        Btn_Excluir.setBounds(600, 400, 136, 30);
+        Btn_Excluir.setBounds(600, 380, 136, 30);
 
         Btn_Alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_edit_16px.png"))); // NOI18N
         Btn_Alterar.setText("Alterar");
@@ -510,7 +509,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Alterar);
-        Btn_Alterar.setBounds(740, 400, 127, 30);
+        Btn_Alterar.setBounds(750, 380, 127, 30);
 
         Btn_Limpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_broom_16px_4.png"))); // NOI18N
         Btn_Limpar.setText("Limpar");
@@ -520,17 +519,17 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(Btn_Limpar);
-        Btn_Limpar.setBounds(280, 400, 115, 30);
+        Btn_Limpar.setBounds(290, 380, 115, 30);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_activity_history_16px.png"))); // NOI18N
-        jButton1.setText("Relatorio");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_activity_history_16px.png"))); // NOI18N
+        ButtonRelatorio.setText("Relatorio");
+        ButtonRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ButtonRelatorioActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(440, 400, 95, 30);
+        jPanel2.add(ButtonRelatorio);
+        ButtonRelatorio.setBounds(440, 380, 120, 30);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 1060, 610);
@@ -942,8 +941,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_Tabela_FuncionarioMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+    private void ButtonRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRelatorioActionPerformed
         try {
             funci_Dao.gerarRelatorioFuncionario();
         } catch (SQLException ex) {
@@ -953,8 +951,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
         } catch (IOException ex) {
             Logger.getLogger(Funcionario_View.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ButtonRelatorioActionPerformed
 
 
     public void atualizarTabela() {
@@ -1008,6 +1005,7 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JButton Btn_Novo;
     private javax.swing.JButton Btn_Pesquisar;
     private javax.swing.JButton Btn_Salvar;
+    private javax.swing.JButton ButtonRelatorio;
     private javax.swing.JTable Tabela_Funcionario;
     private javax.swing.JTextField TxtBairro;
     private javax.swing.JFormattedTextField TxtCPF;
@@ -1034,7 +1032,6 @@ public class Funcionario_View extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> TxtSexo;
     private javax.swing.JComboBox<String> TxtStatus;
     private javax.swing.JFormattedTextField TxtTelefone;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

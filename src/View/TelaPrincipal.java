@@ -19,7 +19,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
    
    Funcionario_View Fun ;
    PessoaFisica fisica ;
-   PessoaJuridica juridica;
    Categoria_View categoria;
    Cargo_View cargo;
    Produto_View produto;

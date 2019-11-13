@@ -1,5 +1,6 @@
 
-package View;
+
+
 
 import Dao.ClienteJuridico_dao;
 import Model.ClienteJuridico;
