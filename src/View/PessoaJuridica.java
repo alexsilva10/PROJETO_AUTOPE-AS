@@ -80,6 +80,7 @@ public class PessoaJuridica extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(113, 207, 231));
         setClosable(true);
+        setTitle("Cadastro P. Juritica");
 
         jPanel2.setBackground(new java.awt.Color(28, 203, 248));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N

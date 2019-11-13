@@ -292,6 +292,16 @@ public class Funcionario_Model {
         this.Status = Status;
     }
 
+    public Funcionario_Model(int ID, String Matricula, String Nome, String CPF, String Telefone, String Celular, String Email) {
+        this.ID = ID;
+        this.Matricula = Matricula;
+        this.Nome = Nome;
+        this.CPF = CPF;
+        this.Telefone = Telefone;
+        this.Celular = Celular;
+        this.Email = Email;
+    }
+
     
     
 

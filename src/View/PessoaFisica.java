@@ -102,8 +102,7 @@ public class PessoaFisica extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(113, 207, 231));
-        setClosable(true);
-        setTitle("Pessoa Fisica");
+        setTitle("Cadastro P. Fisica");
 
         jPFisica.setBackground(new java.awt.Color(28, 203, 248));
         jPFisica.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 1, 11))); // NOI18N
