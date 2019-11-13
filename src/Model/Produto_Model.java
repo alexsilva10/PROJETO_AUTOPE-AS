@@ -155,14 +155,6 @@ public class Produto_Model {
     public void setDataultvenda(Date Dataultvenda) {
         this.Dataultvenda = Dataultvenda;
     }
-
-    public Produto_Model(int IDproduto, String Descricao, Categoria Categoriaprod, String Localizacao, Fornecedor Fornecedorprod) {
-        this.IDproduto = IDproduto;
-        this.Descricao = Descricao;
-        this.Categoriaprod = Categoriaprod;
-        this.Localizacao = Localizacao;
-        this.Fornecedorprod = Fornecedorprod;
-    }
    
     
 

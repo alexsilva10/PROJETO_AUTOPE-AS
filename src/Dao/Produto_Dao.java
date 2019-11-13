@@ -160,23 +160,4 @@ public class Produto_Dao {
 
         return produto;
     } 
-    
-     public List<Produto_Model> ListaProdutos() throws SQLException {
-        Produto_Model produto;
-        List<Produto_Model> produtos = new ArrayList<>();
-        
-        sql = "Select * from produto order by Descricao";
-        Statement st;
-        pst = Conexao.getConnection().prepareStatement(sql);
-        pst.executeQuery();
-        ResultSet rs = pst.getResultSet();
-        while (rs.next()) {
-        produto = new Produto_Model(rs.getInt("id"), rs.getString("descricao"), categoria.getCategoriaByCodigo(rs.getInt("id_categoria")),
-        rs.getString("Localizacao"), fornecedor.getUsuarioByCodigo(rs.getInt("id_fornecedor")));
-        
-        produtos.add(produto);
-        }
-        pst.close();
-        return produtos;
-    }
 }

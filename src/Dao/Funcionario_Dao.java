@@ -200,27 +200,4 @@ public class Funcionario_Dao implements Serializable{
 
         return resposta;
     }
-    
-    public List<Funcionario_Model> ListaFuncionarios() throws SQLException {
-        Funcionario_Model funcionario;
-        List<Funcionario_Model> funcionarios = new ArrayList<>();
-        
-        sql = "Select * from funcionario order by Nome";
-        Statement st;
-        pst = Conexao.getConnection().prepareStatement(sql);
-       
-        pst.executeQuery();
-        ResultSet rs = pst.getResultSet();
-        while (rs.next()) {
-
-        funcionario = new Funcionario_Model(rs.getInt("ID"), rs.getString("Matricula"), rs.getString("Nome"), rs.getString("CPF"), rs.getString("Telefone"),
-        rs.getString("Celular"), rs.getString("Email"));
-        
-          funcionarios.add(funcionario);
-        }
-        
-        pst.close();
-
-        return funcionarios;
-    }
 }
