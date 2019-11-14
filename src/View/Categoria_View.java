@@ -140,7 +140,7 @@ public class Categoria_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(ButtonSalvarAlterar);
-        ButtonSalvarAlterar.setBounds(650, 160, 120, 30);
+        ButtonSalvarAlterar.setBounds(760, 160, 120, 30);
 
         ButtonNovo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_new_16px.png"))); // NOI18N
@@ -293,7 +293,7 @@ public class Categoria_View extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(jButton3);
-        jButton3.setBounds(480, 160, 130, 30);
+        jButton3.setBounds(610, 160, 130, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
