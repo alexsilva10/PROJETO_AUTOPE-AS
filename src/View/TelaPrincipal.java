@@ -19,7 +19,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
    
    Funcionario_View Fun ;
    PessoaFisica fisica ;
-   PessoaJuridica juridica;
    Categoria_View categoria;
    Cargo_View cargo;
    Produto_View produto;
@@ -52,7 +51,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -181,15 +179,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_businesswoman_32px_1.png"))); // NOI18N
-        jMenuItem3.setText("Cliente Pes.Juridica");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
-
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_add_user_group_man_woman_32px.png"))); // NOI18N
         jMenuItem4.setText("Fornecedor");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -299,16 +288,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        fechar();
-        if(juridica==null){
-        juridica = new PessoaJuridica();
-        }
-        jDesktopPane1.add(juridica);
-
-        juridica.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         fechar();
         if(fornecedor==null){
@@ -372,7 +351,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
